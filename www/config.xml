@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="neocom.neosportzfootball" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Neosportz FootBall</name>
+<widget id="neocom.neosportzBasketball" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Neosportz Basketball</name>
     <description>
         Neosports is a sports app
     </description>
