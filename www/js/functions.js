@@ -216,7 +216,7 @@ function passscoretoserverscorecard(testvar){
     var Http = null;
     Http = new XMLHttpRequest();
 
-    var url = "http://rugby.neosportz.com/loaddatafromapp.aspx";
+    var url = "http://bball.neosportz.com/loaddatafromapp.aspx";
     var params = "?" + testvar;
 
     Http.open("GET", url + params, false);
@@ -233,7 +233,7 @@ function passscoretoserverscorecard(testvar){
 function passscoretoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://rugby.neosportz.com/loaddatafromapp.aspx";
+    var url = "http://bball.neosportz.com/loaddatafromapp.aspx";
     var params = "?" + testvar;
 
     http.open("POST", url + params, true);
@@ -253,7 +253,7 @@ function passscoretoserver(testvar){
 function passnewfeedtoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://rugby.neosportz.com/apploadnewsfeed.aspx";
+    var url = "http://bball.neosportz.com/apploadnewsfeed.aspx";
     var params = "?" + testvar;
     http.open("POST", url + params, true);
 
@@ -270,7 +270,7 @@ function passnewfeedtoserver(testvar){
 function passcancelgametoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://rugby.neosportz.com/apploadcancelgame.aspx";
+    var url = "http://bball.neosportz.com/apploadcancelgame.aspx";
     var params = "?" + testvar;
   //  alert(url + params);
     http.open("POST", url + params, true);
@@ -303,9 +303,9 @@ function blankLastUpdatesec(){
     xmlHttp = new XMLHttpRequest();
 
    // $('#busy').show();
-    xmlHttp.open("GET", 'http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
+    xmlHttp.open("GET", 'http://bball.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
     xmlHttp.send();
-  //  alert('http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=' + databaseversion + '&appver=' + appversion);
+  //  alert('http://bball.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=' + databaseversion + '&appver=' + appversion);
     var json = xmlHttp.responseText;
 
     db.transaction(function(tx) {
@@ -328,8 +328,8 @@ function getregionsdata(tx, results) {
     var datenowsecsync2 = row.Datesecs;
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", 'http://rugby.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1', false);
-   // alert('http://rugby.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1');
+    xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1', false);
+   // alert('http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1');
     xmlHttp.send();
 
     var json = xmlHttp.responseText;
@@ -385,7 +385,7 @@ function gettokenindividualdata(tx, results) {
     var datenowsecsync2 = row.Datesecs;
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", 'http://rugby.neosportz.com/mobiledataindividual.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&type=' + typesend + '&region=' + region + '&year=' + yearnow + '&teamid=' + teamsend + '&club=' + clubsend + '&division=' + divisionsend, false);
+    xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledataindividual.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&type=' + typesend + '&region=' + region + '&year=' + yearnow + '&teamid=' + teamsend + '&club=' + clubsend + '&division=' + divisionsend, false);
     xmlHttp.send();
 
     var json = xmlHttp.responseText;
@@ -1161,7 +1161,7 @@ function loadnewadatabase(){
     xmlHttp = new XMLHttpRequest();
 
     // $('#busy').show();
-    xmlHttp.open("GET", 'http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
+    xmlHttp.open("GET", 'http://bball.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
     xmlHttp.send();
 
 
