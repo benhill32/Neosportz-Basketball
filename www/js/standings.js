@@ -7,6 +7,7 @@ var devicePlatformfstand;
 function onDeviceReadystand() {
   //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
  //   console.log("LOCALDB - Database ready");
+    $.mobile.loading().hide();
     db.transaction(getstandings, errorCBfunc, successCBfunc);
     devicePlatformfstand = device.platform;
 
@@ -21,7 +22,7 @@ function getorient(strorein){
 
 function getstandings(tx) {
 
-    var sql = "select _id,Games,Won,Drawn,Lost,ForScore,AgainstScore,Difference,ClubID,Name,abbreviation,TournamentID,FlagPoints,UpdateDateUTC ,TournamentName,Bonus from MobileStandings where TournamentID = '" + id + "' order by FlagPoints DESC,Difference DESC";
+    var sql = "select _id,Games,Won,Drawn,Lost,ForScore,AgainstScore,Difference,ClubID,Name,abbreviation,TournamentID,FlagPoints,UpdateDateUTC ,TournamentName,Bonus from MobileStandings where TournamentID = '" + id + "' order by (FlagPoints+Bonus) DESC,Difference DESC";
    // alert(sql);
     tx.executeSql(sql, [], getstandings_success);
 }

@@ -7,29 +7,60 @@ var team1all = 0;
 var team2all = 0;
 var deviceIDscorecard;
 var networkconnectionscore = 0;
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReadyscore, false);
 var playerhome = 0;
 var playeraway = 0;
 var timehome = 0;
 var timeaway = 0;
 var scoringname =0;
+var Ref= 0;
+var isadmin =0;
+var clubedit = 0;
 var DIVid = getUrlVars()["divID"];
-function onDeviceReady() {
-
+function onDeviceReadyscore() {
+    checkonlinescore()
     deviceIDscorecard = device.uuid;
   //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
   //  console.log("LOCALDB - Database ready");
-    db.transaction(getdata, errorCBfunc, successCBfunc);
-    db.transaction(getscoredata, errorCBfunc, successCBfunc);
-    checkonlinescore()
+   // db.transaction(gettoken, errorCBfunc, successCBfunc);
+
+    if(networkconnectionscore !=0) {
+        onclicksyncloaddata();
+    }
+
+    window.setTimeout(function(){
+        db.transaction(getfliter1, errorCBfunc, successCBfunc);
+    }, 1500);
+}
+
+function getfliter1(tx) {
+
+    //  updateadmin();
+
+    var sql = "select Ref,isadmin,Clubedit from MobileApp_LastUpdatesec";
+   // alert(sql);
+    tx.executeSql(sql, [], getfliter1_success);
+
 }
 
 
+function getfliter1_success(tx, results) {
+    $('#busy').hide();
+    var len = results.rows.length;
+
+
+    if(len != 0) {
+        var menu = results.rows.item(0);
+        Clubedit = menu.Clubedit;
+        Ref= menu.Ref;
+        isadmin = menu.isadmin;
+        db.transaction(getdata, errorCBfunc, successCBfunc);
+        db.transaction(getscoredata, errorCBfunc, successCBfunc);
+    }
+}
 
 function checkonlinescore(){
-
     var networkState = navigator.connection.type;
-
     var states = {};
     states[Connection.UNKNOWN]  = '0';
     states[Connection.ETHERNET] = '2';
@@ -38,7 +69,6 @@ function checkonlinescore(){
     states[Connection.CELL_3G]  = '1';
     states[Connection.CELL_4G]  = '1';
     states[Connection.NONE]     = '0';
-
     networkconnectionscore = states[networkState];
 //alert(states[networkState]);
 
@@ -54,7 +84,7 @@ function getbothteams(team1,team2){
 
 
 function getplayerinfo(tx) {
-    var sql = "select ID,_id,ClubID,FullName,Base64,TeamID,UpdateSecondsUTC,UpdateSecondsUTCBase64,UpdateDateUTC,UpdateDateUTCBase64,Position,DeletedateUTC,NickName,Height,Weight ,DOB ,BirthPlace,SquadNo,Nationality ,Honours,Previous_Clubs,memorable_match,Favourite_player ,Toughest_Opponent,Biggest_influence ,person_admire ,Best_goal_Scored ,Hobbies ,be_anyone_for_a_day from MobilevwApp_Base_Players where ClubID in (" + team1all + "," + team2all + ") order by FullName" ;
+    var sql = "select ID,_id,ClubID,FullName from MobilevwApp_Base_Players where ClubID in (" + team1all + "," + team2all + ") order by FullName" ;
 
      // alert(sql);
     tx.executeSql(sql, [], getplayerinfo_success);
@@ -68,7 +98,7 @@ function getscoredata(tx) {
 
 
 function getdata(tx) {
-    var sql = "select ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,halftime,fulltime from MobileApp_Results where ID = '" + id + "'";
+    var sql = "select ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,halftime,fulltime,IsFinalScore from MobileApp_Results where ID = '" + id + "'";
     //alert(sql);
     tx.executeSql(sql, [], getMenu_success);
 }
@@ -77,6 +107,9 @@ function getplayerinfo_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
     //alert(len);
+
+
+
     $('#divplayers').empty().append('<Div class="mainmenuscore" >' +
         '<div class="bold size13 floatleft2" align="center"  ><select id="drphometeam"></select></div>' +
         '<div class="bold size13 floatleftnew" align="center"  >Players</div>' +
@@ -113,6 +146,9 @@ function getplayerinfo_success(tx, results) {
         $('#drphometime').append(new Option(i,i))
         $('#drpawaytime').append(new Option(i,i))
     }
+
+
+
 }
 
 function getMenu_success(tx, results) {
@@ -122,39 +158,79 @@ function getMenu_success(tx, results) {
     var menu = results.rows.item(0);
 var Gameid =menu.ID;
         var res = (menu.DatetimeStart).split("T");
+    $("#divbonus").hide();
+    if(menu.IsFinalScore == 0) {
 
-            $('#scorecard').empty().append('<Div class="mainmenuscore" >' +
-                '<div class="bold size13 floatleft" align="center"  >' + menu.HomeName + '</div><div class="bold size13 floatleft" align="center"  >' + menu.AwayName  + '</div>' +
-                '<div class="floatleft" align="center" id="homescore"  >' + menu.HomeScore + '</div><div class="floatleft"  align="center" id="awayscore"  >' + menu.AwayScore + '</div>' +
-                '' +
-                '<div id="divplayers"></div>' +
-                '<div id="divtime"></div>' +
-                '<div id="divscore"  ></div>' +
-                '<div id="divhalffull" align="center"  >' +
-                '<button id="btnhalf" class="btn btn-warning" onclick="gamestate(1,' + Gameid + ')" >Its Halftime</button><br>' +
-                '<button id="btnfull" class="btn btn-warning" onclick="gamestate(2,' + Gameid + ')" >Its Fulltime</button>' +
-                '</div>' +
-                '</Div>');
 
-    if(menu.halftime !='null'){
-        if(menu.fulltime == 'null') {
-            $("#btnhalf").hide();
-        }else{
-            $("#btnfull").hide();
+        $('#scorecard').empty().append('<Div class="mainmenuscore" >' +
+        '<div class="bold size13 floatleft" align="center"  >' + menu.HomeName + '</div><div class="bold size13 floatleft" align="center"  >' + menu.AwayName + '</div>' +
+        '<div class="floatleft" align="center" id="homescore"  >' + menu.HomeScore + '</div><div class="floatleft"  align="center" id="awayscore"  >' + menu.AwayScore + '</div>' +
+        '' +
+        '<div id="divplayers"></div>' +
+        '<div id="divtime"></div>' +
+        '<div id="divscore"  ></div>' +
+        '<div id="divbonus"  ></div>' +
+        '<div id="divhalffull" align="center"  >' +
+        '<button id="btnhalf" class="btn btn-warning" onclick="gamestate(1,' + Gameid + ')" >Its Halftime</button><br>' +
+        '<button id="btnfull" class="btn btn-warning" onclick="gamestate(2,' + Gameid + ')" >Its Fulltime</button><br>' +
+        '<button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Approve</button>' +
+        '<button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button>' +
+        '</div>' +
+        '</Div>');
+
+        $('#divtime').hide();
+
+        if (menu.halftime != 'null') {
+            if (menu.fulltime == 'null') {
+                $("#btnhalf").hide();
+                $("#btnapprove").hide();
+            } else {
+
+                $("#btnfull").hide();
+            }
         }
-    }
 
-    if(menu.halftime == 'null'){
-        $("#btnfull").hide();
+        if (menu.IsFinalScore == 0 && (menu.halftime != 'null') && (menu.fulltime != 'null')) {
+
+            if (Ref == 0) {
+                $("#btnapprove").hide();
+                $("#divbonus").hide();
+            } else {
+                $("#divbonus").show();
+                $("#btnapprove").show();
+            }
+            if(isadmin == 1){
+                $("#divbonus").show();
+                $("#btnapprove").show();
+            }
+        } else {
+            $("#btnapprove").hide();
+            $("#divbonus").hide();
+        }
+
+
+        if (menu.halftime == 'null') {
+            $("#btnfull").hide();
+            $("#btnapprove").hide();
+        } else {
+            $("#btnhalf").hide();
+        }
+
+        getbothteams(menu.HomeClubID, menu.AwayClubID);
     }else{
+        $('#scorecard').empty().append("Thanks for approving this game!");
 
-        $("#btnhalf").hide();
     }
-
-    getbothteams(menu.HomeClubID,menu.AwayClubID);
-
 
 }
+
+function syncscore(){
+
+    onDeviceReadyscore();
+}
+
+
+
 
 function gamestate(IDD,id){
 
@@ -165,10 +241,16 @@ function gamestate(IDD,id){
             });
 
 
-        }else{
+        }else if (IDD == 2) {
 
             db.transaction(function (tx) {
                 tx.executeSql('Update MobileApp_Results set halftime = 1, fulltime= 1 where ID = ' + id);
+                console.log("Update INTO MobileApp_Results");
+            });
+        }else if (IDD == 3) {
+
+            db.transaction(function (tx) {
+                tx.executeSql('Update MobileApp_Results set IsFinalScore = 1 where ID = ' + id);
                 console.log("Update INTO MobileApp_Results");
             });
         }
@@ -183,8 +265,8 @@ function getscoredata_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
       //  alert(len);
+    $('#divbonus').empty()
     $('#divscore').empty()
-
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
       //  alert(menu.Name);
@@ -192,7 +274,8 @@ function getscoredata_success(tx, results) {
         var minus =menu.Value*-1;
 
         $('#divscore').append('<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft3" align="center"  ><img src="../img/minus.png" onclick="getscore(1,'+ minus +',\''+ menu.Name + '\')" height="40">' +
+            '<div class="bold size13 floatleft3" align="center"  >' +
+            '<img src="../img/minus.png" onclick="getscore(1,'+ minus +',\''+ menu.Name + '\')" height="40">' +
             '<img src="../img/plus.png"  height="40" onclick="getscore(1,'+ plus +',\''+ menu.Name + '\')"> </div>' +
             '<div class="bold size13 floatleft3" align="center"  >' + menu.Name + '</div>' +
             '<div class="bold size13 floatleft3" align="center"  >' +
@@ -201,7 +284,52 @@ function getscoredata_success(tx, results) {
             '</Div>');
 
     }
+
+    $('#divbonus').append('<Div class="mainmenuscore" >' +
+    '<div class="bold size13 floatleft3" align="center"  > <input type="checkbox" id="homebonus1" onclick="getbonus()">' +
+    ' <input type="checkbox" id="homebonus2" onclick="getbonus()"> </div>' +
+    '<div class="bold size13 floatleft3" align="center"  >Bonus Points</div>' +
+    '<div class="bold size13 floatleft3" align="center"  >' +
+    ' <input type="checkbox" id="awaybonus1"  onclick="getbonus()">' +
+    ' <input type="checkbox" id="awaybonus2"  onclick="getbonus()">' +
+    '</Div>');
+
 }
+
+function getbonus(){
+    db.transaction(gettoken, errorCBfunc, successCBfunc);
+var home1 = 0;
+var home2 =0;
+var away1=0;
+var away2 = 0;
+
+    if ($('#homebonus1').prop('checked') == true){
+        home1 = 1;
+    }
+    if ($('#homebonus2').prop('checked') == true){
+        home2 =1;
+    }
+    if ($('#awaybonus1').prop('checked') == true){
+        away1=1;
+    }
+    if ($('#awaybonus2').prop('checked') == true){
+        away2=1;
+    }
+
+
+    var response =   passscoretoserverscorecard("gameidbonus=" + id + "&bonushome1=" + home1 + "&bonushome2=" + home2 + "&bonusaway1=" + away1 + "&bonusaway2=" + away2 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+
+   // alert(response);
+
+    if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+      //  alert(response);
+        onclicksyncloaddata();
+    }
+
+
+
+}
+
 
 
 function getscore(team,value,name){
@@ -256,9 +384,14 @@ function getscorefromtable_success(tx, results) {
 
 
 
-    passscoretoserver("gameid=" + menu.ID + "&scoringname=" + scoringname + "&homeplayer=" + playerhome + "&awayplayer=" + playeraway + "&hometime=" + timehome + "&awaytime=" + timeaway + "&home=" + menu.HomeScore + "&away=" + menu.AwayScore + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+ var response = passscoretoserverscorecard("gameid=" + menu.ID + "&scoringname=" + scoringname + "&homeplayer=" + playerhome + "&awayplayer=" + playeraway + "&hometime=0&awaytime=0&home=" + menu.HomeScore + "&away=" + menu.AwayScore + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
-    onclicksyncloaddata();
+    //alert(response);
+
+    if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+       // alert(response);
+        onclicksyncloaddata();
+    }
 
 
 }

@@ -7,9 +7,11 @@
     <meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
     <link rel="stylesheet" type="text/css" href="../css/onoff.css" />
+    <link rel="stylesheet" type="text/css" href="../css/cropper.css" />
     <script type="text/javascript" src="../js/dbconnection.js"></script>
     <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/cropper.js"></script>
     <script type="text/javascript" src="../Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../cordova.js"  charset="utf-8"></script>
     <script type="text/javascript" src="../js/functions.js"></script>
@@ -37,6 +39,7 @@
         document.addEventListener("deviceready", onDeviceReadyres, false);
         function onDeviceReadyres() {
             refreshdata();
+
         }
 
 
@@ -50,7 +53,7 @@
     </div>
     <div class="mainheaderimgicon"  onclick="weblinkbackmenu()">
         <img src="../img/neosportz.png"  style="vertical-align:middle;height:40px;" align="middle">
-        Neosportz Football
+        Neosportz Rugby
     </div>
     <div class="mainheaderimgicon" id="filterswitch">
 
@@ -69,7 +72,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <div class="modal-header" align="center">
+                <div class="modal-body" align="center">
                     <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...
                 </div>
             </div>
@@ -103,10 +106,165 @@
             </div>
         </div>
     </div>
-<div id="divresults" align="center">
+    <div class="modal" id="basicModalimagecrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"  align="center">
+                <div class="modal-header">
+                    Drag, resize and move window over image
+
+                </div>
+                <div style="width: 70%;max-height: 300%; border:1px solid black;margin: 10px;   ">
+                    <img id="target" style="max-width: 100%;max-height: 100%;"  alt="Picture" src="..//img/game758.jpg">
+                    <!-- <img id="target" style="max-width: 100%;max-height: 100%;" src="..//img/game758.jpg" alt="Picture">-->
+
+
+                </div>
+
+                <div style="width: 70%;max-height: 150px;" id="divcanvas" >
+
+                </div>
+
+                <script type="text/javascript">
+                    var $image = $('#target'),
+                            cropBoxData,
+                            canvasData;
+
+                    $('#basicModalimagecrop').on('shown.bs.modal', function () {
+                        $image.cropper({
+                            autoCropArea:0.5,
+                            cropBoxResizable: true,
+                            // preview: '.img-preview',
+                            built: function () {
+                                // Strict mode: set crop box data first
+                                $image.cropper('setCropBoxData', cropBoxData);
+                                $image.cropper('setCanvasData', canvasData);
+                            }
+
+                        });
+                    }).on('hidden.bs.modal', function () {
+                        cropBoxData = $image.cropper('getCropBoxData');
+                        canvasData = $image.cropper('getCanvasData');
+                        $image.cropper('destroy');
+                    });
+
+
+                    $(document.body).on('click', '[data-method]', function () {
+                        var data = $(this).data(),
+                                $target,
+                                result;
+
+                        if (!$image.data('cropper')) {
+                            return;
+                        }
+
+                        if (data.method) {
+                            data = $.extend({}, data); // Clone a new one
+
+                            if (typeof data.target !== 'undefined') {
+                                $target = $(data.target);
+
+                                if (typeof data.option === 'undefined') {
+                                    try {
+                                        data.option = JSON.parse($target.val());
+                                    } catch (e) {
+                                        console.log(e.message);
+                                    }
+                                }
+                            }
+                            result = $image.cropper(data.method, data.option);
+
+                            if (data.method === 'getCroppedCanvas') {
+                                var dataURL = result.toDataURL("image/jpeg", 1.0);
+                                //   alert(dataURL);
+                                console.log(dataURL);
+
+
+
+                                if (devicePlatformresult == "Android") {
+                                    window.plugins.socialsharing.share(null, 'Neosportz Image', dataURL, 'http://www.neosportz.com')
+                                }else{
+
+                                    window.plugins.socialsharing.share(null, 'Neosportz Image', dataURL, 'http://www.neosportz.com')
+
+                                }
+                                $('#basicModalimagecrop').modal('hide');
+                            }
+
+                            if ($.isPlainObject(result) && $target) {
+                                try {
+                                    $target.val(JSON.stringify(result));
+                                } catch (e) {
+                                    console.log(e.message);
+                                }
+                            }
+                        }
+                    });
+
+
+                </script>
+                <div class="modal-footer"  align="center">
+                    <div class="modelfloat50 left"  align="center" data-dismiss="modal">
+
+                        Close
+                    </div>
+                    <div class="modelfloat50"  align="center"  data-method="getCroppedCanvas">
+
+                         <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">
+              Share
+            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="basicModalshare" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" id="socialshareresut" data-dismiss="modal" align="center" onclick="shareresults()">
+                    Share
+                </div>
+                <div class="modal-footer modelfooter"  data-dismiss="modal" align="center"  data-toggle="modal" data-target="#basicModalresults" onclick="resultsmore()">
+                    Read More
+                </div>
+                <div class="modal-footer modelfooter"  data-dismiss="modal" align="center">
+                    Close
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divresults" align="center">
+
+
+ <!--< Div class="mainmenuresult" align="left" data-toggle="modal" data-target="#basicModalresults"   >
+        <div id="schleft">
+      <div class="bold size13"  >Taradale vs Hastings</div>
+        <div class="bold size13" >12 - 12  Fulltime</div>
+        <div class="size11">Prems</div>
+        <div class="size11">Referee : John Cena</div>
+        <div class="size11">3:pm 20/06/2015</div>
+
+  </div>
+
+          <div  id="schright"  data-toggle="modal" data-target="#basicModal">
+          <img height="30px" class="imagesch"  align="right" >
+          </div>
+
+
+        </Div>-->
+
 
 </div>
-
+    <div id="divcircle" style="display: none;">
+        <div class="circle circle-border">
+            <div class="circle-inner">
+                <div class="score-text">
+                    Load More
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="footer">

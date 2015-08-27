@@ -9,22 +9,54 @@ var facebookchk= 0;
 var sponsorexist = 0;
 var ii = 0;
 var nospor = 0;
+var socialurl = "";
 document.addEventListener("deviceready", onDeviceReadynews, false);
 
 function onDeviceReadynews() {
-  //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
+    //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
     console.log("LOCALDB - Database ready");
-    db.transaction(getadmin, errorCBfunc, successCBfunc);
-
-  //  checkfb();
+    $.mobile.loading().hide();
+    db.transaction(getdatanews1, errorCBfunc, successCBfunc);
+    //  checkfb();
 }
 //db.transaction(getadmin, errorCBfunc, successCBfunc);
 
 
 
+function getdatanews1(tx) {
+    var sql = "select ID from MobileApp_clubs where Fav = 1";
+    //alert(sql);
+    tx.executeSql(sql, [], getClubID_success1);
+}
+
+function getClubID_success1(tx, results) {
+    $('#busy').hide();
+    var len = results.rows.length;
+
+
+    if(len != 0) {
+        var menu = results.rows.item(0);
+        clubidtop = menu.ID;
+        //  db.transaction(getdata2, errorCBfunc, successCBfunc);
+        db.transaction(getadmin, errorCBfunc, successCBfunc);
+        db.transaction(numbersponsers, errorCBfunc, successCBfunc);
+
+    }else{
+
+        showclubsfun();
+    }
+
+
+}
+
+
+
+
+
+
 function getadmin(tx) {
 
-    var sql = "select isadmin from MobileApp_LastUpdatesec";
+    var sql = "select allownewfeed,Clubedit,isadmin from MobileApp_LastUpdatesec";
     //alert(sql);
     tx.executeSql(sql, [], getadmin_success);
 }
@@ -35,9 +67,15 @@ function getadmin_success(tx, results) {
     var len = results.rows.length;
 
 
-      if(len != 0) {
+    if(len != 0) {
         var menu = results.rows.item(0);
-        if(menu.isadmin ==1){
+        if(menu.allownewfeed ==1 && menu.Clubedit == clubidtop){
+            $('#loadnews').empty();
+            $('#loadnews').append('<img src="../img/plus2.png"  style="height:30px;" title="Add New Feed">' +'</Div>');
+            $('#loadnews').click(function(){
+                weblink('../pages/addnewfeed.html')
+            });
+        }else if (menu.isadmin ==1){
             $('#loadnews').empty();
             $('#loadnews').append('<img src="../img/plus2.png"  style="height:30px;" title="Add New Feed">' +'</Div>');
             $('#loadnews').click(function(){
@@ -47,56 +85,11 @@ function getadmin_success(tx, results) {
     }
 
 
-    db.transaction(getdatanews, errorCBfunc, successCBfunc);
+
 }
 
 
 
-
-function checkfb(){
-
-    if(device.platform == "iOS"){
-        appAvailability.check(
-            'fb://', // URI Scheme
-            function() {           // Success callback
-               // alert("facebook is available");
-                facebookchk = 1;
-            },
-            function() {           // Error callback
-              //  alert("facebook is not available");
-                facebookchk = 0;
-            }
-        );
-
-    }else  if(device.platform == "Android"){
-        appAvailability.check(
-            'com.facebook.katana', // URI Scheme
-            function() {           // Success callback
-               // alert("facebook is available");
-                facebookchk = 1;
-            },
-            function() {           // Error callback
-               // alert("facebook is not available");
-                facebookchk = 0;
-            }
-        );
-
-    }else{
-
-
-    }
-}
-
-
-
-
-
-
-function getdatanews(tx) {
-    var sql = "select ID from MobileApp_clubs where Fav = 1";
-    //alert(sql);
-    tx.executeSql(sql, [], getClubID_success);
-}
 
 
 function loadnewdata(){
@@ -111,29 +104,12 @@ function loadnewdata(){
 
 
 
-function getClubID_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
 
-
-    if(len != 0) {
-        var menu = results.rows.item(0);
-        clubidtop = menu.ID;
-      //  db.transaction(getdata2, errorCBfunc, successCBfunc);
-        db.transaction(numbersponsers, errorCBfunc, successCBfunc);
-
-     }else{
-
-        showclubsfun();
-    }
-
-
-}
 
 
 function numbersponsers(tx) {
     var sql = "select ID  from Mobilesponsorsclub where Club=" + clubidtop + " and DeletedateUTC = 'null'";
-   // alert(sql);
+    // alert(sql);
     tx.executeSql(sql, [], numbersponsers_success);
 }
 
@@ -141,12 +117,12 @@ function numbersponsers_success(tx, results) {
     var len = results.rows.length;
 
     nospor = len;
-   // alert(nospor);
+    // alert(nospor);
     db.transaction(getdata2, errorCBfunc, successCBfunc);
 }
 
 function getdata2(tx) {
-    var sql = "select ID,_id,UpdateDateUTC,Title,Body,ClubID,TeamID,Hide,IsAd,Base64,URL,Hint,DisplayDateUTC,DisplaySecondsUTC,DeletedateUTC,FromPhone from MobilevwApp_News_v_2 where ClubID=" + clubidtop + " and DeletedateUTC = 'null' order by DisplayDateUTC Desc";
+    var sql = "select ID,_id,UpdateDateUTC,Title,replace(Body, '###$$###', '') as Body,ClubID,TeamID,Hide,IsAd,Base64,URL,Hint,DisplayDateUTC,DisplaySecondsUTC,DeletedateUTC,FromPhone from MobilevwApp_News_v_2 where ClubID=" + clubidtop + " and DeletedateUTC = 'null' order by DisplayDateUTC Desc";
 //alert(sql);
     tx.executeSql(sql, [], getnewfeed_success);
 }
@@ -172,51 +148,61 @@ function getnewfeed_success(tx, results) {
                 var imgicon = "";
                 var URLnow = "";
 
-                    if ((menu.URL).search("facebook.com") != -1) {
-                        imgicon = "<img src='../img/fb.png' style='padding-right: 10px'  height='30'  align='left'>";
-                        URLnow = menu.URL;
-                    } else if ((menu.URL).search(".pdf") != -1) {
-                        imgicon = "<img src='../img/adobe.png' style='padding-right: 10px'  height='30'  align='left'>";
-                        URLnow = menu.URL;
-                    } else if ((menu.URL).search("youtu.be") != -1) {
-                        imgicon = "<img src='../img/youtube.png' style='padding-right: 10px'  height='30'  align='left'>";
-                        URLnow = menu.URL;
-                    } else {
-                        imgicon = "<img src='../img/web.png' style='padding-right: 10px'  height='30'  align='left'>";
-                        URLnow = menu.URL;
-                    }
+                if ((menu.URL).search("facebook.com") != -1) {
+                    imgicon = "<img src='../img/fb.png' style='padding-right: 10px'  height='30'  align='left'>";
+                    URLnow = menu.URL;
+                } else if ((menu.URL).search(".pdf") != -1) {
+                    imgicon = "<img src='../img/adobe.png' style='padding-right: 10px'  height='30'  align='left'>";
+                    URLnow = menu.URL;
+                } else if ((menu.URL).search("youtu.be") != -1) {
+                    imgicon = "<img src='../img/youtube.png' style='padding-right: 10px'  height='30'  align='left'>";
+                    URLnow = menu.URL;
+                } else {
+                    imgicon = "<img src='../img/web.png' style='padding-right: 10px'  height='30'  align='left'>";
+                    URLnow = menu.URL;
+                }
 
 
 
                 if ((menu.Body).length <= 200) {
 
-                    $('#newsmain').append('<Div id="divnewmain" class=" bs-callout bs-callout-info"  align="left">' +
+                    $('#newsmain').append('<Div id="divnewmain"   class="divnewmain bs-callout bs-callout-info"  align="left" onclick="URLredirect(\'' + URLnow + '\')">' +
 
-                        '<Div id="divnew1"   onclick="URLredirect(\'' + URLnow + '\')"> ' +
+                        '<Div id="divnew1"   > ' +
                         '' + imgicon +
                         '</Div>' +
-
-
-                        '<Div id="divnew2"> ' +
+                        '<Div id="divnew3"> ' +
                         '<div class="bold size13 blue"   >' + menu.Title + '</div>' +
                         '<div class="size11">' + menu.Body + '</div>' +
                         '</Div>' +
+                        '<div  id="RESULTSright" data-foo=\'' + URLnow + '\' onclick="loadsocialnews(event,\'' + URLnow + '\')">' +
+                        '<img height="30px" class="imagesch"  align="right" >' +
+                        '</div>' +
+
 
                         '</Div>');
 
 
                 } else {
-                    $('#newsmain').append('<Div  id="divnewmain" class=" bs-callout bs-callout-info" align="left"  >' +
-                        '<Div id="divnew1"   onclick="URLredirect(\'' + URLnow + '\')"> ' +
+
+
+                    $('#newsmain').append('<Div  id="divnewmain" class="divnewmain bs-callout bs-callout-info" align="left" onclick="URLredirect(\'' + URLnow + '\')"  >' +
+                        '<Div id="divnew1"   > ' +
                         '' + imgicon +
                         '</Div>' +
-
-                        '<Div id="divnew2"> ' +
+                        '<Div id="divnew3"> ' +
                         '<div class="bold size13  blue"   >' + menu.Title + '</div>' +
                         '<div class="size11">' + menu.Body.substring(0, 200) +
-                        '  <span data-toggle="modal"  class="size11 blue" data-target="#basicModal" onclick="loadnewfeed(' + menu.ID + ')"  >Read More</span></div>' +
+                        '  <span data-toggle="modal"  class="size11 blue" data-target="#basicModalnews" onclick="loadnewfeedreadmore(event,' + menu.ID + ')"  >Read More</span></div>' +
+                        '</Div>' +
+                        '<div  id="RESULTSright"  data-foo=\'' + URLnow + '\'  onclick="loadsocialnews(event,\'' + URLnow + '\')">' +
+                        '<img height="30px" class="imagesch"  align="right" >' +
+                        '</div>' +
                         '</Div>');
+
                 }
+
+
 
             } else {
                 imgicon = "<img src='../img/info.png' style='padding-right: 10px' height='30' align='left'>";
@@ -225,8 +211,6 @@ function getnewfeed_success(tx, results) {
 
                 }
 
-
-
                 if ((menu.Body).length <= 200) {
 
 
@@ -234,7 +218,6 @@ function getnewfeed_success(tx, results) {
                         '<Div id="divnew1"> ' +
                         '' + imgicon +
                         '</Div>' +
-
                         '<Div id="divnew2"> ' +
                         '<div class="bold size13  blue"   >' + menu.Title + '</div>' +
                         '<div class="size11">' + menu.Body + '</div>' +
@@ -247,17 +230,13 @@ function getnewfeed_success(tx, results) {
                         '<Div id="divnew1" > ' +
                         '' + imgicon +
                         '</Div>' +
-
-
                         '<Div id="divnew2"> ' +
                         '<div class="bold size13  blue"   >' + menu.Title + '</div>' +
                         '<div class="size11">' + menu.Body.substring(0, 200) +
-                        '  <span data-toggle="modal"  class="size11 blue" data-target="#basicModal" onclick="loadnewfeed(' + menu.ID + ')"  >Read More</span></div>' +
+                        '  <span data-toggle="modal"  class="size11 blue" data-target="#basicModalnews" onclick="loadnewfeed(' + menu.ID + ')"  >Read More</span></div>' +
                         '</Div>' +
                         '</Div>');
-
                 }
-
             }
 
 
@@ -273,6 +252,11 @@ function getnewfeed_success(tx, results) {
             count++;
 
         }
+        $('#divcircle').show();
+        $('#divcircle').click(function() {
+            sendinfotoserver("newsfeed","0",clubidtop)
+        });
+
         db.transaction(getsponsors, errorCBfunc, successCBfunc);
 
     }else{
@@ -288,8 +272,38 @@ function getnewfeed_success(tx, results) {
             '<Div id="divnew2"> ' +
             '<div class="bold size13"   >No News Yet!</div>' +
             '</Div>');
+
+
+        $('#divcircle').show();
+        $('#divcircle').click(function() {
+            sendinfotoserver("newsfeed","0",clubidtop)
+        });
+
     }
 }
+
+function loadsocialnews(e,ID){
+    socialurl = ID;
+
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation){
+        e.stopPropagation();
+        $('#basicModalshare').modal('show');
+
+    }
+ //   alert(socialurl);
+}
+
+function sharenews(){
+
+
+        window.plugins.socialsharing.share('Neosportz', null, null, socialurl);
+
+
+
+}
+
 
 function redirectplayer(ID){
 
@@ -325,7 +339,7 @@ function getsponsors_success(tx, results) {
             if (menu.Base64 != "null") {
                 imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  height="80" >';
             }
-         //   alert(menu.Name);
+            //   alert(menu.Name);
 
             $('#spondiv' + count).append('<Div  align="center" onclick="URLredirect(\'' + menu.Website + '\')" >' + imgg + '</div>');
 
@@ -336,18 +350,30 @@ function getsponsors_success(tx, results) {
 
 function loadnewfeed(ID) {
     IDNews = ID;
-   // $('body').css('position','fixed');
+    // $('body').css('position','fixed');
+    db.transaction(loadnewfeed2, errorCBfunc, successCBfunc);
+}
+
+function loadnewfeedreadmore(e,ID) {
+    IDNews = ID;
+
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation){
+        e.stopPropagation();
+        $('#basicModalnews').modal('show');
+    }
+
+    // $('body').css('position','fixed');
     db.transaction(loadnewfeed2, errorCBfunc, successCBfunc);
 }
 
 
 
-
-
 function loadnewfeed2(tx) {
 
-    var sql = "select Title,Body from MobilevwApp_News_v_2 where ID=" + IDNews;
-     // alert(sql);
+    var sql = "select Title,replace(Body, '###$$###', '<br>') as Body from MobilevwApp_News_v_2 where ID=" + IDNews;
+    // alert(sql);
     tx.executeSql(sql, [], loadnewfeed_success);
 }
 
@@ -358,8 +384,9 @@ function loadnewfeed_success(tx, results) {
 
     var menu = results.rows.item(0);
 
-  //  $('#divimagenew').empty();
-  //  $('#divimagenew').append( '<img src="data:image/png;base64,' + menu.Base64 + '" >');
+
+
+
 
 
     $('#newtitle').empty();
@@ -367,7 +394,6 @@ function loadnewfeed_success(tx, results) {
 
     $('#modelnews').empty();
     $('#modelnews').append( '<div>' + menu.Body + '</div>');
-
 
 }
 

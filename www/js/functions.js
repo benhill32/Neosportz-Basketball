@@ -9,9 +9,16 @@ var databaseversion;
 var appversion = -1;
 var apptoken = 0;
 var networkconnectionfun= 0;
-
+var functionyear = "";
+var typesend = "";
+var divisionsend = "";
+var clubsend = "";
+var teamsend = "";
+var appversionlocal = '1.4.7';
+var admobid = {};
 function onDeviceReadyFunc() {
     db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
+
     checkonlinefunctions();
     deviceIDfunc = device.uuid;
     devicemodelfunc = device.model;
@@ -22,6 +29,20 @@ function onDeviceReadyFunc() {
     db.transaction(gettoken1, errorCBfunc, successCBfunc);
     document.addEventListener("backbutton", onBackKeyDown, false);
 
+
+    if (devicePlatformfunc == "Android") {
+        admobid = { // for Android
+            banner: 'ca-app-pub-8464767609803803/3758587179'
+
+        };
+    }else if (devicePlatformfunc == "iOS") {
+        admobid = { // for iOS
+            banner: 'ca-app-pub-8464767609803803/8188786777'
+
+        };
+    }
+
+
 }
 //db.transaction(gettoken1, errorCBfunc, successCBfunc);
 
@@ -31,7 +52,6 @@ function onDeviceReadyFunc() {
 function checkonlinefunctions(){
 
     var networkState = navigator.connection.type;
-
     var states = {};
     states[Connection.UNKNOWN]  = '0';
     states[Connection.ETHERNET] = '2';
@@ -40,7 +60,6 @@ function checkonlinefunctions(){
     states[Connection.CELL_3G]  = '1';
     states[Connection.CELL_4G]  = '1';
     states[Connection.NONE]     = '0';
-
     networkconnectionfun = states[networkState];
 //alert(states[networkState]);
 
@@ -68,6 +87,17 @@ function weblinkbackmenu(){
 
     parent.history.back();
 }
+
+function clearfavteamnow(){
+
+    db.transaction(function(tx) {
+        tx.executeSql('Update MobileApp_clubs set Fav = 0');
+        console.log("Update INTO MobileApp_clubs");
+    });
+
+
+}
+
 
 function clearfavteam(){
 
@@ -113,15 +143,21 @@ function clearotherfavteam(id){
 
 
 function addfavteam(ID){
-
+  //  alert(apptoken);
     db.transaction(gettoken1, errorCBfunc, successCBfunc);
+
+
+    window.setTimeout(function(){
+
 
     db.transaction(function(tx) {
         tx.executeSql('Update MobileApp_clubs set Fav = 1,Follow= 0 where ID=' + ID);
         console.log("Update INTO MobileApp_clubs");
     });
 
-    passscoretoserver("Favclub=" + ID + "&deviceid=" + deviceIDfunc + "&token=" + apptoken)
+
+        passscoretoserver("Favclub=" + ID + "&deviceid=" + deviceIDfunc + "&token=" + apptoken)
+    }, 1000);
 
 // alert("favclub=" + ID + "&deviceid=" + deviceIDfunc + "&token=" + apptoken)
 }
@@ -150,6 +186,10 @@ function goBack() {
     window.history.back()
 }
 
+function errorCBfuncben(err) {
+   Alert("Error processing SQL:");
+
+}
 
 
 function errorCBfunc(err) {
@@ -161,10 +201,39 @@ function successCBfunc() {
     //  alert("success!");
 }
 
+
+function runadmob(){
+
+    if(AdMob) AdMob.createBanner( {
+        adId:admobid.banner,
+        position:AdMob.AD_POSITION.BOTTOM_CENTER,
+        autoShow:true} );
+
+}
+
+function passscoretoserverscorecard(testvar){
+
+    var Http = null;
+    Http = new XMLHttpRequest();
+
+    var url = "http://rugby.neosportz.com/loaddatafromapp.aspx";
+    var params = "?" + testvar;
+
+    Http.open("GET", url + params, false);
+    // alert(url + params);
+
+
+    Http.send();
+    var json = Http.responseText;
+
+    return json;
+}
+
+
 function passscoretoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://football.neosportz.com/loaddatafromapp.aspx";
+    var url = "http://rugby.neosportz.com/loaddatafromapp.aspx";
     var params = "?" + testvar;
 
     http.open("POST", url + params, true);
@@ -184,7 +253,7 @@ function passscoretoserver(testvar){
 function passnewfeedtoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://football.neosportz.com/apploadnewsfeed.aspx";
+    var url = "http://rugby.neosportz.com/apploadnewsfeed.aspx";
     var params = "?" + testvar;
     http.open("POST", url + params, true);
 
@@ -201,9 +270,9 @@ function passnewfeedtoserver(testvar){
 function passcancelgametoserver(testvar){
 
     var http = new XMLHttpRequest();
-    var url = "http://football.neosportz.com/apploadcancelgame.aspx";
+    var url = "http://rugby.neosportz.com/apploadcancelgame.aspx";
     var params = "?" + testvar;
-    alert(url + params);
+  //  alert(url + params);
     http.open("POST", url + params, true);
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
@@ -234,13 +303,13 @@ function blankLastUpdatesec(){
     xmlHttp = new XMLHttpRequest();
 
    // $('#busy').show();
-    xmlHttp.open("GET", 'http://football.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=' + databaseversion + '&appver=' + appversion,false);
+    xmlHttp.open("GET", 'http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
     xmlHttp.send();
   //  alert('http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=' + databaseversion + '&appver=' + appversion);
     var json = xmlHttp.responseText;
 
     db.transaction(function(tx) {
-        tx.executeSql('INSERT INTO MobileApp_LastUpdatesec (Datesecs,datemenus,syncwifi,isadmin,token,hasclub,fliterON) VALUES ("0", "0",0,0,"' + json + '",0,0)');
+        tx.executeSql('INSERT INTO MobileApp_LastUpdatesec (Datesecs,datemenus,syncwifi,isadmin,token,hasclub,fliterON,allownewfeed ,allowcancel,allowscore,Clubedit,Ref,Versionappnow) VALUES ("0", "0",0,0,"' + json + '",0,0,0,0,0,0,0,"' + appversionlocal + '")');
         console.log("INSERT INTO MobileApp_LastUpdatesec");
      //   alert('INSERT INTO MobileApp_LastUpdatesec (Datesecs,datemenus,syncwifi,isadmin,token,hasclub,fliterON) VALUES ("0", "0",0,0,"' + json + '",0,0)');
     });
@@ -259,14 +328,70 @@ function getregionsdata(tx, results) {
     var datenowsecsync2 = row.Datesecs;
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", 'http://football.neosportz.com/databen.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1', false);
-   // alert('http://rugby.neosportz.com/databen.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1');
+    xmlHttp.open("GET", 'http://rugby.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1', false);
+   // alert('http://rugby.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1');
     xmlHttp.send();
 
     var json = xmlHttp.responseText;
 
     var obj = JSON.parse(json);
     syncmaintablesregions(obj);
+
+}
+
+
+function sendinfotoserver(type,division,club){
+
+
+    typesend = type;
+    divisionsend = division;
+    clubsend = club;
+    teamsend = club;
+    $('#indexloadingdata').modal('show');
+
+    if(networkconnectionfun !=0) {
+
+        db.transaction(gettokenindividual, errorCBfunc, successCBfunc);
+    }else{
+
+        alert("You don't have access to internet!");
+    }
+
+}
+
+
+
+function gettokenindividual(tx) {
+    var sql =     "select Datesecs,datemenus,token,Region from MobileApp_LastUpdatesec";
+//alert(sql);
+    tx.executeSql(sql, [], gettokenindividualdata,errorCBfunc);
+}
+
+
+function gettokenindividualdata(tx, results) {
+
+    var row = results.rows.item(0);
+
+  //  var datemenus = row.datemenus;
+  //  var datenowsecsync = row.Datesecs;
+    var region = row.Region;
+    var datenow = new Date();
+  //  var timenow = datenow.getTime();
+    var yearnow = datenow.getFullYear();
+    //var dif = timenow - (datenowsecsync);
+
+
+
+    var datenowsecsync2 = row.Datesecs;
+    var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", 'http://rugby.neosportz.com/mobiledataindividual.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&type=' + typesend + '&region=' + region + '&year=' + yearnow + '&teamid=' + teamsend + '&club=' + clubsend + '&division=' + divisionsend, false);
+    xmlHttp.send();
+
+    var json = xmlHttp.responseText;
+
+    var obj = JSON.parse(json);
+    syncmaintableindividual(obj);
 
 }
 
@@ -362,13 +487,115 @@ function syncmaintablesregions(obj){
 
 }
 
+function syncmaintableindividual(obj){
 
+    $.each(obj.App_Results, function (idx, obj) {
+        if(obj.DeletedateUTC == null){
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime ,IsFinalScore,RefName,DefaultHome,DefaultAway ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '",' + obj.IsFinalScore + ',"' + obj.RefName + '", ' + obj.DefaultHome + ',' + obj.DefaultAway +')');
+                //  console.log('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,DeletedateUTC ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',"' + obj.DeletedateUTC + '" )');
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE MobileApp_Results SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",IsFinalScore = ' + obj.IsFinalScore + ',RefName = "' + obj.RefName + '",DefaultHome = ' + obj.DefaultHome + ',DefaultAway = ' + obj.DefaultAway + ' where ID = ' + obj.ID;
+                tx.executeSql(sql);
+                // console.log(sql);
+            });
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from MobileApp_Results where ID =' + obj.ID);
+                // console.log('Delete MobileApp_Results where ID =' + obj.ID);
+            });
+        }
+    });
+    $.each(obj.scoringbreakdown, function (idx, obj) {
+        if (obj.DeletedateUTC == null) {
+
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO Mobilescoringbreakdown(ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,TeamID,GameID,PlayerID,ScoringID,Time) VALUES ("' + obj.ID + '","' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '",' + obj.TeamID + ',' + obj.GameID + ',' + obj.PlayerID + ',' + obj.ScoringID + ',"' + obj.Time + '")');
+                //   console.log("INSERT INTO Mobilescoringbreakdown is created");
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE Mobilescoringbreakdown SET CreatedateUTC = "' + obj.CreatedateUTC + '", UpdatedateUTC = "' + obj.UpdatedateUTC + '", DeletedateUTC = "' + obj.DeletedateUTC + '", TeamID = ' + obj.TeamID + ', GameID = ' + obj.GameID + ', PlayerID = ' + obj.PlayerID + ', ScoringID = ' + obj.ScoringID + ', Time = "' + obj.Time + '" where ID = ' + obj.ID;
+                tx.executeSql(sql);
+            });
+
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from Mobilescoringbreakdown where ID =' + obj.ID);
+                //   console.log('Delete Mobilesscoringbreakdown');
+            });
+
+        }
+    });
+    $.each(obj.App_Schedule, function (idx, obj) {
+        if (obj.DeletedateUTC == null) {
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Schedule(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,Cancel,DeletedateUTC,halftime ,fulltime,IsFinalScore,RefName  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ',"' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',' + obj.Semi + ',' + obj.Cancel + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '",' + obj.IsFinalScore + ',"' + obj.RefName + '" )');
+                //   console.log("INSERT INTO MobileApp_Schedule is created");
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE MobileApp_Schedule SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Semi = ' + obj.Semi + ', Final = ' + obj.Final + ',Cancel =' + obj.Cancel +', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",IsFinalScore = ' + obj.IsFinalScore + ',RefName = "' + obj.RefName + '" where ID = ' + obj.ID;
+                tx.executeSql(sql);
+            });
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from MobileApp_Schedule where ID =' + obj.ID);
+                //   console.log('Delete MobileApp_Schedule where ID');
+            });
+        }
+    });
+    $.each(obj.vwApp_News_v_2, function (idx, obj) {
+        if (obj.DeletedateUTC == null) {
+
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO MobilevwApp_News_v_2(ID,_id,UpdateDateUTC,Title,Body,ClubID,TeamID,Hide,IsAd,Base64,URL,Hint,DisplayDateUTC,DisplaySecondsUTC,DeletedateUTC,FromPhone) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.UpdateDateUTC + '","' + obj.Title + '","' + obj.Body + '",' + obj.ClubID + ',"' + obj.TeamID + '","' + obj.Hide + '","' + obj.IsAd + '","' + obj.Base64 + '","' + obj.URL + '","' + obj.Hint + '","' + obj.DisplayDateUTC + '","' + obj.DisplaySecondsUTC + '","' + obj.DeletedateUTC + '","' + obj.FromPhone + '")');
+                //   console.log("INSERT INTO MobilevwApp_News_v_2 is created");
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE MobilevwApp_News_v_2 SET UpdateDateUTC = "' + obj.UpdateDateUTC + '", Title = "' + obj.Title + '", Body = "' + obj.Body + '", ClubID = ' + obj.ClubID + ', TeamID = "' + obj.TeamID + '",Hide = "' + obj.Hide + '",IsAd = "' + obj.IsAd + '",Base64 = "' + obj.Base64 + '",URL = "' + obj.URL + '",Hint = "' + obj.Hint + '",DisplayDateUTC = "' + obj.DisplayDateUTC + '",DisplaySecondsUTC = "' + obj.DisplaySecondsUTC + '",DeletedateUTC = "' + obj.DeletedateUTC + '",FromPhone = "' + obj.FromPhone + '" where ID = ' + obj.ID;
+                tx.executeSql(sql);
+            });
+
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from MobilevwApp_News_v_2 where ID =' + obj.ID);
+            });
+        }
+
+    });
+    $.each(obj.App_Players, function (idx, obj) {
+        if (obj.DeletedateUTC == null) {
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO MobilevwApp_Base_Players(ID,_id,ClubID,FullName,Base64,TeamID,UpdateSecondsUTC,UpdateSecondsUTCBase64,UpdateDateUTC,UpdateDateUTCBase64,Position,DeletedateUTC,NickName,Height,Weight ,DOB ,BirthPlace,SquadNo,Nationality ,Honours ,Previous_Clubs,memorable_match,Favourite_player ,Toughest_Opponent,Biggest_influence ,person_admire ,Best_goal_Scored ,Hobbies ,be_anyone_for_a_day) VALUES (' + obj.ID + ',' + obj._id + ',' + obj.ClubID + ',"' + obj.FullName + '","' + obj.Base64 + '","' + obj.TeamID + '","' + obj.UpdateSecondsUTC + '","' + obj.UpdateSecondsUTCBase64 + '","' + obj.UpdateDateUTC + '","' + obj.UpdateDateUTCBase64 + '","' + obj.Position + '","' + obj.DeletedateUTC + '","' + obj.NickName + '","' + obj.Height + '","' + obj.Weight + '","' + obj.DOB + '","' + obj.BirthPlace + '","' + obj.SquadNo + '","' + obj.Nationality + '","' + obj.Honours + '","' + obj.Previous_Clubs + '","' + obj.memorable_match + '","' + obj.Favourite_player + '","' + obj.Toughest_Opponent + '","' + obj.Biggest_influence + '","' + obj.person_admire + '","' + obj.Best_goal_Scored + '","' + obj.Hobbies + '","' + obj.be_anyone_for_a_day + '")');
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE MobilevwApp_Base_Players SET ClubID= ' + obj.ClubID + ', FullName = "' + obj.FullName + '", Base64 = "' + obj.Base64 + '", TeamID = ' + obj.TeamID + ', UpdateSecondsUTC = "' + obj.UpdateSecondsUTC + '", UpdateSecondsUTCBase64 = "' + obj.UpdateSecondsUTCBase64 + '",Position = "' + obj.Position + '",DeletedateUTC = "' + obj.DeletedateUTC + '",NickName = "' + obj.NickName + '",Height = "' + obj.Height + '",Weight = "' + obj.Weight + '",DOB = "' + obj.DOB + '",BirthPlace = "' + obj.BirthPlace + '",SquadNo = "' + obj.SquadNo + '",Nationality = "' + obj.Nationality + '",Honours = "' + obj.Honours + '",Previous_Clubs = "' + obj.Previous_Clubs + '",memorable_match = "' + obj.memorable_match + '",Favourite_player = "' + obj.Favourite_player + '",Toughest_Opponent = "' + obj.Toughest_Opponent + '",Biggest_influence = "' + obj.Biggest_influence + '",person_admire = "' + obj.person_admire + '",Best_goal_Scored = "' + obj.Best_goal_Scored + '",Hobbies = "' + obj.Hobbies + '",be_anyone_for_a_day = "' + obj.be_anyone_for_a_day + '" where ID = ' + obj.ID;
+                tx.executeSql(sql);
+            });
+
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from MobilevwApp_Base_Players where ID =' + obj.ID);
+                //   console.log('Delete MobilevwApp_Base_Players where ID');
+            });
+        }
+    });
+
+    $.each(obj.Isadmin, function (idx, obj) {
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set isadmin= ' + obj.Isadmin);
+            //      alert('Update MobileApp_LastUpdatesec set isadmin= ' + obj.Isadmin);
+            reloadindividual();
+        });
+    });
+
+}
 
 
 function syncmaintables(obj,year){
 
     var datenow = new Date();
-
+    functionyear = year;
     $.each(obj.App_Schedule_Menu, function (idx, obj) {
 
         db.transaction(function(tx) {
@@ -409,11 +636,11 @@ function syncmaintables(obj,year){
         if(obj.DeletedateUTC == null){
 
             db.transaction(function (tx) {
-                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '" )');
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime,IsFinalScore,RefName,DefaultHome,DefaultAway  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '",' + obj.IsFinalScore + ',"' + obj.RefName + '", ' + obj.DefaultHome + ',' + obj.DefaultAway +' )');
                 //  console.log('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,DeletedateUTC ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',"' + obj.DeletedateUTC + '" )');
             });
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_Results SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '" where ID = ' + obj.ID;
+                var sql = 'UPDATE MobileApp_Results SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",IsFinalScore = ' + obj.IsFinalScore + ',RefName = "' + obj.RefName + '",DefaultHome = ' + obj.DefaultHome + ',DefaultAway = ' + obj.DefaultAway + ' where ID = ' + obj.ID;
                 tx.executeSql(sql);
                 // console.log(sql);
             });
@@ -430,11 +657,11 @@ function syncmaintables(obj,year){
      if(obj.DeletedateUTC == null){
 
         db.transaction(function (tx) {
-             tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '" )');
+             tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime ,IsFinalScore,RefName,DefaultHome,DefaultAway ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '",' + obj.IsFinalScore + ',"' + obj.RefName + '", ' + obj.DefaultHome + ',' + obj.DefaultAway +')');
              //  console.log('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,DeletedateUTC ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',"' + obj.DeletedateUTC + '" )');
          });
          db.transaction(function (tx) {
-             var sql = 'UPDATE MobileApp_Results SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '" where ID = ' + obj.ID;
+             var sql = 'UPDATE MobileApp_Results SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",IsFinalScore = ' + obj.IsFinalScore + ',RefName = "' + obj.RefName + '",DefaultHome = ' + obj.DefaultHome + ',DefaultAway = ' + obj.DefaultAway + ' where ID = ' + obj.ID;
            tx.executeSql(sql);
               // console.log(sql);
          });
@@ -450,11 +677,11 @@ function syncmaintables(obj,year){
         if(obj.DeletedateUTC == null){
 
             db.transaction(function (tx) {
-                tx.executeSql('INSERT OR IGNORE INTO MobileApp_ResultsArchive(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime,Year  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '", ' + obj.Year + ')');
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_ResultsArchive(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,DeletedateUTC,halftime ,fulltime,Year,RefName,DefaultHome,DefaultAway  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Semi + ',' + obj.Final + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '", ' + obj.Year + ',"' + obj.RefName + '", ' + obj.DefaultHome + ',' + obj.DefaultAway +')');
                 //  console.log('INSERT OR IGNORE INTO MobileApp_Results(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID,HomeScore ,AwayScore ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Final,DeletedateUTC ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ', ' + obj.HomeScore + ',' + obj.AwayScore + ' , "' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',"' + obj.DeletedateUTC + '" )');
             });
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_ResultsArchive SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",Year = ' + obj.Year + ' where ID = ' + obj.ID;
+                var sql = 'UPDATE MobileApp_ResultsArchive SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', HomeScore = ' + obj.HomeScore + ', AwayScore = ' + obj.AwayScore + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Final = ' + obj.Final + ', Semi = ' + obj.Semi + ', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",Year = ' + obj.Year + ',RefName = "' + obj.RefName + '",DefaultHome = ' + obj.DefaultHome + ',DefaultAway = ' + obj.DefaultAway + ' where ID = ' + obj.ID;
                 tx.executeSql(sql);
                 // console.log(sql);
             });
@@ -492,11 +719,11 @@ function syncmaintables(obj,year){
     $.each(obj.App_Schedule, function (idx, obj) {
         if (obj.DeletedateUTC == null) {
             db.transaction(function (tx) {
-            tx.executeSql('INSERT OR IGNORE INTO MobileApp_Schedule(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,Cancel,DeletedateUTC,halftime ,fulltime  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ',"' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',' + obj.Semi + ',' + obj.Cancel + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '" )');
+            tx.executeSql('INSERT OR IGNORE INTO MobileApp_Schedule(ID,_id,DatetimeStart,HomeName,AwayName,Field,Latitude,Longitude,DivisionID ,DivisionName,HomeClubID,AwayClubID,HomeTeamID,AwayTeamID ,UpdateDateUTC ,TournamentName,TournamentID ,DatetimeStartSeconds ,DivisionOrderID,ShowToAll,Semi,Final,Cancel,DeletedateUTC,halftime ,fulltime,IsFinalScore,RefName  ) VALUES (' + obj.ID + ',' + obj._id + ',"' + obj.DatetimeStart + '","' + obj.HomeName + '","' + obj.AwayName + '","' + obj.Field + '","' + obj.Latitude + '","' + obj.Longitude + '", ' + obj.DivisionID + ',"' + obj.DivisionName + '", ' + obj.HomeClubID + ', ' + obj.AwayClubID + ', ' + obj.HomeTeamID + ', ' + obj.AwayTeamID + ',"' + obj.UpdateDateUTC + '", "' + obj.TournamentName + '",' + obj.TournamentID + ', "' + obj.DatetimeStartSeconds + '",' + obj.DivisionOrderID + ',' + obj.ShowToAll + ',' + obj.Final + ',' + obj.Semi + ',' + obj.Cancel + ',"' + obj.DeletedateUTC + '","' + obj.halftime + '","' + obj.fulltime + '",' + obj.IsFinalScore + ',"' + obj.RefName + '" )');
             //   console.log("INSERT INTO MobileApp_Schedule is created");
             });
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_Schedule SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Semi = ' + obj.Semi + ', Final = ' + obj.Final + ',Cancel =' + obj.Cancel +', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '" where ID = ' + obj.ID;
+                var sql = 'UPDATE MobileApp_Schedule SET DatetimeStart = "' + obj.DatetimeStart + '", HomeName = "' + obj.HomeName + '", AwayName = "' + obj.AwayName + '", Field ="' + obj.Field + '", Latitude = "' + obj.Latitude + '", Longitude = "' + obj.Longitude + '", DivisionID = ' + obj.DivisionID + ', DivisionName = "' + obj.DivisionName + '", HomeClubID = ' + obj.HomeClubID + ', AwayClubID = ' + obj.AwayClubID + ', HomeTeamID = ' + obj.HomeTeamID + ', AwayTeamID = ' + obj.AwayTeamID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", TournamentName = "' + obj.TournamentName + '", TournamentID = ' + obj.TournamentID + ', DatetimeStartSeconds = "' + obj.DatetimeStartSeconds + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowToAll=' + obj.ShowToAll + ', Semi = ' + obj.Semi + ', Final = ' + obj.Final + ',Cancel =' + obj.Cancel +', DeletedateUTC = "' + obj.DeletedateUTC + '", halftime ="' + obj.halftime + '", fulltime= "' + obj.fulltime + '",IsFinalScore = ' + obj.IsFinalScore + ',RefName = "' + obj.RefName + '" where ID = ' + obj.ID;
                 tx.executeSql(sql);
             });
         }else{
@@ -672,9 +899,9 @@ function syncmaintables(obj,year){
     $.each(obj.screenimage, function (idx, obj) {
 
             db.transaction(function (tx) {
-                tx.executeSql('INSERT OR IGNORE INTO Mobilescreenimage(_id,Base64 ,BackgroundColor ,SoftwareFade ,UpdateDateUTC ,TopText ,BottomText,URLLINK ) VALUES ("' + obj._id + '","' + obj.Base64 + '","' + obj.BackgroundColor + '","' + obj.SoftwareFade + '","' + obj.UpdateDateUTC + '","' + obj.TopText + '","' + obj.BottomText + '","' + obj.URLL + '")');
-                //   console.log("INSERT INTO Mobilescreenimage is created");
-            });
+                tx.executeSql('INSERT OR IGNORE INTO Mobilescreenimage(_id,Base64 ,BackgroundColor ,SoftwareFade ,UpdateDateUTC ,TopText ,BottomText,URLLINK ) VALUES (' + obj._id + ',"' + obj.Base64 + '","' + obj.BackgroundColor + '","' + obj.SoftwareFade + '","' + obj.UpdateDateUTC + '","' + obj.TopText + '","' + obj.BottomText + '","' + obj.URLL + '")');
+              //  alert('INSERT OR IGNORE INTO Mobilescreenimage(_id,Base64 ,BackgroundColor ,SoftwareFade ,UpdateDateUTC ,TopText ,BottomText,URLLINK ) VALUES (' + obj._id + ',"' + obj.Base64 + '","' + obj.BackgroundColor + '","' + obj.SoftwareFade + '","' + obj.UpdateDateUTC + '","' + obj.TopText + '","' + obj.BottomText + '","' + obj.URLL + '")');
+            },errorCBfuncben);
 
         db.transaction(function (tx) {
             var sql = 'UPDATE Mobilescreenimage SET Base64 = "' + obj.Base64 + '", BackgroundColor = "' + obj.BackgroundColor + '", SoftwareFade = "' + obj.SoftwareFade + '", UpdateDateUTC = "' + obj.UpdateDateUTC + '", TopText = "' + obj.TopText + '", BottomText = "' + obj.BottomText + '",URLLINK = "' + obj.URLL + '" where _id = ' + obj._id;
@@ -686,7 +913,7 @@ function syncmaintables(obj,year){
         if (obj.DeletedateUTC == null) {
 
             db.transaction(function (tx) {
-                tx.executeSql('INSERT OR IGNORE INTO Mobilescoringbreakdown(ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,TeamID,GameID,PlayerID,ScoringID,Time) VALUES ("' + obj.ID + '","' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '",' + obj.TeamID + ',' + obj.GameID + ',' + obj.PlayerID + ',' + obj.ScoringID + ',"' + obj.Time + '")');
+                tx.executeSql('INSERT OR IGNORE INTO Mobilescoringbreakdown(ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,TeamID,GameID,PlayerID,ScoringID,Time) VALUES (' + obj.ID + ',"' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '",' + obj.TeamID + ',' + obj.GameID + ',' + obj.PlayerID + ',' + obj.ScoringID + ',"' + obj.Time + '")');
                 //   console.log("INSERT INTO Mobilescoringbreakdown is created");
             });
             db.transaction(function (tx) {
@@ -716,20 +943,12 @@ function syncmaintables(obj,year){
     var timenow = datenow1.getTime();
 
     $.each(obj.Isadmin, function (idx, obj) {
-
-        +
             db.transaction(function(tx) {
-                tx.executeSql('Update MobileApp_LastUpdatesec set isadmin= ' + obj.Isadmin + ', Datesecs = "' + Math.round((timenow/1000)) + '",datemenus= "' + datenow1 + '"');
+                tx.executeSql('Update MobileApp_LastUpdatesec set isadmin= ' + obj.Isadmin + ',allownewfeed= ' + obj.allownewfeed + ',allowcancel= ' + obj.allowcancel + ',allowscore= ' + obj.allowscore + ',Clubedit= ' + obj.Clubedit + ',Ref= ' + obj.Ref + ', Datesecs = "' + Math.round((timenow/1000)) + '",datemenus= "' + datenow1 + '",Versionappthen ="' + obj.Appversionlatest + '",Database =' + obj.Database + '');
                 //  console.log("Update INTO MobileApp_LastUpdatesec " + Math.round((timenow/1000)));
               //  alert('Update MobileApp_LastUpdatesec set isadmin= ' + obj.Isadmin + ', Datesecs = "' + Math.round((timenow/1000)) + '",datemenus= "' + datenow1 + '"');
+                db.transaction(checkversionofapp, errorCBfunc, successCBfunc);
 
-                if(datenow.getFullYear() == year){
-                    closemodel();
-                }else{
-                    closemodelarchive();
-                }
-
-               // alert(Math.round((timenow/1000)));
             });
     });
 
@@ -737,6 +956,67 @@ function syncmaintables(obj,year){
 
     $('#busy').hide();
 }
+
+
+function checkversionofapp(tx) {
+    var sql = "select Versionappthen,Versionappnow,Database from MobileApp_LastUpdatesec ";
+    // alert(sql);
+    tx.executeSql(sql, [], checkversionofapp_success);
+}
+
+
+function checkversionofapp_success(tx, results) {
+    // $('#busy').hide();
+    var len = results.rows.length;
+    //  alert(len);
+    var menu = results.rows.item(0);
+    var datenow = new Date();
+
+
+    if (appversionlocal == menu.Versionappthen) {
+        if(document.getElementById("indexdiv")==null) {
+            closemodel();
+        }else {
+
+
+            if (menu.Database == 1) {
+                $('#indexloadingdata').modal('hide');
+
+                if (devicePlatformfunc == "Android") {
+                    $('#modelnewdatabase').modal('show');
+                }
+                else if (devicePlatformfunc == "iOS") {
+
+                    $('#modelnewdatabaseapple').modal('show');
+                }
+            } else {
+                if (datenow.getFullYear() == functionyear) {
+                    closemodel();
+                } else {
+                    closemodelarchive();
+                }
+            }
+        }
+
+    }
+    else
+    {
+
+            $('#indexloadingdata').modal('hide');
+
+            if (devicePlatformfunc == "Android")
+            {
+                $('#modelnewversion').modal('show');
+            }
+            else if (devicePlatformfunc == "iOS")
+            {
+
+                $('#modelnewversionapple').modal('show');
+            }
+
+    }
+}
+
 
 function URLredirect(ID){
 
@@ -762,7 +1042,7 @@ function gettoken1_success(tx, results) {
     var menu = results.rows.item(0);
 
     apptoken = menu.token;
-
+    //alert(apptoken);
 }
 
 function sendtoast(ID){
@@ -871,4 +1151,42 @@ function CleanDB() {
 
 
 
+}
+
+
+function loadnewadatabase(){
+
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+
+    // $('#busy').show();
+    xmlHttp.open("GET", 'http://rugby.neosportz.com/registerdevice.aspx?deviceID=' + deviceIDfunc + '&devicemodel=' + devicemodelfunc + '&deviceCordova=' + deviceCordovafunc + '&devicePlatform=' + devicePlatformfunc + '&deviceVersion=' + deviceVersionfunc + '&databasever=0&appver=' + appversionlocal,false);
+    xmlHttp.send();
+
+
+    db.transaction(droptables, errorCBfunc,successCBfunc);
+
+
+    window.setTimeout(function(){
+        createtablesredirect();
+    }, 1500);
+}
+
+function createtablesredirect(){
+
+
+    weblink('index.html');
+}
+
+function loadnewapp(){
+
+    if (devicePlatformfunc == "Android")
+    {
+        window.open(encodeURI("https://play.google.com/store/apps/details?id=neocom.neosportzRugby"), '_system');
+    }
+    else if (devicePlatformfunc == "iOS")
+    {
+        window.open(encodeURI("https://itunes.apple.com/us/app/neosportz-rugby/id968943127?ls=1&mt=8"), '_system');
+    }
 }

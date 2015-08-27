@@ -8,7 +8,12 @@ function onDeviceReadymainindex() {
     deviceIDfunc = device.uuid;
 
 
+
+
+
 }
+
+
 
 function loadindexmessage() {
     db.transaction(checkclubsinsert, errorCBfunc, successCBfunc);
@@ -27,7 +32,7 @@ function checkclubsinsert_success(tx, results) {
     }
 }
 function getbackground(tx) {
-   // alert($('#mainbackground').css('opacity'));
+
 
     var sql = "select Base64 from MobileApp_clubs where Fav =1 LIMIT 1";
      //alert(sql);
@@ -44,7 +49,8 @@ function getbackground_success(tx, results) {
         var base64 = menu.Base64;
 
         $('#mainbackground').css('background-image', 'url(data:image/png;base64,' + base64 + ')');
-    }
+
+         }
 }
 
 function gethasclub(tx) {
@@ -74,7 +80,7 @@ function gethasclub_success(tx, results) {
         $('#mainfore').addClass('mainforeground2');
         // alert($('#mainfore').attr('class'));
         $('#basicModalnofav').modal('show');
-
+       // runadmob();
     }
 
 }
@@ -112,7 +118,7 @@ function hadclubchecklater(){
 
 function choosefacteam(ID){
 
-    clearfavteam();
+    clearfavteamnow();
 
     addfavteam(ID);
 
@@ -125,6 +131,8 @@ function choosefacteam(ID){
     });
     $('#mainfore').removeClass('mainforeground2');
     $('#mainfore').addClass('mainforeground');
+
+
 
 }
 
@@ -364,7 +372,7 @@ function chooseregion(ID){
     $('#indexloadingdata').modal('show')
     $('#mainfore').removeClass('mainforeground');
     $('#mainfore').addClass('mainforeground2');
-
+    $('#mainbackground').hide();
 
     db.transaction(function(tx) {
         tx.executeSql('Update MobileApp_LastUpdatesec set  Region = "' + ID + '"');

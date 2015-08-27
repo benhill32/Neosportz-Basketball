@@ -64,26 +64,13 @@ body {
 }
 #divtime{
     clear:both;
-    padding-top: 30px;
-}
-.glyphicon-refresh-animate {
-    -animation: spin .7s infinite linear;
-    -webkit-animation: spin2 .7s infinite linear;
+    padding-top: 15px;
 }
 
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
 
 #divplayers{
     clear:both;
-    padding-top: 30px;
+    padding-top: 15px;
 }
 
 #backicondiv{
@@ -119,9 +106,9 @@ body {
     height: 20px;
     padding-top: 5px;
 }
-#divscore{
+#divscore,#divbonus{
 
-   padding-top: 30px;
+   padding-top: 15px;
     clear:both;
     //width:100px;
 }
@@ -221,8 +208,11 @@ body {
 
   //padding-top:40px;
     clear: both;
-    margin: 42px 0;
-
+    margin: 42px 0 100px 0;
+    margin-top :42px;
+    margin-bottom: 75px;
+    padding-bottom: 75px;
+    overflow-y: scroll;
 }
 .standheader{
 
@@ -331,17 +321,81 @@ position: fixed;
 
 #divresults {
     margin-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     padding-left:15px;
     padding-right: 15px;
 
 }
+#divcircleplayers{
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+
+}
+
+#divcircle{
+    width: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+}
+.circle {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    width: 100%;
+    position: relative;
+}
+
+.circle-border {
+    border: 1px solid #339900;
+}
+
+.circle-solid{
+    background-color: whitesmoke;
+}
+
+.circle:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.circle-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+.score-text {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1em;
+    line-height: 1em;
+    font-size: 1em;
+    color: #339900;
+}
 
 #divschedules {
     margin-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
  padding-left:15px;
   padding-right: 15px;
+
+}
+#mainmenustandingmenu,#mainmenuresultsch,#mainmenuschmenu{
+    //margin-top: 20px;
+    padding-bottom: 100px;
+  //  padding-left:15px;
+  //  padding-right: 15px;
 
 }
 
@@ -404,6 +458,22 @@ position: fixed;
     top: 30%;
 
 }
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
 .backregion:hover{
 
     background-color: #339900;
@@ -503,13 +573,24 @@ position: fixed;
     float:right;
     height: 80px;
 }
+
+#RESULTSright{
+    //width:10%;
+    float:right;
+    height: 80px;
+    //padding-right: 15px;
+    padding-top:15px;
+}
 #modelnews{
     padding:10px !important;
+}
+#modelnews{
+    padding-bottom: 300px !important;
 }
 @media (max-width: 480px) {
 
     .modal {
-         height: 500px; /* Set a default max height of the modal (adjusted later)*/
+         height: 100%; /* Set a default max height of the modal (adjusted later)*/
          position: fixed; /* Display modal in the centre of your screen */
          overflow-y: scroll; /*  Ensure that the modal is scroll-able */
          -webkit-overflow-scrolling: touch; /* Avoid having to use 2 finger scroll on iOS    */
@@ -521,7 +602,7 @@ position: fixed;
     .modal-body{
         /* Increase the max height of the modal body to try & avoid both it,
          * and the modal container having scroll bars which results in odd behavior */
-        max-height: 2700px;
+        max-height: 3700px;
     }
 }
 @media (max-width: 480px) {
@@ -552,10 +633,10 @@ position: fixed;
 
 
 #newsmain,a:hover, a:focus{
-    padding-top: 60px;
+    padding-top: 10px;
     color: #333 !important;
     text-decoration: none !important;
-    padding-bottom: 200px;
+    padding-bottom: 10px;
 }
 
 #addnewfeed,a:hover, a:focus{
@@ -598,19 +679,18 @@ position: fixed;
     top: 65px;
     bottom: 60px;
     overflow-y: scroll;
-    
+   // margin-top: 60px;
  }
 
 .mainforeground2{
-  //  position: fixed;
+  //  position: static;
     width:100%;
- //   height:100%;
+    height:100%;
     z-index: 10;
  //   background:#7f7f7f;
     background:rgba(255,255,255,0.75);
-    top: 60px;
-    bottom: 60px;
     overflow-y: scroll;
+    margin-top: 65px;
 }
 .sponsordiv{
 
@@ -628,7 +708,6 @@ position: fixed;
     position: absolute;
     filter: alpha(opacity=50);
    //background:rgba(255,255,255,0.5);
-
 }
 
 .mainmenunews{
@@ -682,13 +761,18 @@ position: fixed;
     -webkit-overflow-scrolling:touch
     overflow-y: scroll !important;
 }
+#modelnews{
+    padding: 10px !important;
+    -webkit-overflow-scrolling:touch
+    overflow-y: scroll !important;
+}
 
 #clubfav{
     padding: 10px !important;
     -webkit-overflow-scrolling:touch
 overflow-y: scroll !important;
     padding-bottom: 70px;
-    margin-bottom: 70px;
+    margin-bottom: 130px;
 }
 .mainmenuresult{
 
@@ -714,14 +798,65 @@ overflow-y: scroll !important;
     color: white;
     opacity:0.7;
 }
+.modelfooter:hover{
 
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
 
+#modelfooterupdate:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
+#closenewdatabase,#closenewversion{
+    padding:10px;
+
+}
+#opennewversion:hover,#opennewversion1:hover,#opennewdatabase:hover,#closenewdatabase:hover,#opennewdatabaseapple:hover{
+
+    background-color: #339900;
+}
+#modelfooterclose:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
+#modelfooterclose1:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
+#divawayteam:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
+#divhometeam:hover,#defaultyes:hover,#defaultno:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
 #basicModal .modal-footer:hover{
     background-color: #339900;
     color: white;
     opacity:0.7;
 
 }
+#basicModalnews .modal-footer:hover{
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+
+}
+
+
 #basicModalContact .modal-footer:hover{
     background-color: #339900;
     color: white;
@@ -741,7 +876,10 @@ overflow-y: scroll !important;
     max-height: 3000px;
     
 }
+#basicModalshare .modal-body{
 
+    padding: 15px;
+}
 #basicModal .modal-body{
 
     padding:0px;
@@ -864,6 +1002,12 @@ overflow-y: scroll !important;
 
 }
 
+#divaddref{
+    padding:15px;
+    clear: both;
+
+}
+
 .divmainheader
 {
     height: 20%;
@@ -922,7 +1066,7 @@ text-align: center !important;
 }
 #divhalffull{
 
-    padding-top: 35px;
+    padding-top: 20px;
     clear: both;
 }
 #divhalffull button{
@@ -1007,7 +1151,7 @@ text-align: center !important;
 #divnew1,.divnew1{
 padding: 20px 0px;
     min-height: 60px;
-    width: 18%;
+    width: 13%;
     float:left;
     margin: 0px 0;
     border-top:0px solid #eee;
@@ -1017,8 +1161,8 @@ padding: 20px 0px;
 #divnew2,.divnew2{
     padding: 20px 0px;
   //  min-height: 60px;
-  //  float:left;
-    width:100%;
+   // float:left;
+width:100%;
     padding-left: 10px;
  //   padding: 10px 0;
   //  margin: 2px 0;
@@ -1029,6 +1173,22 @@ padding: 20px 0px;
 
 
 }
+#divnew3,.divnew3{
+    padding: 20px 0px;
+//  min-height: 60px;
+    float:left;
+width:75%;
+  //  padding-left: 10px;
+//   padding: 10px 0;
+//  margin: 2px 0;
+//  padding-right: 10px;
+    border-top:0px solid #eee;
+    border-bottom:0px solid #eee;
+    border-right:0px solid #eee;
+
+
+}
+
 .facebook{
 
     border-left-color: #336699;
@@ -1043,13 +1203,18 @@ padding: 20px 0px;
     text-align:left !important
 }
 
+#basicModalnews .modal-footer:hover{
+
+    background-color: #339900;
+    color: white;
+    opacity:0.7;
+}
 #basicModaltime .modal-footer:hover{
 
     background-color: #339900;
     color: white;
     opacity:0.7;
 }
-
 #dontshow:hover,#notnow:hover,#indexyes:hover{
 
     background-color: #339900;
@@ -1154,4 +1319,17 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.modal{
+   // display: block !important; /* I added this to see the modal, you don't need this */
+}
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 80%;
+    overflow-y: auto;
 }
