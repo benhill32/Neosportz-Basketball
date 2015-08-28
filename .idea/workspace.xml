@@ -112,8 +112,8 @@
       <file leaf-file-name="loaddata.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/loaddata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0636044">
-              <caret line="649" column="42" selection-start-line="649" selection-start-column="42" selection-end-line="649" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.3029613">
+              <caret line="818" column="17" selection-start-line="818" selection-start-column="17" selection-end-line="818" selection-end-column="17" />
               <folding>
                 <element signature="n#!!block;n#updatedatapush#0" expanded="false" />
                 <element signature="n#!!block;n#updatedatapushappclosed#0" expanded="false" />
@@ -142,6 +142,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -447,8 +448,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/loaddata.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0636044">
-          <caret line="649" column="42" selection-start-line="649" selection-start-column="42" selection-end-line="649" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.3029613">
+          <caret line="818" column="17" selection-start-line="818" selection-start-column="17" selection-end-line="818" selection-end-column="17" />
           <folding>
             <element signature="n#!!block;n#updatedatapush#0" expanded="false" />
             <element signature="n#!!block;n#updatedatapushappclosed#0" expanded="false" />
