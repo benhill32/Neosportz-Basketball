@@ -92,8 +92,8 @@ function getplayerinfo(tx) {
 
 function getscoredata(tx) {
     var sql = "select Name,Value,UpdatedateUTC from MobileScoringTable";
-   //  alert(sql);
-    tx.executeSql(sql, [], getscoredata_success);
+//  alert(sql);
+tx.executeSql(sql, [], getscoredata_success);
 }
 
 

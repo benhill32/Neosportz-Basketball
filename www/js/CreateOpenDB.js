@@ -1,72 +1,72 @@
 
 function droptables(tx){
 
-        tx.executeSql('Drop TABLE MobileApp_Results_Menu ');
-        console.log("MobileApp_Results_Menu table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Results_Menu ');
+    console.log("MobileApp_Results_Menu table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Schedule_Menu ');
-        console.log("MobileApp_Schedule_Menu table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Schedule_Menu ');
+    console.log("MobileApp_Schedule_Menu table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Results_Table_Menu ');
-        console.log("MobileApp_Results_Table_Menu table is created");
+    tx.executeSql('Drop TABLE MobileApp_Results_Table_Menu ');
+    console.log("MobileApp_Results_Table_Menu table is created");
 
-        tx.executeSql('Drop TABLE MobileApp_LastUpdatesec ');
-        console.log("MobileApp_LastUpdatesec table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_LastUpdatesec ');
+    console.log("MobileApp_LastUpdatesec table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Results ');
-        console.log("MobileApp_Results table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Results ');
+    console.log("MobileApp_Results table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_clubs ');
-        console.log("MobileApp_clubs table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_clubs ');
+    console.log("MobileApp_clubs table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Schedule ');
-        console.log("MobileApp_Schedule table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Schedule ');
+    console.log("MobileApp_Schedule table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_clubsimages ');
-        console.log("MobileApp_clubsimages table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_clubsimages ');
+    console.log("MobileApp_clubsimages table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_vwApp_Teams ');
-        console.log("MobileApp_vwApp_Teams table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_vwApp_Teams ');
+    console.log("MobileApp_vwApp_Teams table is Dropped");
 
-        tx.executeSql('Drop TABLE MobilevwApp_Base_Players ');
-        console.log("MobilevwApp_Base_Players table is Dropped");
+    tx.executeSql('Drop TABLE MobilevwApp_Base_Players ');
+    console.log("MobilevwApp_Base_Players table is Dropped");
 
-        tx.executeSql('Drop TABLE MobilevwApp_News_v_2 ');
-        console.log("MobilevwApp_News_v_2 table is Dropped");
+    tx.executeSql('Drop TABLE MobilevwApp_News_v_2 ');
+    console.log("MobilevwApp_News_v_2 table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Players_Images ');
-        console.log("MobileApp_Players_Images table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Players_Images ');
+    console.log("MobileApp_Players_Images table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileStandings ');
-        console.log("MobileStandings table is Dropped");
+    tx.executeSql('Drop TABLE MobileStandings ');
+    console.log("MobileStandings table is Dropped");
 
-        tx.executeSql('Drop TABLE Mobilesponsorsclub ');
-        console.log("Mobilesponsorsclub table is Dropped");
+    tx.executeSql('Drop TABLE Mobilesponsorsclub ');
+    console.log("Mobilesponsorsclub table is Dropped");
 
 
-        tx.executeSql('Drop TABLE MobileScoringTable ');
-        console.log("MobileScoringTable table is Dropped");
+    tx.executeSql('Drop TABLE MobileScoringTable ');
+    console.log("MobileScoringTable table is Dropped");
 
-        tx.executeSql('Drop TABLE Mobilescoringbreakdown ');
-        console.log("Mobilescoringbreakdown table is Dropped");
+    tx.executeSql('Drop TABLE Mobilescoringbreakdown ');
+    console.log("Mobilescoringbreakdown table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileRegion ');
-        console.log("MobileRegion table is Dropped");
+    tx.executeSql('Drop TABLE MobileRegion ');
+    console.log("MobileRegion table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileArchiveYears ');
-        console.log("MobileArchiveYears table is Dropped");
+    tx.executeSql('Drop TABLE MobileArchiveYears ');
+    console.log("MobileArchiveYears table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileStandingsArchive ');
-        console.log("MobileStandingsArchive table is Dropped");
+    tx.executeSql('Drop TABLE MobileStandingsArchive ');
+    console.log("MobileStandingsArchive table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Results_MenuArchive ');
-        console.log("MobileApp_Results_MenuArchive table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Results_MenuArchive ');
+    console.log("MobileApp_Results_MenuArchive table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_Results_Table_MenuArchive ');
-        console.log("MobileApp_Results_Table_MenuArchive table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_Results_Table_MenuArchive ');
+    console.log("MobileApp_Results_Table_MenuArchive table is Dropped");
 
-        tx.executeSql('Drop TABLE MobileApp_ResultsArchive ');
-        console.log("MobileApp_ResultsArchive table is Dropped");
+    tx.executeSql('Drop TABLE MobileApp_ResultsArchive ');
+    console.log("MobileApp_ResultsArchive table is Dropped");
 
     tx.executeSql('Drop TABLE Mobilescreenimage ');
     console.log("Mobilescreenimage table is Dropped");
@@ -78,17 +78,17 @@ function droptables(tx){
 
 function createDB(tx) {
 
-    
-        tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Schedule_Menu(_id INTEGER NOT NULL primary key, DivisionName TEXT NOT NULL,DivisionID INTEGER NOT NULL,UpdateDateUTC TEXT NULL,DatetimeStart TEXT NOT NULL,DivisionOrderID INTEGER NOT NULL)');
-        console.log("MobileApp_Schedule_Menu table is created");
+
+    tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Schedule_Menu(_id INTEGER NOT NULL primary key, DivisionName TEXT NOT NULL,DivisionID INTEGER NOT NULL,UpdateDateUTC TEXT NULL,DatetimeStart TEXT NOT NULL,DivisionOrderID INTEGER NOT NULL,ShowAll INTEGER NOT NULL,Hide INTEGER NOT NULL)');
+    console.log("MobileApp_Schedule_Menu table is created");
 
 
-        tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Results_Menu (_id INTEGER NOT NULL primary key, DivisionName TEXT NOT NULL,DivisionID INTEGER NOT NULL,UpdateDateUTC TEXT NULL,DatetimeStart TEXT NOT NULL,DivisionOrderID INTEGER NOT NULL)');
-        console.log("MobileApp_Results_Menu table is created");
+    tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Results_Menu (_id INTEGER NOT NULL primary key, DivisionName TEXT NOT NULL,DivisionID INTEGER NOT NULL,UpdateDateUTC TEXT NULL,DatetimeStart TEXT NOT NULL,DivisionOrderID INTEGER NOT NULL,ShowAll INTEGER NOT NULL,Hide INTEGER NOT NULL)');
+    console.log("MobileApp_Results_Menu table is created");
 
 
-        tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Results_Table_Menu (_id INTEGER NOT NULL primary key, TournamentName TEXT NOT NULL,UpdateDateUTC TEXT NULL,OrderID INTEGER NOT NULL)');
-        console.log("MobileApp_ResuTable_lts_Menu table is created");
+    tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Results_Table_Menu (_id INTEGER NOT NULL primary key, TournamentName TEXT NOT NULL,UpdateDateUTC TEXT NULL,OrderID INTEGER NOT NULL,ShowAll INTEGER NOT NULL,Hide INTEGER NOT NULL)');
+    console.log("MobileApp_ResuTable_lts_Menu table is created");
 
     tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_LastUpdatesec (Datesecs TEXT NULL, datemenus TEXT NULL,syncwifi INTEGER NOT NULL,isadmin INTERGER NOT NULL,token TEXT NOT NULL,hasclub INTERGER NOT NULL,hasclubdate TEXT NULL,fliterON INTERGER  NULL,Region INTERGER NULL,allownewfeed INTERGER NOT NULL,allowcancel INTERGER NOT NULL,allowscore INTERGER NOT NULL,Clubedit INTERGER NOT NULL,Ref INTERGER NOT NULL,Versionappnow TEXT NULL,Versionappthen TEXT NULL,Database INTEGER NULL)');
     console.log("MobileApp_LastUpdatesec table is created");
@@ -156,46 +156,46 @@ function createDB(tx) {
 
 function CleanDB() {
 
-        db.transaction(function (tx) {
-            tx.executeSql('Delete from MobileApp_Results where DeletedateUTC != "null"');
-            console.log('Clean MobileApp_Results where ID');
-        });
-
-    db.transaction(function(tx) {
-            tx.executeSql('Delete from MobileApp_clubs where DeletedateUTC != "null"');
-            console.log('Clean MobileApp_clubs where ID');
+    db.transaction(function (tx) {
+        tx.executeSql('Delete from MobileApp_Results where DeletedateUTC != "null"');
+        console.log('Clean MobileApp_Results where ID');
     });
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from MobileApp_Schedule where DeletedateUTC != "null"');
-            console.log('Clean MobileApp_Schedule where ID');
+        tx.executeSql('Delete from MobileApp_clubs where DeletedateUTC != "null"');
+        console.log('Clean MobileApp_clubs where ID');
+    });
+
+    db.transaction(function(tx) {
+        tx.executeSql('Delete from MobileApp_Schedule where DeletedateUTC != "null"');
+        console.log('Clean MobileApp_Schedule where ID');
     });
 
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from MobileApp_vwApp_Teams where DeletedateUTC != "null"');
-            console.log('Clean MobileApp_vwApp_Teams where ID');
+        tx.executeSql('Delete from MobileApp_vwApp_Teams where DeletedateUTC != "null"');
+        console.log('Clean MobileApp_vwApp_Teams where ID');
     });
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from MobilevwApp_News_v_2 where DeletedateUTC != "null"');
-            console.log('Clean MobilevwApp_News_v_2 where ID');
+        tx.executeSql('Delete from MobilevwApp_News_v_2 where DeletedateUTC != "null"');
+        console.log('Clean MobilevwApp_News_v_2 where ID');
     });
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from MobilevwApp_Base_Players where DeletedateUTC != "null"');
-            console.log('Clean MobilevwApp_Base_Players where ID');
+        tx.executeSql('Delete from MobilevwApp_Base_Players where DeletedateUTC != "null"');
+        console.log('Clean MobilevwApp_Base_Players where ID');
     });
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from MobileApp_Players_Images where DeletedateUTC != "null"');
-            console.log('Clean MobileApp_Players_Images where ID');
+        tx.executeSql('Delete from MobileApp_Players_Images where DeletedateUTC != "null"');
+        console.log('Clean MobileApp_Players_Images where ID');
     });
 
     db.transaction(function(tx) {
-            tx.executeSql('Delete from Mobilesponsorsclub where DeletedateUTC != "null"');
-            console.log('Clean Mobilesponsorsclub');
-        });
+        tx.executeSql('Delete from Mobilesponsorsclub where DeletedateUTC != "null"');
+        console.log('Clean Mobilesponsorsclub');
+    });
 
 
 
