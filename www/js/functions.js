@@ -620,7 +620,7 @@ function syncmaintables(obj,year){
             });
 
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_Schedule_Menu SET DivisionName = "' + obj.DivisionName + '", UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where ID = ' + obj._id;
+                var sql = 'UPDATE MobileApp_Schedule_Menu SET DivisionName = "' + obj.DivisionName + '", UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where _id = ' + obj._id;
                 tx.executeSql(sql);
                alert(sql);
             });
@@ -644,7 +644,7 @@ function syncmaintables(obj,year){
             });
 
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_Results_Menu SET DivisionName = "' + obj.DivisionName + '",DivisionID = ' + obj.DivisionID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where ID = ' + obj._id;
+                var sql = 'UPDATE MobileApp_Results_Menu SET DivisionName = "' + obj.DivisionName + '",DivisionID = ' + obj.DivisionID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where _id = ' + obj._id;
                 tx.executeSql(sql);
                 alert(sql);
             });
@@ -673,7 +673,7 @@ function syncmaintables(obj,year){
             });
 
             db.transaction(function (tx) {
-                var sql = 'UPDATE MobileApp_Results_Table_Menu SET TournamentName = "' + obj.TournamentName + '",OrderID = ' + obj.OrderID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where ID = ' + obj._id;
+                var sql = 'UPDATE MobileApp_Results_Table_Menu SET TournamentName = "' + obj.TournamentName + '",OrderID = ' + obj.OrderID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where _id = ' + obj._id;
                 tx.executeSql(sql);
                 // console.log(sql);
             });
