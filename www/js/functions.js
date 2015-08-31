@@ -615,14 +615,14 @@ function syncmaintables(obj,year){
     $.each(obj.App_Schedule_Menu, function (idx, obj) {
         if(obj.Hide ==0) {
             db.transaction(function (tx) {
-                tx.executeSql('INSERT INTO MobileApp_Schedule_Menu (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Schedule_Menu (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
                 console.log("INSERT INTO MobileApp_Schedule_Menu is created");
             });
 
             db.transaction(function (tx) {
                 var sql = 'UPDATE MobileApp_Schedule_Menu SET DivisionName = "' + obj.DivisionName + '", UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where ID = ' + obj._id;
                 tx.executeSql(sql);
-                // console.log(sql);
+               alert(sql);
             });
 
 
@@ -639,14 +639,14 @@ function syncmaintables(obj,year){
     $.each(obj.App_Results_Menu, function (idx, obj) {
         if(obj.Hide ==0) {
             db.transaction(function(tx) {
-                tx.executeSql('INSERT INTO MobileApp_Results_Menu (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Results_Menu (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
                 console.log("INSERT INTO MobileApp_Results_Menu is created");
             });
 
             db.transaction(function (tx) {
                 var sql = 'UPDATE MobileApp_Results_Menu SET DivisionName = "' + obj.DivisionName + '",DivisionID = ' + obj.DivisionID + ', UpdateDateUTC = "' + obj.UpdateDateUTC + '", DatetimeStart = "' + obj.DatetimeStart + '", DivisionOrderID =' + obj.DivisionOrderID + ', ShowAll = ' + obj.ShowAll + ',Hide = ' + obj.Hide + ' where ID = ' + obj._id;
                 tx.executeSql(sql);
-                // console.log(sql);
+                alert(sql);
             });
 
         }else{
@@ -660,7 +660,7 @@ function syncmaintables(obj,year){
 
     $.each(obj.App_Results_MenuArchive, function (idx, obj) {
         db.transaction(function(tx) {
-            tx.executeSql('INSERT INTO MobileApp_Results_MenuArchive (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
+            tx.executeSql('INSERT  INTO MobileApp_Results_MenuArchive (_id, DivisionName,DivisionID ,UpdateDateUTC ,DatetimeStart,DivisionOrderID,ShowAll,Hide ) VALUES (' + obj._id + ',"' + obj.DivisionName + '", ' + obj.DivisionID + ',"' + obj.UpdateDateUTC + '", "' + obj.DatetimeStart + '", ' + obj.DivisionOrderID + ', ' + obj.ShowAll + ', ' + obj.Hide + ' )');
             console.log("INSERT INTO MobileApp_Results_MenuArchive is created");
         });
     });
