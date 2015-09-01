@@ -451,12 +451,13 @@ position: fixed;
     opacity:0.7;
 }
 #splashscreen{
-
+  //  background: url(../img/img_1575.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height:100vh;
+  overflow: hidden;
 
 }
 
