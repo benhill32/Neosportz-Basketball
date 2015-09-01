@@ -13,7 +13,7 @@ function onDeviceReadysplashscreen() {
 
 function getorientsplash(strorein){
     orientationstand = strorein;
-      alert(orientationstand);
+
     db.transaction(getbackground, errorCBfunc, successCBfunc);
 }
 
@@ -41,7 +41,7 @@ function getbackground_success(tx, results) {
 
         window.setTimeout(function(){
             window.location.href='../index.html';
-        }, 2000);
+        }, 5000);
     }
 }
 
@@ -65,7 +65,7 @@ function getbackground_success2(tx, results) {
 
         window.setTimeout(function(){
             window.location.href='../index.html';
-        }, 2000);
+        }, 5000);
 
 
     }
@@ -78,7 +78,7 @@ function getbackground2_error(err) {
     runadmob();
     window.setTimeout(function(){
         window.location.href='../index.html';
-    }, 2000);
+    }, 5000);
 
 }
 
@@ -88,7 +88,7 @@ function getbackground_error(err) {
     runadmob();
     window.setTimeout(function(){
         window.location.href='../index.html';
-    }, 2000);
+    }, 5000);
 
 
 }
