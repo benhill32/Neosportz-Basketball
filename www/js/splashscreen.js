@@ -74,7 +74,7 @@ function getbackground_success2(tx, results) {
 
 function getbackground2_error(err) {
     $('#splashscreen').empty();
-    $('#splashscreen').append('<img id="screensplashimg" style="max-height:100%;max-width:100%" src="data:image/png;base64,' + Base64 + '">');
+    $('#splashscreen').append('<img id="screensplashimg"  src="data:image/png;base64,' + Base64 + '">');
     runadmob();
     window.setTimeout(function(){
         window.location.href='../index.html';
