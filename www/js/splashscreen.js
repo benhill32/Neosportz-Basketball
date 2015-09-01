@@ -13,7 +13,7 @@ function onDeviceReadysplashscreen() {
 
 function getorientsplash(strorein){
     orientationstand = strorein;
-    //  alert(orientationstand);
+      alert(orientationstand);
     db.transaction(getbackground, errorCBfunc, successCBfunc);
 }
 
@@ -41,7 +41,7 @@ function getbackground_success(tx, results) {
 
         window.setTimeout(function(){
             window.location.href='../index.html';
-        }, 5000);
+        }, 2000);
     }
 }
 
@@ -58,14 +58,14 @@ function getbackground_success2(tx, results) {
     if(len != 0) {
         var menu = results.rows.item(0);
         $('#splashscreen').empty();
-        $('#splashscreen').append('<img id="screensplashimg" style="max-height:100%;max-width:100%" onclick="URLredirect(\'' + menu.URLLINK + '\')" src="data:image/png;base64,' + Base64 + '">');
+        $('#splashscreen').append('<img id="screensplashimg" onclick="URLredirect(\'' + menu.URLLINK + '\')" src="data:image/png;base64,' + Base64 + '">');
 
         runadmob();
 
 
         window.setTimeout(function(){
             window.location.href='../index.html';
-        }, 5000);
+        }, 2000);
 
 
     }
@@ -78,7 +78,7 @@ function getbackground2_error(err) {
     runadmob();
     window.setTimeout(function(){
         window.location.href='../index.html';
-    }, 5000);
+    }, 2000);
 
 }
 
@@ -88,7 +88,7 @@ function getbackground_error(err) {
     runadmob();
     window.setTimeout(function(){
         window.location.href='../index.html';
-    }, 5000);
+    }, 2000);
 
 
 }
