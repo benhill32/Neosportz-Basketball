@@ -55,7 +55,7 @@ function getfliter1_success(tx, results) {
         Ref= menu.Ref;
         isadmin = menu.isadmin;
         db.transaction(getdata, errorCBfunc, successCBfunc);
-        db.transaction(getscoredata, errorCBfunc, successCBfunc);
+
     }
 }
 
@@ -74,27 +74,11 @@ function checkonlinescore(){
 
 }
 
-function getbothteams(team1,team2){
-    team1all = team1;
-    team2all = team2;
-
-    db.transaction(getplayerinfo, errorCBfunc, successCBfunc);
-}
 
 
 
-function getplayerinfo(tx) {
-    var sql = "select ID,_id,ClubID,FullName from MobilevwApp_Base_Players where ClubID in (" + team1all + "," + team2all + ") order by FullName" ;
 
-     // alert(sql);
-    tx.executeSql(sql, [], getplayerinfo_success);
-}
 
-function getscoredata(tx) {
-    var sql = "select Name,Value,UpdatedateUTC from MobileScoringTable";
-//  alert(sql);
-tx.executeSql(sql, [], getscoredata_success);
-}
 
 
 function getdata(tx) {
@@ -103,53 +87,7 @@ function getdata(tx) {
     tx.executeSql(sql, [], getMenu_success);
 }
 
-function getplayerinfo_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-    //alert(len);
 
-
-
-    $('#divplayers').empty().append('<Div class="mainmenuscore" >' +
-        '<div class="bold size13 floatleft2" align="center"  ><select id="drphometeam"></select></div>' +
-        '<div class="bold size13 floatleftnew" align="center"  >Players</div>' +
-        '<div class="bold size13 floatleft2" align="center"  ><select id="drpawayteam"></select></div>' +
-        '</Div>');
-    $('#divtime').empty().append('<Div class="mainmenuscore" >' +
-        '<div class="bold size13 floatleft2" align="center"  ><select id="drphometime"></select></div>' +
-        '<div class="bold size13 floatleftnew" align="center"  >Time</div>' +
-        '<div class="bold size13 floatleft2" align="center"  ><select id="drpawaytime"></select></div>' +
-        '</Div>');
-
-
-    $('#drphometeam').empty();
-    $('#drphometeam').empty();
-    $('#drphometime').empty();
-    $('#drpawaytime').empty();
-    $('#drphometeam').append(new Option("",0))
-    $('#drpawayteam').append(new Option("",0))
-    $('#drphometime').append(new Option("",0))
-    $('#drpawaytime').append(new Option("",0))
-
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-
-        if(menu.ClubID == team1all){
-            $('#drphometeam').append(new Option(menu.FullName,menu.ID))
-        }else if(menu.ClubID == team2all) {
-            $('#drpawayteam').append(new Option(menu.FullName,menu.ID))
-        }
-    }
-
-    for (var i=1; i<95; i++) {
-
-        $('#drphometime').append(new Option(i,i))
-        $('#drpawaytime').append(new Option(i,i))
-    }
-
-
-
-}
 
 function getMenu_success(tx, results) {
     $('#busy').hide();
@@ -166,57 +104,45 @@ var Gameid =menu.ID;
         '<div class="bold size13 floatleft" align="center"  >' + menu.HomeName + '</div><div class="bold size13 floatleft" align="center"  >' + menu.AwayName + '</div>' +
         '<div class="floatleft" align="center" id="homescore"  >' + menu.HomeScore + '</div><div class="floatleft"  align="center" id="awayscore"  >' + menu.AwayScore + '</div>' +
         '' +
-        '<div id="divplayers"></div>' +
-        '<div id="divtime"></div>' +
-        '<div id="divscore"  ></div>' +
-        '<div id="divbonus"  ></div>' +
+
+        '<div id="divscore"  >' +
+            '<Div class="mainmenuscore" >' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq1"></textarea></div>' +
+            '<div class="bold size13 floatleftnew" align="center"  >Q1</div>' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq1"></textarea></div>' +
+            '</Div>' +
+            '<Div class="mainmenuscore" >' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq2"></textarea></div>' +
+            '<div class="bold size13 floatleftnew" align="center"  >Halftime</div>' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq2"></textarea></div>' +
+            '</Div>' +
+            '<Div class="mainmenuscore" >' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq3"></textarea></div>' +
+            '<div class="bold size13 floatleftnew" align="center"  >Q3</div>' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq3"></textarea></div>' +
+            '</Div>' +
+            '<Div class="mainmenuscore" >' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq4"></textarea></div>' +
+            '<div class="bold size13 floatleftnew" align="center"  >FullTime</div>' +
+            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq4"></textarea></div>' +
+            '</Div>' +
+            '</div>' +
+
         '<div id="divhalffull" align="center"  >' +
-        '<button id="btnhalf" class="btn btn-warning" onclick="gamestate(1,' + Gameid + ')" >Its Halftime</button><br>' +
-        '<button id="btnfull" class="btn btn-warning" onclick="gamestate(2,' + Gameid + ')" >Its Fulltime</button><br>' +
+
+
+        '<button id="btnsave" class="btn btn-warning" onclick="gamestate(5,' + Gameid + ')" >Save</button><br>' +
         '<button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Approve</button>' +
         '<button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button>' +
         '</div>' +
         '</Div>');
 
-        $('#divtime').hide();
-
-        if (menu.halftime != 'null') {
-            if (menu.fulltime == 'null') {
-                $("#btnhalf").hide();
-                $("#btnapprove").hide();
-            } else {
-
-                $("#btnfull").hide();
-            }
-        }
-
-        if (menu.IsFinalScore == 0 && (menu.halftime != 'null') && (menu.fulltime != 'null')) {
-
-            if (Ref == 0) {
-                $("#btnapprove").hide();
-                $("#divbonus").hide();
-            } else {
-                $("#divbonus").show();
-                $("#btnapprove").show();
-            }
-            if(isadmin == 1){
-                $("#divbonus").show();
-                $("#btnapprove").show();
-            }
-        } else {
-            $("#btnapprove").hide();
-            $("#divbonus").hide();
-        }
 
 
-        if (menu.halftime == 'null') {
-            $("#btnfull").hide();
-            $("#btnapprove").hide();
-        } else {
-            $("#btnhalf").hide();
-        }
 
-        getbothteams(menu.HomeClubID, menu.AwayClubID);
+
+
+
     }else{
         $('#scorecard').empty().append("Thanks for approving this game!");
 
@@ -255,46 +181,13 @@ function gamestate(IDD,id){
             });
         }
     db.transaction(getdata, errorCBfunc, successCBfunc);
-    db.transaction(getscoredata, errorCBfunc, successCBfunc);
+
 
     halftimefulltimenow(id,IDD);
 
 }
 
-function getscoredata_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-      //  alert(len);
-    $('#divbonus').empty()
-    $('#divscore').empty()
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-      //  alert(menu.Name);
-        var plus = menu.Value;
-        var minus =menu.Value*-1;
 
-        $('#divscore').append('<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft3" align="center"  >' +
-            '<img src="../img/minus.png" onclick="getscore(1,'+ minus +',\''+ menu.Name + '\')" height="40">' +
-            '<img src="../img/plus.png"  height="40" onclick="getscore(1,'+ plus +',\''+ menu.Name + '\')"> </div>' +
-            '<div class="bold size13 floatleft3" align="center"  >' + menu.Name + '</div>' +
-            '<div class="bold size13 floatleft3" align="center"  >' +
-            '<img src="../img/minus.png"  onclick="getscore(0,'+ minus +',\''+ menu.Name + '\')" height="40">' +
-            '<img src="../img/plus.png"   onclick="getscore(0,'+ plus +',\''+ menu.Name + '\')" height="40"></div>' +
-            '</Div>');
-
-    }
-
-    $('#divbonus').append('<Div class="mainmenuscore" >' +
-    '<div class="bold size13 floatleft3" align="center"  > <input type="checkbox" id="homebonus1" onclick="getbonus()">' +
-    ' <input type="checkbox" id="homebonus2" onclick="getbonus()"> </div>' +
-    '<div class="bold size13 floatleft3" align="center"  >Bonus Points</div>' +
-    '<div class="bold size13 floatleft3" align="center"  >' +
-    ' <input type="checkbox" id="awaybonus1"  onclick="getbonus()">' +
-    ' <input type="checkbox" id="awaybonus2"  onclick="getbonus()">' +
-    '</Div>');
-
-}
 
 function getbonus(){
     db.transaction(gettoken, errorCBfunc, successCBfunc);
