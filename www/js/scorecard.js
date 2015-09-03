@@ -89,22 +89,44 @@ function getqtrs_success(tx, results) {
     var menu = results.rows.item(0);
     var len = results.rows.length;
 
-    $( "#txtHq1" ).val(menu.H1st);
 
-    $( "#txtHq2" ).val(menu.H2nd);
-
+    if(menu.H1st != 0) {
+        $("#txtHq1").val(menu.H1st);
+    }
+    if(menu.H2nd != 0) {
+        $("#txtHq2").val(menu.H2nd);
+    }
+    if(menu.H3rd != 0) {
     $( "#txtHq3" ).val(menu.H3rd);
-
+    }
+    if(menu.H4th != 0) {
     $( "#txtHq4" ).val(menu.H4th);
-
+    }
+    if(menu.A1st != 0) {
     $( "#txtAq1" ).val(menu.A1st);
-
+    }
+    if(menu.A2nd != 0) {
     $( "#txtAq2" ).val(menu.A2nd);
-
+    }
+    if(menu.A3rd != 0) {
     $( "#txtAq3" ).val(menu.A3rd);
-
+    }
+    if(menu.A4th != 0) {
     $( "#txtAq4" ).val(menu.A4th);
+    }
 
+    if(menu.Hot1 != 0) {
+        $( "#txtHot1" ).val(menu.Hot1);
+    }
+    if(menu.Aot1 != 0) {
+        $( "#txtAot1" ).val(menu.Aot1);
+    }
+    if(menu.Hot2 != 0) {
+        $( "#txtHot2" ).val(menu.Hot2);
+    }
+    if(menu.Aot2 != 0) {
+        $( "#txtAot2" ).val(menu.Aot2);
+    }
 
 }
 
@@ -156,6 +178,16 @@ var Gameid =menu.ID;
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHq4"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >Q4</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq4"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot1"  class="form-control"></div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT1</div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot1"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot2"  class="form-control"></div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot2"  class="form-control"></div>' +
             '</Div>' +
             '</div>' +
 
@@ -215,10 +247,18 @@ function savegame(id){
 
     var aq4 = $( "#txtAq4" ).val();
 
+    var hot1 = $( "#txtHot1" ).val();
+
+    var aot1 = $( "#txtAot1" ).val();
+
+    var hot2 = $( "#txtHot2" ).val();
+
+    var aot2 = $( "#txtAot2" ).val();
+
 
     //alert("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
-    var response = passscoretoserverscorecard("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+    var response = passscoretoserverscorecard("gameid=" + id + "&Aot1=" + aot1 + "&Aot2=" + aot2 + "&Hot1=" + hot1 + "&Hot2=" + hot2 + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
    // alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
@@ -243,10 +283,12 @@ function gamestate(IDD,id){
                 console.log("Update INTO MobileApp_Results");
             });
         }
-    db.transaction(getdata, errorCBfunc, successCBfunc);
+
 
 
     halftimefulltimenow(id,IDD);
+
+    savegame(id);
 
 }
 
