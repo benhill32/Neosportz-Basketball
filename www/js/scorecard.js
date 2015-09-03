@@ -134,7 +134,7 @@ var Gameid =menu.ID;
         '<div id="divhalffull" align="center"  >' +
 
 
-        '<button id="btnsave" class="btn btn-warning" onclick="gamestate(5,' + Gameid + ')" >Save</button><br>' +
+        '<button id="btnsave" class="btn btn-warning" onclick="savegame(' + Gameid + ')" >Save</button><br>' +
         '<button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Approve</button>' +
         '<button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button>' +
         '</div>' +
@@ -159,24 +159,36 @@ function syncscore(){
 }
 
 
+function savegame(id){
+    db.transaction(gettoken, errorCBfunc, successCBfunc);
+
+    var hq1 = $( "#txtHq1" ).text( value );
+    var hq2 = $( "#txtHq2" ).text( value );
+    var hq3 = $( "#txtHq3" ).text( value );
+    var hq4 = $( "#txtHq4" ).text( value );
+
+    var aq1 = $( "#txtAq1" ).text( value );
+    var aq2 = $( "#txtAq2" ).text( value );
+    var aq3 = $( "#txtAq2" ).text( value );
+    var aq4 = $( "#txtAq3" ).text( value );
+
+    var response = passscoretoserverscorecard("gameid=" + menu.ID + "&H1st = " + hq1 + "&H2nd = " + hq2 + "&H3rd = " + hq3 + "&H4th = " + hq4 + "&A1st = " + aq1 + "&A2nd = " + aq2 + "&A3rd = " + aq3 + "&A4th = " + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+
+    //alert(response);
+
+    if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+        // alert(response);
+        onclicksyncloaddata();
+    }
+
+}
+
 
 
 function gamestate(IDD,id){
 
-        if (IDD == 1) {
-            db.transaction(function (tx) {
-                tx.executeSql('Update MobileApp_Results set halftime = 1 where ID = ' + id);
-                console.log("Update INTO MobileApp_Results");
-            });
 
-
-        }else if (IDD == 2) {
-
-            db.transaction(function (tx) {
-                tx.executeSql('Update MobileApp_Results set halftime = 1, fulltime= 1 where ID = ' + id);
-                console.log("Update INTO MobileApp_Results");
-            });
-        }else if (IDD == 3) {
+         if (IDD == 3) {
 
             db.transaction(function (tx) {
                 tx.executeSql('Update MobileApp_Results set IsFinalScore = 1 where ID = ' + id);
@@ -254,7 +266,7 @@ if(networkconnectionscore != 0) {
     //update score;
     db.transaction(getdata, errorCBfunc, successCBfunc);
     //update buttons
-    db.transaction(getscoredata, errorCBfunc, successCBfunc);
+
     //getting token for sync
     db.transaction(gettoken, errorCBfunc, successCBfunc);
     db.transaction(getscorefromtable, errorCBfunc, successCBfunc);

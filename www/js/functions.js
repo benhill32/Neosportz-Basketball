@@ -1154,6 +1154,7 @@ function cancelgamenow(ID){
 }
 
 
+
 function halftimefulltimenow(GameID,outcome){
     checkonlinefunctions();
     if(networkconnectionfun !=0) {
