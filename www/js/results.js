@@ -437,6 +437,30 @@ function getgoals_success(tx, results) {
         $('#resultawaygoals').append(menu.A4th + "<br>");
     }
 
+    if(menu.Hot1 != 0 || menu.Aot1 != 0) {
+        $('#resulthomegoals').append(menu.Hot1 + "<br>");
+        $('#resultvs1').append("OT1<br>");
+        $('#resultawaygoals').append(menu.Aot1 + "<br>");
+    }
+
+    if(menu.Hot2 != 0 || menu.Aot2 != 0) {
+        $('#resulthomegoals').append(menu.Hot2 + "<br>");
+        $('#resultvs1').append("OT1<br>");
+        $('#resultawaygoals').append(menu.Aot2 + "<br>");
+    }
+
+    if(menu.Hot3 != 0 || menu.Aot3 != 0) {
+        $('#resulthomegoals').append(menu.Hot3 + "<br>");
+        $('#resultvs1').append("OT1<br>");
+        $('#resultawaygoals').append(menu.Aot3 + "<br>");
+    }
+
+    if(menu.Hot4 != 0 || menu.Aot4 != 0) {
+        $('#resulthomegoals').append(menu.Hot4 + "<br>");
+        $('#resultvs1').append("OT1<br>");
+        $('#resultawaygoals').append(menu.Aot4 + "<br>");
+    }
+
 
         if( $('#resulthomegoals').is(':empty') ) {
 
