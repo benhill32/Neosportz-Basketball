@@ -142,7 +142,7 @@ var Gameid =menu.ID;
 
 
 
-
+        db.transaction(gettoken, errorCBfunc, successCBfunc);
 
 
 
@@ -330,7 +330,7 @@ function gettoken_success(tx, results) {
     var menu = results.rows.item(0);
 
     gtoken = menu.token;
-
+alert(gtoken);
 }
 
 function getUrlVars() {
