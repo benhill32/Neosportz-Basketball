@@ -154,13 +154,13 @@ function getqtrs_success(tx, results) {
         $("#divot2").hide();
     }
 
-    if(menu.Hot3 != 0 && menu.Aot3 != 0 && menu.Hot3 == menu.Aot3) {
+    if(menu.Hot2 != 0 && menu.Aot2 != 0 && menu.Hot2 == menu.Aot2) {
         $("#divot3").show();
     }else{
         $("#divot3").hide();
     }
 
-    if(menu.Hot4 != 0 && menu.Aot4 != 0 && menu.Hot4 == menu.Aot4) {
+    if(menu.Hot3 != 0 && menu.Aot3 != 0 && menu.Hot3 == menu.Aot3) {
         $("#divot4").show();
     }else{
         $("#divot4").hide();
@@ -304,10 +304,18 @@ function savegame(id){
 
     var aot2 = $( "#txtAot2" ).val();
 
+    var hot3 = $( "#txtHot3" ).val();
+
+    var aot3 = $( "#txtAot3" ).val();
+
+    var hot4 = $( "#txtHot4" ).val();
+
+    var aot4 = $( "#txtAot4" ).val();
+
 
     //alert("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
-    var response = passscoretoserverscorecard("gameid=" + id + "&Aot1=" + aot1 + "&Aot2=" + aot2 + "&Hot1=" + hot1 + "&Hot2=" + hot2 + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+    var response = passscoretoserverscorecard("gameid=" + id + "&Aot3=" + aot3 + "&Aot4=" + aot4 + "&Hot3=" + hot3 + "&Hot4=" + hot4 + "&Aot1=" + aot1 + "&Aot2=" + aot2 + "&Hot1=" + hot1 + "&Hot2=" + hot2 + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
    // alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
