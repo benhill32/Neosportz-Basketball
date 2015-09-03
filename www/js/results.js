@@ -199,7 +199,7 @@ function getMenu_success(tx, results) {
                 '<div class="bold size13"  >' + menu.HomeName + ' vs ' + menu.AwayName + '</div>' +
             '<div class="bold size13" >' + menu.HomeScore + ' - ' + menu.AwayScore + '  ' + action + '</div>' +
             '<div class="size11">' + menu.TournamentName + '</div>' +
-            '<div class="size11">Referee : ' + menu.RefName + '</div>' +
+           
             '<div class="size11">' + ampm + ' ' + day + '/' + month + '/' + year + '</div>' +
                 '</Div>' +
                 '<div  id="schright" onclick="resultssharemore(event,\'' + readmore + '\')">' +
@@ -222,7 +222,7 @@ function getMenu_success(tx, results) {
                 '<div class="bold size13"  >' + menu.HomeName + ' vs ' + menu.AwayName + '</div>' +
             '<div class="bold size13" >WBD - LBD  ' + action + '</div>' +
             '<div class="size11">' + menu.TournamentName + '</div>' +
-            '<div class="size11">Referee : ' + menu.RefName + '</div>' +
+
             '<div class="size11">' + ampm + ' ' + day + '/' + month + '/' + year + '</div>' +
                 '</Div>' +
                 '<div  id="schright" onclick="resultssharemore(event,\'' + readmore + '\')">' +
@@ -238,7 +238,7 @@ function getMenu_success(tx, results) {
                 '<div class="bold size13"  >' + menu.HomeName + ' vs ' + menu.AwayName + '</div>' +
             '<div class="bold size13" >LBD - WBD  ' + action + '</div>' +
             '<div class="size11">' + menu.TournamentName + '</div>' +
-            '<div class="size11">Referee : ' + menu.RefName + '</div>' +
+
             '<div class="size11">' + ampm + ' ' + day + '/' + month + '/' + year + '</div>' +
                 '</Div>' +
                 '<div  id="schright" onclick="resultssharemore(event,\'' + readmore + '\')">' +
@@ -414,27 +414,27 @@ function getgoals_success(tx, results) {
     var time = menu.Time + "\'";
 
     if(menu.H1st != 0 || menu.A1st != 0) {
-        $('#resulthomegoals').append(menu.H1st);
-        $('#resultvs1').append("Q1");
-        $('#resultawaygoals').append(menu.A1st);
+        $('#resulthomegoals').append(menu.H1st + "<br>");
+        $('#resultvs1').append("Q1<br>");
+        $('#resultawaygoals').append(menu.A1st + "<br>");
     }
 
     if(menu.H2nd != 0 || menu.A2nd != 0) {
-        $('#resulthomegoals').append(menu.H2nd);
-        $('#resultvs1').append("Q2");
-        $('#resultawaygoals').append(menu.A2nd);
+        $('#resulthomegoals').append(menu.H2nd + "<br>");
+        $('#resultvs1').append("Q2<br>");
+        $('#resultawaygoals').append(menu.A2nd + "<br>");
     }
 
     if(menu.H3rd != 0 || menu.A3rd != 0) {
-        $('#resulthomegoals').append(menu.H3rd);
-        $('#resultvs1').append("Q2");
-        $('#resultawaygoals').append(menu.A3rd);
+        $('#resulthomegoals').append(menu.H3rd + "<br>");
+        $('#resultvs1').append("Q3<br>");
+        $('#resultawaygoals').append(menu.A3rd + "<br>");
     }
 
     if(menu.H4th != 0 || menu.A4th != 0) {
-        $('#resulthomegoals').append(menu.H4th);
-        $('#resultvs1').append("Q2");
-        $('#resultawaygoals').append(menu.A4th);
+        $('#resulthomegoals').append(menu.H4th + "<br>");
+        $('#resultvs1').append("Q4<br>");
+        $('#resultawaygoals').append(menu.A4th + "<br>");
     }
 
 
