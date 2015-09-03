@@ -515,7 +515,7 @@ function onclicksyncloaddata2(tx){
 function onclickresync(tx, results) {
 
     var row = results.rows.item(0);
-    alert(row.syncwifi + " " + networkconnection);
+   // alert(row.syncwifi + " " + networkconnection);
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
         $('#indexloadingdata').modal('show');
        // alert("here1")
