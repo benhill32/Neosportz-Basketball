@@ -527,11 +527,11 @@ function syncmaintableindividual(obj){
         if (obj.DeletedateUTC == null) {
 
             db.transaction(function (tx) {
-                tx.executeSql('INSERT OR IGNORE INTO Mobilescoringbreakdown(ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,TeamID,GameID,PlayerID,ScoringID,Time) VALUES ("' + obj.ID + '","' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '",' + obj.TeamID + ',' + obj.GameID + ',' + obj.PlayerID + ',' + obj.ScoringID + ',"' + obj.Time + '")');
+                tx.executeSql('INSERT OR IGNORE INTO Mobilescoringbreakdown(ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,HTeamID,ATeamID,GameID,H1st,A1st,H2nd,A2nd,H3rd,A3rd,H4th,A4th,Hot1,Aot1,Hot2,Aot2,Hot3,Aot3,Hot4,Aot4) VALUES (' + obj.ID + ',"' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '",' + obj.HTeamID + ',' + obj.ATeamID + ',' + obj.GameID + ',' + obj.H1st + ',' + obj.A1st + ',' + obj.H2nd + ',' + obj.A2nd + ',' + obj.H3rd + ',' + obj.A3rd + ',' + obj.H4th + ',' + obj.A4th + ',' + obj.Hot1 + ',' + obj.Aot1 + ',' + obj.Hot2 + ',' + obj.Aot2 + ',' + obj.Hot3 + ',' + obj.Aot3 + ',' + obj.Hot4 + ',' + obj.Aot4 + ')');
                 //   console.log("INSERT INTO Mobilescoringbreakdown is created");
             });
             db.transaction(function (tx) {
-                var sql = 'UPDATE Mobilescoringbreakdown SET CreatedateUTC = "' + obj.CreatedateUTC + '", UpdatedateUTC = "' + obj.UpdatedateUTC + '", DeletedateUTC = "' + obj.DeletedateUTC + '", TeamID = ' + obj.TeamID + ', GameID = ' + obj.GameID + ', PlayerID = ' + obj.PlayerID + ', ScoringID = ' + obj.ScoringID + ', Time = "' + obj.Time + '" where ID = ' + obj.ID;
+                var sql = 'UPDATE Mobilescoringbreakdown SET CreatedateUTC = "' + obj.CreatedateUTC + '", UpdatedateUTC = "' + obj.UpdatedateUTC + '", DeletedateUTC = "' + obj.DeletedateUTC + '", HTeamID = ' + obj.HTeamID + ', ATeamID = ' + obj.ATeamID + ', GameID = ' + obj.GameID + ',H1st = ' + obj.H1st + ',A1st = ' + obj.A1st + ',H2nd = ' + obj.H2nd + ',A2nd = ' + obj.A2nd + ',H3rd = ' + obj.H3rd + ',A3rd = ' + obj.A3rd + ',H4th = ' + obj.H4th + ',A4th = ' + obj.A4th + ',Hot1 = ' + obj.Hot1 + ',Aot1 = ' + obj.Aot1 + ',Hot2 = ' + obj.Hot2 + ',Aot2 = ' + obj.Aot2 + ',Hot3 = ' + obj.Hot3 + ',Aot3 = ' + obj.Aot3 + ',Hot4 = ' + obj.Hot4 + ',Aot4 = ' + obj.Aot4 + ' where ID = ' + obj.ID;
                 tx.executeSql(sql);
             });
 
