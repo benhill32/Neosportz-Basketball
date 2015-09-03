@@ -413,6 +413,10 @@ function getgoals_success(tx, results) {
         var menu = results.rows.item(0);
     var time = menu.Time + "\'";
 
+    $('#resulthomegoals').empty();
+    $('#resultvs1').empty();
+    $('#resultawaygoals').empty();
+
     if(menu.H1st != 0 || menu.A1st != 0) {
         $('#resulthomegoals').append(menu.H1st + "<br>");
         $('#resultvs1').append("Q1<br>");

@@ -61,9 +61,11 @@
             db.transaction(getbackground, errorCBfunc, successCBfunc);
         }
 
-        if (!("ontouchstart" in document.documentElement)) {
-            alert("touch");
-        }
+        $(".divmain").hover(function(){
+            $(this).css("background-color", "#339900");
+        }, function(){
+            $(this).css("background-color", "white");
+        });
 
     </script>
     <style>
