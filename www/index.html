@@ -61,7 +61,9 @@
             db.transaction(getbackground, errorCBfunc, successCBfunc);
         }
 
-
+        if (!("ontouchstart" in document.documentElement)) {
+            alert("touch");
+        }
 
     </script>
     <style>
