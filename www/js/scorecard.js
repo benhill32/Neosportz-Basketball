@@ -185,7 +185,7 @@ function savegame(id){
     //alert("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
     var response = passscoretoserverscorecard("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
-    alert(response);
+   // alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
