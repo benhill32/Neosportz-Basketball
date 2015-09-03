@@ -165,16 +165,16 @@ function savegame(id){
 
     db.transaction(gettoken, errorCBfunc, successCBfunc);
     alert(id);
-    var hq1 = $( "#txtHq1" ).text( value );
+    var hq1 = $( "#txtHq1" ).val();
     alert(hq1);
-    var hq2 = $( "#txtHq2" ).text( value );
-    var hq3 = $( "#txtHq3" ).text( value );
-    var hq4 = $( "#txtHq4" ).text( value );
+    var hq2 = $( "#txtHq2" ).val();
+    var hq3 = $( "#txtHq3" ).val();
+    var hq4 = $( "#txtHq4" ).val();
 
-    var aq1 = $( "#txtAq1" ).text( value );
-    var aq2 = $( "#txtAq2" ).text( value );
-    var aq3 = $( "#txtAq2" ).text( value );
-    var aq4 = $( "#txtAq3" ).text( value );
+    var aq1 = $( "#txtAq1" ).val();
+    var aq2 = $( "#txtAq2" ).val();
+    var aq3 = $( "#txtAq2" ).val();
+    var aq4 = $( "#txtAq3" ).val();
 
     alert("gameid=" + menu.ID + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
