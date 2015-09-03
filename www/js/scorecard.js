@@ -110,24 +110,24 @@ var Gameid =menu.ID;
 
         '<div id="divscore"  >' +
             '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
-            '<div class="col-xs-5 col-md-5"  ><textarea id="txtHq1"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-5 col-md-5"  ><input type="tel" id="txtHq1"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"   >Q1</div>' +
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq1"  class="form-control"></textarea></div>' +
-
-
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq2"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq1"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHq2"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"   >Q2</div>' +
-            '<div class="col-xs-5 col-md-5"  ><textarea id="txtAq2"  class="form-control"></textarea></div>' +
-
-
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq3"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-5 col-md-5"  ><input type="tel" id="txtAq2"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHq3"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >Q3</div>' +
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq3"  class="form-control"></textarea></div>' +
-
-
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq4"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq3"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHq4"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >Q4</div>' +
-            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq4"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq4"  class="form-control"></div>' +
             '</Div>' +
             '</div>' +
 
