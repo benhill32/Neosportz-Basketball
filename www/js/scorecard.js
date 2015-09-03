@@ -186,12 +186,12 @@ var Gameid =menu.ID;
             '<div class="col-xs-2 col-md-2 paddingscore"    >Q4</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq4"  class="form-control"></div>' +
             '</Div>' +
-            '<Div class="row" id="divot1"  style=" margin-left: 0px;margin-right: 0px;" >' +
+            '<Div class="row" id="divot1"  style=" margin-left: 0px;margin-right: 0px;display:none;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot1"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >OT1</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot1"  class="form-control"></div>' +
             '</Div>' +
-            '<Div class="row" id="divot2"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<Div class="row" id="divot2"  style="margin-left: 0px;margin-right: 0px;display:none;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot2"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot2"  class="form-control"></div>' +
