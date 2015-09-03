@@ -230,12 +230,12 @@ var Gameid =menu.ID;
             '</Div>' +
             '<Div class="row" id="divot3"  style=" margin-left: 0px;margin-right: 0px;display:none;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot3"  class="form-control"></div>' +
-            '<div class="col-xs-2 col-md-2 paddingscore"    >OT1</div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT3</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot3"  class="form-control"></div>' +
             '</Div>' +
             '<Div class="row" id="divot4"  style="margin-left: 0px;margin-right: 0px;display:none;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot4"  class="form-control"></div>' +
-            '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT4</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot4"  class="form-control"></div>' +
             '</Div>' +
             '</div>' +
