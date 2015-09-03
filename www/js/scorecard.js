@@ -134,7 +134,7 @@ var Gameid =menu.ID;
         '<div id="divhalffull" align="center"  >' +
 
 
-        '<button id="btnsave" class="btn btn-warning" onclick="savegame2(' + Gameid + ')" >Save</button><br>' +
+        '<button id="btnsave" class="btn btn-warning" onclick="savegame(' + Gameid + ')" >Save</button><br>' +
         '<button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Approve</button>' +
         '<button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button>' +
         '</div>' +
@@ -159,13 +159,14 @@ function syncscore(){
 }
 
 function savegame2(id){
-    alert(id);
+
 }
 
 
 function savegame(id){
+    alert(id);
     db.transaction(gettoken, errorCBfunc, successCBfunc);
-
+    alert(id);
     var hq1 = $( "#txtHq1" ).text( value );
     var hq2 = $( "#txtHq2" ).text( value );
     var hq3 = $( "#txtHq3" ).text( value );
