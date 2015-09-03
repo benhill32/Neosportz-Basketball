@@ -52,7 +52,10 @@ body {
 
     padding: 12px 6px;
 }
+#scorecard{
 
+    padding-bottom: 250px;
+}
 #resulthomegoals,#resultawaygoals{
 
     font-size: 12px !important;
