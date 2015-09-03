@@ -374,10 +374,6 @@ function loadsocialIOSresult() {
                 saveImageToPhoneresult(res.filePath, MEsuccess, MEerror);
             }
         },'jpg',50);
-
-
-
-
     }, 500);
 
 }
@@ -399,9 +395,9 @@ function resultshowmore(ID,hometeam,awayteam,homescore,awayscore,homeidd,awayidd
 }
 
 function getgoals(tx){
-   var sql= "select m.ID,m.CreatedateUTC,m.UpdatedateUTC,m.DeletedateUTC,m.TeamID,m.GameID,m.PlayerID,m.ScoringID,m.Time,p.FullName from Mobilescoringbreakdown as m INNER JOIN " +
-       "MobilevwApp_Base_Players as p  ON p.ID = m.PlayerID " +
-       "where GameID = " + gameid + " order by CAST(m.Time AS INTEGER) ";
+
+    var sql = "select ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,HTeamID,ATeamID,GameID,H1st,A1st,H2nd,A2nd,H3rd,A3rd,H4th,A4th,Hot1,Aot1,Hot2,Aot2,Hot3,Aot3,Hot4,Aot4 from Mobilescoringbreakdown where GameID = '" + gameid + "'";
+
 // alert(sql);
     tx.executeSql(sql, [], getgoals_success);
 }
@@ -413,34 +409,34 @@ function getgoals_success(tx, results) {
     $('#resulthomegoals').empty();
     $('#resultawaygoals').empty();
 
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
+
+        var menu = results.rows.item(0);
     var time = menu.Time + "\'";
 
-        if(menu.TeamID == homeid){
-            if(menu.ScoringID == 2) {
-                $('#resulthomegoals').append('<img src="../img/image.php.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 5) {
-                $('#resulthomegoals').append('<img src="../img/conver.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 6) {
-                $('#resulthomegoals').append('<img src="../img/dropkick.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 7) {
-                $('#resulthomegoals').append('<img src="../img/pen.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }
-        }
-        if(menu.TeamID == awayid){
+    if(menu.H1st != 0 || menu.A1st != 0) {
+        $('#resulthomegoals').append(menu.H1st);
+        $('#resultvs1').append("Q1");
+        $('#resultawaygoals').append(menu.A1st);
+    }
 
-            if(menu.ScoringID == 2) {
-                $('#resultawaygoals').append('<img src="../img/image.php.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 5) {
-                $('#resultawaygoals').append('<img src="../img/conver.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 6) {
-                $('#resultawaygoals').append('<img src="../img/dropkick.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }else if(menu.ScoringID == 7) {
-                $('#resultawaygoals').append('<img src="../img/pen.png">' + ' ' + menu.FullName + " " + time + '<br>');
-            }
+    if(menu.H2nd != 0 || menu.A2nd != 0) {
+        $('#resulthomegoals').append(menu.H2nd);
+        $('#resultvs1').append("Q2");
+        $('#resultawaygoals').append(menu.A2nd);
+    }
 
-        }
+    if(menu.H3rd != 0 || menu.A3rd != 0) {
+        $('#resulthomegoals').append(menu.H3rd);
+        $('#resultvs1').append("Q2");
+        $('#resultawaygoals').append(menu.A3rd);
+    }
+
+    if(menu.H4th != 0 || menu.A4th != 0) {
+        $('#resulthomegoals').append(menu.H4th);
+        $('#resultvs1').append("Q2");
+        $('#resultawaygoals').append(menu.A4th);
+    }
+
 
         if( $('#resulthomegoals').is(':empty') ) {
 
@@ -450,7 +446,7 @@ function getgoals_success(tx, results) {
             $('#resultawaygoals').append('&nbsp;');
         }
 
-    }
+
 
 
     if(len==0){
