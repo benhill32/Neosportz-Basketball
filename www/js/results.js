@@ -199,7 +199,7 @@ function getMenu_success(tx, results) {
                 '<div class="bold size13"  >' + menu.HomeName + ' vs ' + menu.AwayName + '</div>' +
             '<div class="bold size13" >' + menu.HomeScore + ' - ' + menu.AwayScore + '  ' + action + '</div>' +
             '<div class="size11">' + menu.TournamentName + '</div>' +
-           
+
             '<div class="size11">' + ampm + ' ' + day + '/' + month + '/' + year + '</div>' +
                 '</Div>' +
                 '<div  id="schright" onclick="resultssharemore(event,\'' + readmore + '\')">' +
