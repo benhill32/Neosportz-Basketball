@@ -55,7 +55,7 @@ function getfliter1_success(tx, results) {
         Ref= menu.Ref;
         isadmin = menu.isadmin;
         db.transaction(getdata, errorCBfunc, successCBfunc);
-        db.transaction(getqtrs, errorCBfunc, successCBfunc);
+
 
     }
 }
@@ -113,6 +113,10 @@ function getqtrs_success(tx, results) {
     }
     if(menu.A4th != 0) {
     $( "#txtAq4" ).val(menu.A4th);
+        $("#divot1").show();
+    }else{
+        $("#divot1").hide();
+
     }
 
     if(menu.Hot1 != 0) {
@@ -120,6 +124,9 @@ function getqtrs_success(tx, results) {
     }
     if(menu.Aot1 != 0) {
         $( "#txtAot1" ).val(menu.Aot1);
+        $("#divot2").show();
+    }else{
+        $("#divot2").hide();
     }
     if(menu.Hot2 != 0) {
         $( "#txtHot2" ).val(menu.Hot2);
@@ -179,12 +186,12 @@ var Gameid =menu.ID;
             '<div class="col-xs-2 col-md-2 paddingscore"    >Q4</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAq4"  class="form-control"></div>' +
             '</Div>' +
-            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<Div class="row" id="divot1"  style=" margin-left: 0px;margin-right: 0px;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot1"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >OT1</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot1"  class="form-control"></div>' +
             '</Div>' +
-            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<Div class="row" id="divot2"  style="margin-left: 0px;margin-right: 0px;" >' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot2"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot2"  class="form-control"></div>' +
@@ -210,7 +217,7 @@ var Gameid =menu.ID;
 
         db.transaction(gettoken, errorCBfunc, successCBfunc);
 
-
+        db.transaction(getqtrs, errorCBfunc, successCBfunc);
 
     }else{
         $('#scorecard').empty().append("Thanks for approving this game!");
