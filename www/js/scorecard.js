@@ -79,7 +79,7 @@ function checkonlinescore(){
 
 
 function getqtrs(tx) {
-    var sql = "select ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,HTeamID,ATeamID,GameID,H1st,A1st,H2nd,A2nd,H3rd,A3rd,H4th,A3rd,Hot1,Aot1,Hot2,Aot2,Hot3,Aot3,Hot4,Aot4 from Mobilescoringbreakdown where GameID = '" + id + "'";
+    var sql = "select ID,CreatedateUTC,UpdatedateUTC,DeletedateUTC,HTeamID,ATeamID,GameID,H1st,A1st,H2nd,A2nd,H3rd,A3rd,H4th,A4th,Hot1,Aot1,Hot2,Aot2,Hot3,Aot3,Hot4,Aot4 from Mobilescoringbreakdown where GameID = '" + id + "'";
     //alert(sql);
     tx.executeSql(sql, [], getqtrs_success);
 }
@@ -87,7 +87,8 @@ function getqtrs(tx) {
 
 function getqtrs_success(tx, results) {
     var menu = results.rows.item(0);
-
+    var len = results.rows.length;
+alert(len);
     $( "#txtHq1" ).val(menu.H1st);
 
     $( "#txtHq2" ).val(menu.H2nd);
@@ -102,7 +103,7 @@ function getqtrs_success(tx, results) {
 
     $( "#txtAq3" ).val(menu.A3rd);
 
-    $( "#txtAq4" ).val(menu.A3rd);
+    $( "#txtAq4" ).val(menu.A4th);
 
 
 }
