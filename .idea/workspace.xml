@@ -31,16 +31,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scorecard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scorecard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/scorecard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.275862">
-              <caret line="174" column="34" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.3127907">
+              <caret line="174" column="158" selection-start-line="174" selection-start-column="158" selection-end-line="174" selection-end-column="158" />
               <folding>
-                <marker date="1441245024838" expanded="true" signature="3123:3158" placeholder="..." />
-                <marker date="1441245024838" expanded="true" signature="3515:3550" placeholder="..." />
-                <marker date="1441245024838" expanded="true" signature="3907:3942" placeholder="..." />
-                <marker date="1441245024838" expanded="true" signature="4301:4336" placeholder="..." />
+                <marker date="1441245910996" expanded="true" signature="3123:3158" placeholder="..." />
+                <marker date="1441245910996" expanded="true" signature="3515:3550" placeholder="..." />
+                <marker date="1441245910996" expanded="true" signature="3907:3942" placeholder="..." />
+                <marker date="1441245910996" expanded="true" signature="4301:4336" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -68,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19418605">
-              <caret line="206" column="35" selection-start-line="206" selection-start-column="35" selection-end-line="206" selection-end-column="35" />
+            <state vertical-scroll-proportion="-12.793103">
+              <caret line="218" column="15" selection-start-line="218" selection-start-column="15" selection-end-line="218" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -184,8 +184,8 @@
         <option value="$PROJECT_DIR$/www/css/index.css" />
         <option value="$PROJECT_DIR$/www/pages/scorecard.html" />
         <option value="$PROJECT_DIR$/www/pages/schedules.html" />
-        <option value="$PROJECT_DIR$/www/js/scorecard.js" />
         <option value="$PROJECT_DIR$/www/js/functions.js" />
+        <option value="$PROJECT_DIR$/www/js/scorecard.js" />
       </list>
     </option>
   </component>
@@ -397,7 +397,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -807,14 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/schedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="247" column="409" selection-start-line="247" selection-start-column="409" selection-end-line="247" selection-end-column="409" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/scorecard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.423077">
@@ -825,24 +817,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/scorecard.js">
+    <entry file="file://$PROJECT_DIR$/www/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.275862">
-          <caret line="174" column="34" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
-          <folding>
-            <marker date="1441245024838" expanded="true" signature="3123:3158" placeholder="..." />
-            <marker date="1441245024838" expanded="true" signature="3515:3550" placeholder="..." />
-            <marker date="1441245024838" expanded="true" signature="3907:3942" placeholder="..." />
-            <marker date="1441245024838" expanded="true" signature="4301:4336" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-12.793103">
+          <caret line="218" column="15" selection-start-line="218" selection-start-column="15" selection-end-line="218" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/functions.js">
+    <entry file="file://$PROJECT_DIR$/www/js/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19418605">
-          <caret line="206" column="35" selection-start-line="206" selection-start-column="35" selection-end-line="206" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="247" column="409" selection-start-line="247" selection-start-column="409" selection-end-line="247" selection-end-column="409" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/scorecard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3127907">
+          <caret line="174" column="158" selection-start-line="174" selection-start-column="158" selection-end-line="174" selection-end-column="158" />
+          <folding>
+            <marker date="1441245910996" expanded="true" signature="3123:3158" placeholder="..." />
+            <marker date="1441245910996" expanded="true" signature="3515:3550" placeholder="..." />
+            <marker date="1441245910996" expanded="true" signature="3907:3942" placeholder="..." />
+            <marker date="1441245910996" expanded="true" signature="4301:4336" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

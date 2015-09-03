@@ -172,9 +172,10 @@ function savegame(id){
     var aq3 = $( "#txtAq2" ).text( value );
     var aq4 = $( "#txtAq3" ).text( value );
 
-    var response = passscoretoserverscorecard("gameid=" + menu.ID + "&H1st = " + hq1 + "&H2nd = " + hq2 + "&H3rd = " + hq3 + "&H4th = " + hq4 + "&A1st = " + aq1 + "&A2nd = " + aq2 + "&A3rd = " + aq3 + "&A4th = " + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+    alert("gameid=" + menu.ID + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
-    //alert(response);
+    var response = passscoretoserverscorecard("gameid=" + menu.ID + "&H1st = " + hq1 + "&H2nd = " + hq2 + "&H3rd = " + hq3 + "&H4th = " + hq4 + "&A1st = " + aq1 + "&A2nd = " + aq2 + "&A3rd = " + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
