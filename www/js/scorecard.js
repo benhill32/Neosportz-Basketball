@@ -88,7 +88,7 @@ function getqtrs(tx) {
 function getqtrs_success(tx, results) {
     var menu = results.rows.item(0);
     var len = results.rows.length;
-alert(len);
+
     $( "#txtHq1" ).val(menu.H1st);
 
     $( "#txtHq2" ).val(menu.H2nd);
