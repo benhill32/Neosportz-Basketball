@@ -164,21 +164,27 @@ function syncscore(){
 function savegame(id){
 
     db.transaction(gettoken, errorCBfunc, successCBfunc);
-    alert(id);
+   // alert(id);
     var hq1 = $( "#txtHq1" ).val();
-    alert(hq1);
+
     var hq2 = $( "#txtHq2" ).val();
+    alert(hq2);
     var hq3 = $( "#txtHq3" ).val();
+    alert(hq3);
     var hq4 = $( "#txtHq4" ).val();
-
+    alert(hq4);
     var aq1 = $( "#txtAq1" ).val();
+    alert(aq1);
     var aq2 = $( "#txtAq2" ).val();
+    alert(aq2);
     var aq3 = $( "#txtAq2" ).val();
+    alert(hq3);
     var aq4 = $( "#txtAq3" ).val();
+    alert(aq4);
 
-    alert("gameid=" + menu.ID + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
+    alert("gameid=" + id + "&H1st=" + hq1 + "&H2nd=" + hq2 + "&H3rd=" + hq3 + "&H4th=" + hq4 + "&A1st=" + aq1 + "&A2nd=" + aq2 + "&A3rd=" + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
 
-    var response = passscoretoserverscorecard("gameid=" + menu.ID + "&H1st = " + hq1 + "&H2nd = " + hq2 + "&H3rd = " + hq3 + "&H4th = " + hq4 + "&A1st = " + aq1 + "&A2nd = " + aq2 + "&A3rd = " + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+    var response = passscoretoserverscorecard("gameid=" + id + "&H1st = " + hq1 + "&H2nd = " + hq2 + "&H3rd = " + hq3 + "&H4th = " + hq4 + "&A1st = " + aq1 + "&A2nd = " + aq2 + "&A3rd = " + aq3 + "&A4th=" + aq4 + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
