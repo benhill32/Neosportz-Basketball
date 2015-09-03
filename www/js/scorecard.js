@@ -113,10 +113,6 @@ function getqtrs_success(tx, results) {
     }
     if(menu.A4th != 0) {
     $( "#txtAq4" ).val(menu.A4th);
-        $("#divot1").show();
-    }else{
-        $("#divot1").hide();
-
     }
 
     if(menu.Hot1 != 0) {
@@ -124,9 +120,6 @@ function getqtrs_success(tx, results) {
     }
     if(menu.Aot1 != 0) {
         $( "#txtAot1" ).val(menu.Aot1);
-        $("#divot2").show();
-    }else{
-        $("#divot2").hide();
     }
     if(menu.Hot2 != 0) {
         $( "#txtHot2" ).val(menu.Hot2);
@@ -134,6 +127,22 @@ function getqtrs_success(tx, results) {
     if(menu.Aot2 != 0) {
         $( "#txtAot2" ).val(menu.Aot2);
     }
+alert(menu.A4th + " - " +  menu.H4th);
+
+    if(menu.A4th != 0 && menu.H4th != 0 && menu.A4th == menu.H4th) {
+        $("#divot1").show();
+    }else{
+        $("#divot1").hide();
+    }
+
+    if(menu.Hot1 != 0 && menu.Aot1 != 0 && menu.Hot1 == menu.Aot1) {
+        $("#divot2").show();
+    }else{
+        $("#divot2").hide();
+    }
+
+
+
 
 }
 

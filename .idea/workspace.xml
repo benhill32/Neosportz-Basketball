@@ -34,19 +34,19 @@
       <file leaf-file-name="scorecard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/scorecard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60930234">
-              <caret line="132" column="10" selection-start-line="132" selection-start-column="10" selection-end-line="132" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.51046515">
+              <caret line="127" column="39" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
               <folding>
-                <marker date="1441318910648" expanded="true" signature="4667:4702" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="5059:5094" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="5451:5486" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="5845:5880" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="6251:6287" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="6251:6300" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="6674:6722" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="7124:7148" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="7376:7400" placeholder="..." />
-                <marker date="1441318910648" expanded="true" signature="7639:7663" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="4706:4741" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="5098:5133" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="5490:5525" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="5884:5919" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="6290:6326" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="6290:6339" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="6713:6761" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="7163:7187" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="7415:7439" placeholder="..." />
+                <marker date="1441319447042" expanded="true" signature="7678:7702" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -811,19 +811,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/scorecard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60930234">
-          <caret line="132" column="10" selection-start-line="132" selection-start-column="10" selection-end-line="132" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.51046515">
+          <caret line="127" column="39" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
           <folding>
-            <marker date="1441318910648" expanded="true" signature="4667:4702" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="5059:5094" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="5451:5486" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="5845:5880" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="6251:6287" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="6251:6300" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="6674:6722" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="7124:7148" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="7376:7400" placeholder="..." />
-            <marker date="1441318910648" expanded="true" signature="7639:7663" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="4706:4741" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="5098:5133" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="5490:5525" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="5884:5919" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="6290:6326" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="6290:6339" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="6713:6761" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="7163:7187" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="7415:7439" placeholder="..." />
+            <marker date="1441319447042" expanded="true" signature="7678:7702" placeholder="..." />
           </folding>
         </state>
       </provider>
