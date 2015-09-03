@@ -103,28 +103,31 @@ var Gameid =menu.ID;
         $('#scorecard').empty().append('<Div class="mainmenuscore" >' +
         '<div class="bold size13 floatleft" align="center"  >' + menu.HomeName + '</div><div class="bold size13 floatleft" align="center"  >' + menu.AwayName + '</div>' +
         '<div class="floatleft" align="center" id="homescore"  >' + menu.HomeScore + '</div><div class="floatleft"  align="center" id="awayscore"  >' + menu.AwayScore + '</div>' +
-        '' +
+
+
+
+
 
         '<div id="divscore"  >' +
-            '<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq1"></textarea></div>' +
-            '<div class="bold size13 floatleftnew" align="center"  >Q1</div>' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq1"></textarea></div>' +
-            '</Div>' +
-            '<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq2"></textarea></div>' +
-            '<div class="bold size13 floatleftnew" align="center"  >Halftime</div>' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq2"></textarea></div>' +
-            '</Div>' +
-            '<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq3"></textarea></div>' +
-            '<div class="bold size13 floatleftnew" align="center"  >Q3</div>' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq3"></textarea></div>' +
-            '</Div>' +
-            '<Div class="mainmenuscore" >' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtHq4"></textarea></div>' +
-            '<div class="bold size13 floatleftnew" align="center"  >FullTime</div>' +
-            '<div class="bold size13 floatleft2" align="center"  ><textarea id="txtAq4"></textarea></div>' +
+            '<Div class="row"  style="margin-left: 0px;margin-right: 0px;" >' +
+            '<div class="col-xs-5 col-md-5"  ><textarea id="txtHq1"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-2 col-md-2"   >Q1</div>' +
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq1"  class="form-control"></textarea></div>' +
+
+
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq2"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-2 col-md-2"   >Q2</div>' +
+            '<div class="col-xs-5 col-md-5"  ><textarea id="txtAq2"  class="form-control"></textarea></div>' +
+
+
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq3"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-2 col-md-2"    >Q3</div>' +
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq3"  class="form-control"></textarea></div>' +
+
+
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtHq4"  class="form-control"></textarea></div>' +
+            '<div class="col-xs-2 col-md-2"    >Q4</div>' +
+            '<div class="col-xs-5 col-md-5"   ><textarea id="txtAq4"  class="form-control"></textarea></div>' +
             '</Div>' +
             '</div>' +
 
