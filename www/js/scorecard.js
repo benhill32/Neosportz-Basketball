@@ -127,7 +127,20 @@ function getqtrs_success(tx, results) {
     if(menu.Aot2 != 0) {
         $( "#txtAot2" ).val(menu.Aot2);
     }
-alert(menu.A4th + " - " +  menu.H4th);
+
+    if(menu.Hot3 != 0) {
+        $( "#txtHot3" ).val(menu.Hot3);
+    }
+    if(menu.Aot3 != 0) {
+        $( "#txtAot3" ).val(menu.Aot3);
+    }
+    if(menu.Hot4 != 0) {
+        $( "#txtHot4" ).val(menu.Hot4);
+    }
+    if(menu.Aot4 != 0) {
+        $( "#txtAot4" ).val(menu.Aot4);
+    }
+
 
     if(menu.A4th != 0 && menu.H4th != 0 && menu.A4th == menu.H4th) {
         $("#divot1").show();
@@ -141,7 +154,17 @@ alert(menu.A4th + " - " +  menu.H4th);
         $("#divot2").hide();
     }
 
+    if(menu.Hot3 != 0 && menu.Aot3 != 0 && menu.Hot3 == menu.Aot3) {
+        $("#divot3").show();
+    }else{
+        $("#divot3").hide();
+    }
 
+    if(menu.Hot4 != 0 && menu.Aot4 != 0 && menu.Hot4 == menu.Aot4) {
+        $("#divot4").show();
+    }else{
+        $("#divot4").hide();
+    }
 
 
 }
@@ -204,6 +227,16 @@ var Gameid =menu.ID;
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot2"  class="form-control"></div>' +
             '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
             '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot2"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row" id="divot3"  style=" margin-left: 0px;margin-right: 0px;display:none;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot3"  class="form-control"></div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT1</div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot3"  class="form-control"></div>' +
+            '</Div>' +
+            '<Div class="row" id="divot4"  style="margin-left: 0px;margin-right: 0px;display:none;" >' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtHot4"  class="form-control"></div>' +
+            '<div class="col-xs-2 col-md-2 paddingscore"    >OT2</div>' +
+            '<div class="col-xs-5 col-md-5"   ><input type="tel" id="txtAot4"  class="form-control"></div>' +
             '</Div>' +
             '</div>' +
 
