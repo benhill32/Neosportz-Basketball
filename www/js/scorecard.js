@@ -158,16 +158,15 @@ function syncscore(){
     onDeviceReadyscore();
 }
 
-function savegame2(id){
 
-}
 
 
 function savegame(id){
-    alert(id);
+
     db.transaction(gettoken, errorCBfunc, successCBfunc);
     alert(id);
     var hq1 = $( "#txtHq1" ).text( value );
+    alert(hq1);
     var hq2 = $( "#txtHq2" ).text( value );
     var hq3 = $( "#txtHq3" ).text( value );
     var hq4 = $( "#txtHq4" ).text( value );
