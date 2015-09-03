@@ -47,6 +47,12 @@ body {
 
 }
 
+
+.paddingscore{
+
+    padding: 12px 6px;
+}
+
 #resulthomegoals,#resultawaygoals{
 
     font-size: 12px !important;
