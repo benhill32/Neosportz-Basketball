@@ -142,7 +142,7 @@ function getqtrs_success(tx, results) {
     }
 
     if(menu.A4th != 0 && menu.H4th != 0) {
-        $("#divappove").show();
+        $("#divappove").hide();
         $("#divScoreSheet").show();
 
     }else{
@@ -309,8 +309,8 @@ function syncscore(){
 function onSuccess(imageData) {
   //  var image = document.getElementById('imgscoresheet');
   //  image.src = "data:image/jpeg;base64," + imageData;
-   // alert(imageData);
-    aleRT("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
+    alert(imageData);
+    alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
     var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
     //alert(response);
