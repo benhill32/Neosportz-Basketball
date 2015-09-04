@@ -141,6 +141,16 @@ function getqtrs_success(tx, results) {
         $( "#txtAot4" ).val(menu.Aot4);
     }
 
+    if(menu.A4th != 0 && menu.H4th != 0) {
+        $("#divappove").show();
+        $("#divscore").show();
+
+    }else{
+        $("#divappove").hide();
+        $("#divscore").hide();
+    }
+
+
 
     if(menu.A4th != 0 && menu.H4th != 0 && menu.A4th == menu.H4th) {
         $("#divot1").show();
@@ -245,11 +255,11 @@ var Gameid =menu.ID;
 
             '<div class="col-xs-12 col-md-12"   ><button id="btnsave" class="btn btn-warning" onclick="savegame(' + Gameid + ')" >Save</button></div>' +
         '</div>' +
-       '<div class="row" align="center"  style="margin:0px 0px 10px 0px;display:none;">' +
+       '<div class="row" align="center" id="divappove"  style="margin:0px 0px 10px 0px;display:none;">' +
             '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Finished</button></div>' +
         '</div>' +
 
-        '<div class="row" align="center"  style="margin:0px 0px 10px 0px;display:none;">' +
+        '<div class="row" align="center" id="divscore"  style="margin:0px 0px 10px 0px;display:none;">' +
             '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="takePicture()" >ScoreSheet</button></div>' +
             '</div>' +
 
