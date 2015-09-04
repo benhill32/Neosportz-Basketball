@@ -296,8 +296,8 @@ function syncscore(){
 
 
 function onSuccess(imageData) {
-    var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
+   // var image = document.getElementById('myImage');
+   // image.src = "data:image/jpeg;base64," + imageData;
     alert(imageData);
 }
 
