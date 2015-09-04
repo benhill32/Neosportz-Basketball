@@ -143,11 +143,11 @@ function getqtrs_success(tx, results) {
 
     if(menu.A4th != 0 && menu.H4th != 0) {
         $("#divappove").show();
-        $("#divscore").show();
+        $("#divScoreSheet").show();
 
     }else{
         $("#divappove").hide();
-        $("#divscore").hide();
+        $("#divScoreSheet").hide();
     }
 
 
@@ -259,8 +259,8 @@ var Gameid =menu.ID;
             '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Finished</button></div>' +
         '</div>' +
 
-        '<div class="row" align="center" id="divscore"  style="margin:0px 0px 10px 0px;display:none;">' +
-            '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="takePicture()" >ScoreSheet</button></div>' +
+        '<div class="row" align="center" id="divScoreSheet"  style="margin:0px 0px 10px 0px;display:none;">' +
+            '<div class="col-xs-12 col-md-12"   >  <button id="btnScoreSheet" class="btn btn-warning" onclick="takePicture()" >ScoreSheet</button></div>' +
             '</div>' +
 
         '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
