@@ -284,18 +284,9 @@ var Gameid =menu.ID;
 }
 
 function takePicture() {
-    navigator.camera.getPicture(function(imageURI) {
-
-        // imageURI is the URL of the image that we can use for
-        // an <img> element or backgroundImage.
-    alert(imageURI);
-
-
-    }, function(err) {
-
-        // Ruh-roh, something bad happened
-
-    }, cameraOptions);
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL
+    });
 }
 
 function syncscore(){
@@ -304,6 +295,15 @@ function syncscore(){
 }
 
 
+function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+    alert(imageData);
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
 
 
 function savegame(id){
