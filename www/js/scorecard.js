@@ -245,9 +245,14 @@ var Gameid =menu.ID;
 
             '<div class="col-xs-12 col-md-12"   ><button id="btnsave" class="btn btn-warning" onclick="savegame(' + Gameid + ')" >Save</button></div>' +
         '</div>' +
-       '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
+       '<div class="row" align="center"  style="margin:0px 0px 10px 0px;display:none;">' +
             '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="gamestate(3,' + Gameid + ')" >Finished</button></div>' +
         '</div>' +
+
+        '<div class="row" align="center"  style="margin:0px 0px 10px 0px;display:none;">' +
+            '<div class="col-xs-12 col-md-12"   >  <button id="btnapprove" class="btn btn-warning" onclick="takePicture()" >ScoreSheet</button></div>' +
+            '</div>' +
+
         '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
             '<div class="col-xs-12 col-md-12"   > <button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button></div>' +
 
@@ -266,6 +271,21 @@ var Gameid =menu.ID;
 
     }
 
+}
+
+function takePicture() {
+    navigator.camera.getPicture(function(imageURI) {
+
+        // imageURI is the URL of the image that we can use for
+        // an <img> element or backgroundImage.
+    alert(imageURI);
+
+
+    }, function(err) {
+
+        // Ruh-roh, something bad happened
+
+    }, cameraOptions);
 }
 
 function syncscore(){
