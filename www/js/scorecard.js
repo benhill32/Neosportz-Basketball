@@ -268,6 +268,17 @@ var Gameid =menu.ID;
 
         '</div>' +
 
+            '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
+            '<div class="col-xs-12 col-md-12"   >' +
+
+           
+                    '<img id="imgscoresheet">' +
+
+            '</div>' +
+
+            '</div>' +
+
+
         '</Div>');
 
 
@@ -296,9 +307,19 @@ function syncscore(){
 
 
 function onSuccess(imageData) {
-   // var image = document.getElementById('myImage');
-   // image.src = "data:image/jpeg;base64," + imageData;
-    alert(imageData);
+    var image = document.getElementById('imgscoresheet');
+    image.src = "data:image/jpeg;base64," + imageData;
+   // alert(imageData);
+
+    var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+
+    //alert(response);
+
+    if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+        // alert(response);
+        onclicksyncloaddata();
+    }
+
 }
 
 function onFail(message) {
