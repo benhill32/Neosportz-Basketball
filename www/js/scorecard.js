@@ -17,6 +17,7 @@ var Ref= 0;
 var isadmin =0;
 var clubedit = 0;
 var DIVid = getUrlVars()["divID"];
+var imagebase64 = "";
 function onDeviceReadyscore() {
     checkonlinescore()
     deviceIDscorecard = device.uuid;
@@ -295,10 +296,8 @@ var Gameid =menu.ID;
 }
 
 function takePicture() {
-    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
-        destinationType: navigator.camera.DestinationType.FILE_URI,
-        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL
     });
     $('#indexloadingdata').modal('show');
 
@@ -311,47 +310,20 @@ function syncscore(){
     onDeviceReadyscore();
 }
 
-function uploadPhoto(imageURI) {
-
-
-
-    var options = new FileUploadOptions();
-    options.fileKey="recFile";
-    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-    options.mimeType="image/jpeg";
-
-    var params = new Object();
-    params.value1 = "test";
-    params.value2 = "param";
-    options.params = params;
-    options.chunkedMode = false;
-
-    var ft = new FileTransfer();
-    ft.upload(imageURI, "http://bball.neosportz.com/FileUpload.asmx/SaveImage", win, fail, options);
-}
-
-
-function win(r) {
-    //console.log("Code = " + r.responseCode);
-    //console.log("Response = " + r.response);
-    alert("Sent = " + r.bytesSent);
-}
-
-function fail(error) {
-    alert("An error has occurred: Code = " + error.code);
-}
-
-
 
 function onSuccess(imageData) {
   //  var image = document.getElementById('imgscoresheet');
   //  image.src = "data:image/jpeg;base64," + imageData;
    // alert(imageData);
-    $('#indexloadingdata').modal('show');
-   // alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
-    var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
-    alert(response);
+    imagebase64 = imageData;
+
+    alert(imagebase64.length)
+  //  $('#indexloadingdata').modal('show');
+   // alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
+  //  var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+
+  //  alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
