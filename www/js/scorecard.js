@@ -296,18 +296,49 @@ var Gameid =menu.ID;
 }
 
 function takePicture() {
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
-        destinationType: Camera.DestinationType.DATA_URL
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
+        destinationType: navigator.camera.DestinationType.FILE_URI
+
+
     });
     $('#indexloadingdata').modal('show');
-
-
 
 }
 
 function syncscore(){
 
     onDeviceReadyscore();
+}
+function uploadPhoto(imageURI) {
+
+
+
+    var options = new FileUploadOptions();
+    options.fileKey="recFile";
+    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+    options.mimeType="image/jpeg";
+
+    var params = new Object();
+    params.value1 = "test";
+    params.value2 = "param";
+    options.params = params;
+    options.chunkedMode = false;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURI, "http://bball.neosportz.com/FileUpload.asmx/SaveImage", win, fail, options,true);
+}
+
+
+var win = function (r) {
+
+
+    alert('Done!');
+}
+
+var fail = function (error) {
+
+    alert("An error has occurred: Code = " + error.code);
+
 }
 
 
