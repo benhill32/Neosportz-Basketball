@@ -298,6 +298,10 @@ function takePicture() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
         destinationType: Camera.DestinationType.DATA_URL
     });
+    $('#indexloadingdata').modal('show');
+
+
+
 }
 
 function syncscore(){
@@ -309,11 +313,12 @@ function syncscore(){
 function onSuccess(imageData) {
   //  var image = document.getElementById('imgscoresheet');
   //  image.src = "data:image/jpeg;base64," + imageData;
-    alert(imageData);
-    alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
-  //  var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+   // alert(imageData);
+    $('#indexloadingdata').modal('show');
+   // alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
+    var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
-    //alert(response);
+    alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
