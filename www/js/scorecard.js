@@ -327,7 +327,7 @@ function uploadPhoto(imageURI) {
     var ft = new FileTransfer();
     path = imageURI.fullPath,
     name = imageURI.name;
-    ft.upload(imageURI, "http://bball.neosportz.com/FileUpload.asmx/UploadFile&#8221", win, fail, options);
+    ft.upload(path, "http://bball.neosportz.com/FileUpload.asmx/UploadFile&#8221", win, fail, options);
 }
 
 
