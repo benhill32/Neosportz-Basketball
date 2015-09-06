@@ -311,13 +311,13 @@ function onSuccess(imageData) {
   //  image.src = "data:image/jpeg;base64," + imageData;
     alert(imageData);
     alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
-    var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
+  //  var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
 
     //alert(response);
 
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
-        onclicksyncloaddata();
+      //  onclicksyncloaddata();
     }
 
 }
