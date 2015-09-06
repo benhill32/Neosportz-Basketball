@@ -312,24 +312,7 @@ function syncscore(){
 }
 
 function uploadPhoto(imageURI) {
-    var win = function (r) {
-        clearCache();
-        retries = 0;
-        alert('Done!');
-    }
-    var retries = 0;
-    var fail = function (error) {
-        if (retries == 0) {
-            retries ++
-            setTimeout(function() {
-                onCapturePhoto(fileURI)
-            }, 1000)
-        } else {
-            retries = 0;
-            clearCache();
-            alert('Ups. Something wrong happens!');
-        }
-    }
+
 
 
     var options = new FileUploadOptions();
@@ -348,6 +331,15 @@ function uploadPhoto(imageURI) {
 }
 
 
+function win(r) {
+    //console.log("Code = " + r.responseCode);
+    //console.log("Response = " + r.response);
+    alert("Sent = " + r.bytesSent);
+}
+
+function fail(error) {
+    alert("An error has occurred: Code = " + error.code);
+}
 
 
 
