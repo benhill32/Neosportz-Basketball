@@ -301,7 +301,7 @@ function takePicture() {
         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 
     });
-    $('#indexloadingdata').modal('show');
+  //  $('#indexloadingdata').modal('show');
 
 }
 
@@ -314,8 +314,8 @@ function uploadPhoto(imageURI) {
 
 
     var options = new FileUploadOptions();
-    options.fileKey="recFile";
-    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+    options.fileKey="file";
+    options.fileName="name";
     options.mimeType="image/jpeg";
 
     var params = new Object();
