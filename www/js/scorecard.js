@@ -297,8 +297,8 @@ var Gameid =menu.ID;
 
 function takePicture() {
     navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
-        destinationType: navigator.camera.DestinationType.FILE_URI
-
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 
     });
     $('#indexloadingdata').modal('show');
@@ -319,13 +319,15 @@ function uploadPhoto(imageURI) {
     options.mimeType="image/jpeg";
 
     var params = new Object();
-    params.value1 = "test";
-    params.value2 = "param";
+    params.fileName  = "name";
+    params.fileKey  = "file";
     options.params = params;
     options.chunkedMode = false;
 
     var ft = new FileTransfer();
-    ft.upload(imageURI, "http://bball.neosportz.com/FileUpload.asmx/SaveImage", win, fail, options,true);
+    path = imageURI.fullPath,
+    name = imageURI.name;
+    ft.upload(imageURI, "http://bball.neosportz.com/FileUpload.asmx/UploadFile&#8221", win, fail, options);
 }
 
 
