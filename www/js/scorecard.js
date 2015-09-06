@@ -316,18 +316,15 @@ function uploadPhoto(imageURI) {
     var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName="name";
-    options.mimeType="image/jpeg";
-
-    var params = new Object();
-    params.fileName  = "name";
-    params.fileKey  = "file";
-    options.params = params;
     options.chunkedMode = false;
 
     var ft = new FileTransfer();
     path = imageURI.fullPath,
     name = imageURI.name;
     ft.upload(path, "http://bball.neosportz.com/FileUpload.asmx/UploadFile&#8221", win, fail, options);
+
+
+
 }
 
 
