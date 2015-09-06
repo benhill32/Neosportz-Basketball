@@ -295,7 +295,7 @@ var Gameid =menu.ID;
 }
 
 function takePicture() {
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 25,
         destinationType: Camera.DestinationType.DATA_URL
     });
     $('#indexloadingdata').modal('show');
