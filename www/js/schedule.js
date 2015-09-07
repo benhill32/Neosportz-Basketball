@@ -336,7 +336,7 @@ function loadreftosystem(Gameid1){
 function loadstatssystem(Gameid1){
     db.transaction(gettokensc, errorCBfunc, successCBfunc);
 
-    passscoretoserver("gameidstats=" + Gameid1 + "&statslink=" + $('#txtstatlink').val() + "&deviceid=" + device.uuid + "&token=" + tokensch)
+    passscoretoserver("gameid=" + Gameid1 + "&statslink=" + $('#txtstatlink').val() + "&deviceid=" + device.uuid + "&token=" + tokensch)
     window.setTimeout(function(){
         window.location = "../pages/schedules.html?id=" + id;
     }, 1000);
