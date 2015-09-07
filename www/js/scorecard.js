@@ -144,7 +144,7 @@ function getqtrs_success(tx, results) {
 
     if(menu.A4th != 0 && menu.H4th != 0) {
         $("#divappove").hide();
-        $("#divScoreSheet").hide();
+        $("#divScoreSheet").show();
 
     }else{
         $("#divappove").hide();
@@ -268,6 +268,16 @@ var Gameid =menu.ID;
             '<div class="col-xs-12 col-md-12"   > <button id="btnSync" class="btn btn-info" onclick="syncscore()" >Sync Data</button></div>' +
 
         '</div>' +
+
+            '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
+            '<div class="col-xs-12 col-md-12"   >' +
+
+                    '<img id="imgscoresheet">' +
+
+            '</div>' +
+
+            '</div>' +
+
 
         '</Div>');
 
