@@ -353,7 +353,7 @@ function loadstats(ID){
 
 function loadinfo_stats(tx) {
 
-    var sql = "select StatsLink from MobileApp_Schedule where ID =" + statid;
+    var sql = "select StatsLink from MobileApp_Results where ID =" + statid;
 
     //alert(sql);
     tx.executeSql(sql, [], loadinfo_stats_success2);
@@ -362,6 +362,7 @@ function loadinfo_stats(tx) {
 function loadinfo_stats_success2(tx, results) {
     var len = results.rows.length;
     var menu = results.rows.item(0);
+
     if(menu.StatsLink != 'null') {
         $('#txtstatlink').val(menu.StatsLink);
     }
