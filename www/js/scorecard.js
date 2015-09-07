@@ -144,7 +144,7 @@ function getqtrs_success(tx, results) {
 
     if(menu.A4th != 0 && menu.H4th != 0) {
         $("#divappove").hide();
-        $("#divScoreSheet").show();
+        $("#divScoreSheet").hide();
 
     }else{
         $("#divappove").hide();
