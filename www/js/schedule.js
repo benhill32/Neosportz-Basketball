@@ -333,6 +333,19 @@ function loadreftosystem(Gameid1){
 
 }
 
+function loadstatssystem(Gameid1){
+    db.transaction(gettokensc, errorCBfunc, successCBfunc);
+
+    passscoretoserver("gameidstats=" + Gameid1 + "&statslink=" + $('#txtstatlink').val() + "&deviceid=" + device.uuid + "&token=" + tokensch)
+    window.setTimeout(function(){
+        window.location = "../pages/schedules.html?id=" + id;
+    }, 1000);
+
+
+
+}
+
+
 function loadref(ID){
 
     refgameid = ID;
@@ -437,6 +450,10 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                 loadreftosystem(menu.ID);
             });
 
+            $("#modelstatsupdate").click(function () {
+
+            });
+
         }else {
             if (allowcancel == 1 && (menu.HomeClubID == Clubedit || menu.AwayClubID == Clubedit)) {
                 if (menu.IsFinalScore == 0) {
@@ -458,6 +475,10 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                     $("#modelfooterupdate").click(function () {
                         loadreftosystem(menu.ID);
                     });
+                    $("#modelstatsupdate").click(function () {
+
+                    });
+
                     $('#divdefault').show();
                     $("#divdefault").click(function () {
                         loaddefaultgames(menu.ID);
