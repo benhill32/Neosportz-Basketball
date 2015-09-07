@@ -162,6 +162,13 @@ function loadarchiveBen() {
 }
 
 
+function benclick() {
+   // $('#mainfore').removeClass('mainforeground');
+  //  $('#mainfore').addClass('mainforeground2');
+    // alert($('#mainfore').attr('class'));
+    $('#indexloadingdata').modal('show');
+
+}
 
 
 
