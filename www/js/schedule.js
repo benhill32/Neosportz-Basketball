@@ -397,7 +397,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
     // alert(("0" + (d.getMonth()+1)).slice(-2));
     $('#Directions').hide();
     $('#divdefault').hide();
-
+    $('#idstatlink').hide();
     if (devicePlatformsch == "Android") {
         $("#socialshare").click(function () {
             loadsocial(menu.ID);
@@ -412,6 +412,11 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
     if (day == d.getDate() && month == ("0" + (d.getMonth()+1)).slice(-2) && year == d.getFullYear()){
 
         if(isadmin==1) {
+
+            $('#idstatlink').show();
+            $("#idstatlink").click(function () {
+
+            });
 
             $('#score').show();
             $('#divdefault').show();
@@ -457,6 +462,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                     $("#divdefault").click(function () {
                         loaddefaultgames(menu.ID);
                     });
+                    $('#idstatlink').show();
                 }
             }
             if (Ref == 1) {
@@ -493,6 +499,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
         $('#score').hide();
         $('#cancell').hide();
         $('#remind').show();
+        $('#idstatlink').hide();
         //$("#remind").click(addreminder(menu.ID,menu.DatetimeStart));
         $("#remind").empty().append('<Div data-toggle="modal" data-target="#basicModalyesno" onclick="createvarforremind(\'' + menu.DatetimeStart + '\',\'' + text + '\')" >  Remind Me</div>');
 
