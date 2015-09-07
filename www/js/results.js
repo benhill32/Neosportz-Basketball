@@ -392,6 +392,36 @@ function resultshowmore(ID,hometeam,awayteam,homescore,awayscore,homeidd,awayidd
 
     db.transaction(getgoals, errorCBfunc, successCBfunc);
 
+
+    db.transaction(getstatslink, errorCBfunc, successCBfunc);
+}
+
+
+function getstatslink(tx){
+
+    var sql = "select StatsLink from MobileApp_Results where ID = " + gameid;
+
+// alert(sql);
+    tx.executeSql(sql, [], getstatslink_success);
+}
+
+function getstatslink_success(tx, results) {
+    var len = results.rows.length;
+
+
+    var menu = results.rows.item(0);
+
+
+    if(len==0){
+        $("#statslink").hide();
+
+    }else{
+        $("#statslink").show();
+        $("#statslink").onclick(URLredirect(menu.StatsLink));
+    }
+
+
+
 }
 
 function getgoals(tx){
