@@ -441,7 +441,7 @@ function getstatslink_success(tx, results) {
     var menu = results.rows.item(0);
 
 
-    alert(menu.StatsLink);
+  // alert(menu.StatsLink);
 
     if(menu.StatsLink=="null"){
         $("#statslink").hide();
