@@ -355,14 +355,14 @@ function loadinfo_stats(tx) {
 
     var sql = "select StatsLink from MobileApp_Results where ID =" + statid;
 
-    //alert(sql);
+    alert(sql);
     tx.executeSql(sql, [], loadinfo_stats_success2);
 }
 
 function loadinfo_stats_success2(tx, results) {
     var len = results.rows.length;
     var menu = results.rows.item(0);
-
+alert(menu.StatsLink);
     if(menu.StatsLink != 'null') {
         $('#txtstatlink').val(menu.StatsLink);
     }
