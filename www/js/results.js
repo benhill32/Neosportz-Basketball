@@ -413,17 +413,11 @@ function getstatslink2(tx){
 function getstatslink_success2(tx, results) {
     var len = results.rows.length;
 
-    alert(len);
+
     var menu = results.rows.item(0);
 
 
-    if(len==0){
-        $("#statslink").hide();
-
-    }else{
-        $("#statslink").show();
-        //   $("#statslink").onclick(URLredirect(menu.StatsLink));
-    }
+    URLredirect(menu.StatsLink);
 
 
 
@@ -443,11 +437,13 @@ function getstatslink(tx){
 function getstatslink_success(tx, results) {
     var len = results.rows.length;
 
-alert(len);
+
     var menu = results.rows.item(0);
 
 
-    if(len==0){
+    alert(menu.StatsLink);
+
+    if(menu.StatsLink=="null"){
         $("#statslink").hide();
 
     }else{
