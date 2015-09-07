@@ -347,7 +347,7 @@ function loadstatssystem(Gameid1){
 }
 
 function loadstats(ID){
-    statid =id;
+    statid =ID;
     db.transaction(loadinfo_stats, errorCBfunc, successCBfunc);
 }
 
