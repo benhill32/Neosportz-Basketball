@@ -272,7 +272,7 @@ var Gameid =menu.ID;
             '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
             '<div class="col-xs-12 col-md-12"   >' +
 
-                  
+                
 
             '</div>' +
 
@@ -281,8 +281,8 @@ var Gameid =menu.ID;
 
         '</Div>');
 
-        var image = document.getElementById('imgscoresheet');
-        image.src = "data:image/jpeg;base64," + menu.Scoresheet;
+      //  var image = document.getElementById('imgscoresheet');
+     //   image.src = "data:image/jpeg;base64," + menu.Scoresheet;
 
         db.transaction(gettoken, errorCBfunc, successCBfunc);
 
