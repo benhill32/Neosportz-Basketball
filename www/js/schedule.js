@@ -14,6 +14,7 @@ var allowscore = 0;
 var allowcancel= 0;
 var Clubedit= 0;
 var Ref= 0;
+var statid = 0;
 var teamfollow = 0;
 var refgameid= 0;
 var remindtext = 0;
@@ -345,6 +346,27 @@ function loadstatssystem(Gameid1){
 
 }
 
+function loadstats(ID){
+    statid =id;
+    db.transaction(loadinfo_stats, errorCBfunc, successCBfunc);
+}
+
+function loadinfo_stats(tx) {
+
+    var sql = "select StatsLink from MobileApp_Schedule where ID =" + statid;
+
+    //alert(sql);
+    tx.executeSql(sql, [], loadinfo_stats_success2);
+}
+
+function loadinfo_stats_success2(tx, results) {
+    var len = results.rows.length;
+    var menu = results.rows.item(0);
+    if(menu.StatsLink != 'null') {
+        $('#txtstatlink').val(menu.StatsLink);
+    }
+}
+
 
 function loadref(ID){
 
@@ -428,7 +450,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
 
             $('#idstatlink').show();
             $("#idstatlink").click(function () {
-
+                loadstats(menu.ID);
             });
 
             $('#score').show();
@@ -451,7 +473,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
             });
 
             $("#modelstatsupdate").click(function () {
-
+                loadstatssystem(menu.ID);
             });
 
         }else {
@@ -476,7 +498,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                         loadreftosystem(menu.ID);
                     });
                     $("#modelstatsupdate").click(function () {
-
+                        loadstatssystem(menu.ID);
                     });
 
                     $('#divdefault').show();
@@ -484,6 +506,9 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                         loaddefaultgames(menu.ID);
                     });
                     $('#idstatlink').show();
+                    $("#idstatlink").click(function () {
+                        loadstats(menu.ID);
+                    });
                 }
             }
             if (Ref == 1) {
