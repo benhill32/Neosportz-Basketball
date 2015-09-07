@@ -144,7 +144,7 @@ function getqtrs_success(tx, results) {
 
     if(menu.A4th != 0 && menu.H4th != 0) {
         $("#divappove").hide();
-        $("#divScoreSheet").show();
+        $("#divScoreSheet").hide();
 
     }else{
         $("#divappove").hide();
@@ -269,16 +269,6 @@ var Gameid =menu.ID;
 
         '</div>' +
 
-            '<div class="row" align="center"  style="margin:0px 0px 10px 0px;">' +
-            '<div class="col-xs-12 col-md-12"   >' +
-
-                    '<img id="imgscoresheet">' +
-
-            '</div>' +
-
-            '</div>' +
-
-
         '</Div>');
 
         var image = document.getElementById('imgscoresheet');
@@ -295,116 +285,11 @@ var Gameid =menu.ID;
 
 }
 
-function takePicture() {
-    navigator.camera.getPicture(onCaptureSuccess, onFail, { quality: 50,
-        destinationType: navigator.camera.DestinationType.DATA_URL,
-
-
-    });
-  //  $('#indexloadingdata').modal('show');
-
-}
 
 function syncscore(){
 
     onDeviceReadyscore();
 }
-function uploadPhoto(imageURI) {
-
-
-
-    var options = new FileUploadOptions();
-    options.fileKey="file";
-    options.fileName="name";
-    options.chunkedMode = false;
-
-    var ft = new FileTransfer();
-    path = imageURI.fullPath,
-    name = imageURI.name;
-    ft.upload(path, "http://bball.neosportz.com/FileUpload.asmx/UploadFile&#8221", win, fail, options);
-
-
-
-}
-
-
-function onCaptureSuccess(imageURI)
-
-{
-
-    try
-
-    {
-
-        $.ajax({
-
-            type: "POST",
-
-        url: "http://bball.neosportz.com/upload.aspx&#8221",
-
-        data: { image: imageURI}
-
-    }).done(function( msg ) {
-
-    $("#imgLoad").attr("src","http://bball.neosportz.com/upload/&#8221" + msg);
-
-        }).fail(function(a,b){
-
-        alert("Failed to save:" + b);
-
-    });
-
-}
-
-catch(ex)
-
-    {
-
-        alert(ex);
-
-    }
-
-}
-
-
-var win = function (r) {
-
-
-    alert('Done!');
-}
-
-var fail = function (error) {
-
-    alert("An error has occurred: Code = " + error.code);
-
-}
-
-
-function onSuccess(imageData) {
-  //  var image = document.getElementById('imgscoresheet');
-  //  image.src = "data:image/jpeg;base64," + imageData;
-   // alert(imageData);
-
-    imagebase64 = imageData;
-
-    alert(imagebase64.length)
-  //  $('#indexloadingdata').modal('show');
-   // alert("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken);
-  //  var response = passscoretoserverscorecard("gameid=" + id + "&scoresheet=" + imageData + "&deviceid=" + deviceIDscorecard + "&token=" + gtoken)
-
-  //  alert(response);
-
-    if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
-        // alert(response);
-      //  onclicksyncloaddata();
-    }
-
-}
-
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
-
 
 function savegame(id){
 
