@@ -17,10 +17,6 @@ function onDeviceReadymainindex() {
 
 
 
-function redirectschedules2(ID){
-
-    window.location = "pages/schedules.html?id=" + ID;
-}
 
 
 
