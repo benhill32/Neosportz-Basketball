@@ -30,6 +30,16 @@ function getMenusch_success(tx, results) {
 
     }
     alert(schstring);
+
+  
+        $(function () {
+            $('#menu').show();
+            $('nav#menu').mmenu();
+        });
+
+
+
+
 }
 
 
