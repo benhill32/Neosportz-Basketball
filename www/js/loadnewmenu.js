@@ -29,6 +29,7 @@ function getMenusch_success(tx, results) {
 
 
     }
+    alert(schstring);
 }
 
 
