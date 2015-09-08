@@ -293,7 +293,8 @@ position: fixed;
 
 .mainheaderimgicon{
 
-    float:left;
+    float:right;
+    margin-right:15px;
     margin-top: 10px;
 
     
@@ -661,7 +662,7 @@ position: fixed;
 #loadnews{
     height: 50px;
     top: 15px;
-    float:left;
+    float:right;
     padding-left: 30px;
     padding-top: 12px;
     padding-right: 30px;
@@ -1250,9 +1251,9 @@ width:75%;
 }
 #showmenu{
    padding-left:15px;
-   float: right;
+   float: left;
     padding-top:25px;
-    width:50px;
+    width:150px;
   z-index: 20;
 }
 #showmenu a,a:active, a:focus{
@@ -1263,8 +1264,9 @@ width:75%;
 
     z-index: 20;
     position: absolute;
-    right: 35px;
+    left: 15px;
     top: 30px;
+    width:150px;
 }
 #showmenumain a,a:active, a:focus{
 
