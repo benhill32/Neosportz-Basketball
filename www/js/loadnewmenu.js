@@ -85,8 +85,7 @@ function getMenustandings_success(tx, results) {
 
 
 
-    alert(resultsstring);
-    alert(standstring);
+
 
         $('#menu').show();
         $("#schedulemenudiv").append(schstring);
