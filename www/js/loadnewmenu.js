@@ -85,6 +85,10 @@ function getMenustandings_success(tx, results) {
 
 
 
+    if(document.getElementById("indexdiv")!=null) {
+
+        $("#menu").show();
+    }
 
 
 
