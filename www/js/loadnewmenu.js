@@ -106,7 +106,7 @@ function redirectstandings(ID){
         window.location = "../pages/standings.html?id=" + ID;
     }else{
 
-        window.location = "/pages/standings.html?id=" + ID;
+        window.location = "pages/standings.html?id=" + ID;
     }
 
 }
@@ -116,7 +116,7 @@ function redirectresults(ID){
         window.location = "../pages/results.html?id=" + ID;
     }else{
 
-        window.location = "/pages/results.html?id=" + ID;
+        window.location = "pages/results.html?id=" + ID;
     }
 }
 
@@ -125,6 +125,6 @@ function redirectschedules2(ID){
     window.location = "../pages/schedules.html?id=" + ID;
     }else{
 
-        window.location = "/pages/schedules.html?id=" + ID;
+        window.location = "pages/schedules.html?id=" + ID;
     }
 }
