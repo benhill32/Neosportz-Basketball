@@ -644,14 +644,14 @@ position: fixed;
 
 #newsmain,a:active, a:focus{
     padding-top: 10px;
-    color: #333 !important;
+   // color: #333 !important;
     text-decoration: none !important;
     padding-bottom: 10px;
 }
 
 #addnewfeed,a:active, a:focus{
     padding-top: 80px;
-    color: #333 !important;
+  //  color: #333 !important;
     text-decoration: none !important;
     padding-bottom: 200px;
     padding-left: 10px;
