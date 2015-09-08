@@ -36,8 +36,8 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"  charset="utf-8"></script>
     <script type="text/javascript" src="js/functions.js"></script>
@@ -65,12 +65,13 @@
 
     </script>
     <script type="text/javascript">
+        $(document).ready(function() {
+            $(function () {
+                $('nav#menu').mmenu();
+            });
 
-        $(function() {
-            $('nav#menu').mmenu();
+
         });
-
-
     </script>
 
 
@@ -132,8 +133,8 @@
 
 
 
-    <div id="showmenumain">
-    <a href="#menu"> <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a></div>
+    <div id="showmenumain" onclick="$('nav#menu').data( 'mmenu' ).open()">
+    <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> </div>
 
 
 

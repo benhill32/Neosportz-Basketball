@@ -1255,6 +1255,7 @@ width:75%;
     padding-top:25px;
     width:150px;
   z-index: 20;
+    color:white;
 }
 #showmenu a,a:active, a:focus{
 
@@ -1267,6 +1268,7 @@ width:75%;
     left: 15px;
     top: 30px;
     width:150px;
+    color:white;
 }
 #showmenumain a,a:active, a:focus{
 
