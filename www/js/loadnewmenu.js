@@ -1,12 +1,15 @@
 document.addEventListener("deviceready", onDeviceReadymainmenu, false);
 var schstring = "";
+var resultsstring = "";
+var standstring = "";
+
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
 
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
-    db.transaction(getMenuresult, errorCBfunc, successCBfunc);
-    db.transaction(getMenustandings, errorCBfunc, successCBfunc);
+
+
 }
 
 function getMenusch(tx) {
@@ -31,17 +34,7 @@ function getMenusch_success(tx, results) {
     }
    // alert(schstring);
 
-
-        $(function () {
-            $('#menu').show();
-            $("#schedulemenudiv").append(schstring);
-            $('nav#menu').mmenu();
-
-        });
-
-
-
-
+    db.transaction(getMenuresult, errorCBfunc, successCBfunc);
 }
 
 
@@ -63,12 +56,12 @@ function getMenuresult_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
-        $('#resultmenudiv').append('<li><a href="#" onclick="redirectresults(' + menu._id + ')">'+ menu.DivisionName + '</a></li>');
+        resultsstring+='<li><a href="#" onclick="redirectresults(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
 
 
     }
 
-
+    db.transaction(getMenustandings, errorCBfunc, successCBfunc);
 }
 
 
@@ -86,9 +79,19 @@ function getMenustandings_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
-        $('#standingsmenudiv').append('<li><a href="#" onclick="redirectstandings(' + menu._id + ')">'+ menu.DivisionName + '</a></li>');
+        standstring +='<li><a href="#" onclick="redirectstandings(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
 
     }
+
+
+    $(function () {
+        $('#menu').show();
+        $("#schedulemenudiv").append(schstring);
+        $("#resultmenudiv").append(resultsstring);
+        $("#standingsmenudiv").append(standstring);
+        $('nav#menu').mmenu();
+
+    });
 
 
 }
@@ -96,15 +99,30 @@ function getMenustandings_success(tx, results) {
 
 function redirectstandings(ID){
 
-    window.location = "../pages/standings.html?id=" + ID;
+    if(document.getElementById("indexdiv")==null) {
+
+        window.location = "../pages/standings.html?id=" + ID;
+    }else{
+
+        window.location = "/pages/standings.html?id=" + ID;
+    }
+
 }
 
 function redirectresults(ID){
+    if(document.getElementById("indexdiv")==null) {
+        window.location = "../pages/results.html?id=" + ID;
+    }else{
 
-    window.location = "../pages/results.html?id=" + ID;
+        window.location = "/pages/results.html?id=" + ID;
+    }
 }
 
 function redirectschedules2(ID){
-
+    if(document.getElementById("indexdiv")==null) {
     window.location = "../pages/schedules.html?id=" + ID;
+    }else{
+
+        window.location = "/pages/schedules.html?id=" + ID;
+    }
 }
