@@ -35,6 +35,7 @@ function getMenusch_success(tx, results) {
         $(function () {
             $('#menu').show();
             $('nav#menu').mmenu();
+            $("#schedulemenudiv").append(schstring);
         });
 
 
