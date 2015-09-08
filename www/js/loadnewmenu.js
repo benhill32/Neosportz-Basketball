@@ -3,7 +3,7 @@ var schstring = "";
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
-
+alert("ds");
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
     db.transaction(getMenuresult, errorCBfunc, successCBfunc);
     db.transaction(getMenustandings, errorCBfunc, successCBfunc);
@@ -20,12 +20,12 @@ function getMenusch(tx) {
 
 
 function getMenusch_success(tx, results) {
-    $('#busy').hide();
+
     var len = results.rows.length;
     // alert(len);
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
-        schstring +='<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
+        schstring += '<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
 
 
     }
