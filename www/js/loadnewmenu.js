@@ -3,7 +3,7 @@ var schstring = "";
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
-alert("ds");
+
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
     db.transaction(getMenuresult, errorCBfunc, successCBfunc);
     db.transaction(getMenustandings, errorCBfunc, successCBfunc);
@@ -31,7 +31,7 @@ function getMenusch_success(tx, results) {
     }
     alert(schstring);
 
-  
+
         $(function () {
             $('#menu').show();
             $('nav#menu').mmenu();
