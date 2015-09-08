@@ -97,11 +97,11 @@ body {
     position: fixed;
     top:0;
    // padding:8px;
-    border-bottom: 1px solid grey;
+ //   border-bottom: 1px solid grey;
     text-align: left;
     font-size:16px;
-    background-color: #339900;
-    color: #ffffff;
+  //  background-color: #339900;
+   // color: #ffffff;
     vertical-align: middle;
     min-height: 60px;
 }
@@ -694,8 +694,7 @@ position: fixed;
     overflow-y: scroll;
    // margin-top: 60px;
     padding-top:60px;
-   background-image: url("../img/floor.png");
-    background-position: center;
+
 
  }
 
@@ -1257,10 +1256,13 @@ width:75%;
     background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE1JREFUeNpi/P//PwOtARMDHQBdLGFBYt+nkR2KjEhxQqvIYaR7cD2glSWMo0mY3DiJo5Edi4ZPEqZ7nMSP5pPRon60qB9NwpQDgAADAMIxHUJvWs/TAAAAAElFTkSuQmCC") no-repeat scroll center center;
 
    float: right;
-    padding-top:45px;
+    padding-top:25px;
     width:50px;
 }
+#showmenu a,a:active, a:focus{
 
+    color: black;
+}
 
 
 .footer

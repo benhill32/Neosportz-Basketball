@@ -48,7 +48,7 @@
     <script type="text/javascript" src="js/CreateOpenDB.js"></script>
     <script type="text/javascript" src="js/mainindex.js"></script>
     <script type="text/javascript" src="js/loaddata.js"></script>
-
+    <script type="text/javascript" src="js/loadnewmenu.js"></script>
 
 
     <script type="text/javascript"  charset="utf-8">
@@ -72,9 +72,6 @@
         $(function() {
             $('nav#menu').mmenu();
         });
-
-        //$('#schedulemenudiv').append('<li><a href="#">test 1</a></li>');
-        $("#schedulemenudiv").append($("<li>").text("Some Text."));
     </script>
 
 
@@ -100,40 +97,33 @@
 <body  onload="onLoad()">
 <nav id="menu" >
     <ul>
-    <li><a href="pages/ScheduleMenu.html">Schedules</a>
-        <ul id="schedulemenudiv">
+        <li><a href="#">Schedules</a>
+            <ul id="schedulemenudiv">
 
-            <!--<li><a href="#about/history">History</a></li>
-            <li><a href="#about/team">The team</a></li>
-            <li><a href="#about/address">Our address</a></li>-->
+                <!--<li><a href="#about/history">History</a></li>
+                <li><a href="#about/team">The team</a></li>
+                <li><a href="#about/address">Our address</a></li>-->
 
-        </ul>
+            </ul>
 
 
-    </li>
+        </li>
 
-    <li><a href="pages/ResultsMenu.html" >Results</a></li>
-
-    <li><a href="pages/StandingMenu.html">Standings</a></li>
-    <li><a href="pages/clubs.html">Clubs</a></li>
-    <li><a href="pages/news.html">News</a></li>
-    <li><a href="pages/settings.html">Settings</a></li>
-    <li><a href="#" onclick="loadarchiveyear2()">Archive</a></li>
-
-        <li><a href="#about">About us</a>
-            <ul>
-                <li><a href="#about/history">History</a></li>
-                <li><a href="#about/team">The team</a>
-                    <ul>
-                        <li><a href="#about/team/management">Management</a></li>
-                        <li><a href="#about/team/sales">Sales</a></li>
-                        <li><a href="#about/team/development">Development</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about/address">Our address</a></li>
+        <li><a href="#" >Results</a>
+            <ul id="resultmenudiv">
             </ul>
         </li>
-</ul>
+
+        <li><a href="#">Standings</a>
+            <ul id="standingsmenudiv">
+            </ul>
+        </li>
+        <li><a href="pages/clubs.html">Clubs</a></li>
+        <li><a href="pages/news.html">News</a></li>
+        <li><a href="pages/settings.html">Settings</a></li>
+        <li><a href="#" onclick="loadarchiveyear2()">Archive</a></li>
+
+    </ul>
 
 </nav>
 
@@ -143,15 +133,11 @@
 <div class="divmainmenu" >
     <div id="backicondiv">
 
+
         &nbsp;
     </div>
-    <div class="mainheaderimgicon"  >
-
-        <img src="img/neosportz.png"  style="vertical-align:middle;height:40px;" align="middle" >
-
-        Neosportz BBall
-    </div>
-    <a href="#menu"> <div id="showmenu"></div></a>
+    <div id="showmenu">
+    <a href="#menu"> <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a></div>
 
 </div>
 
