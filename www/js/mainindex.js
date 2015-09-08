@@ -1,11 +1,11 @@
 var db;
-var deviceIDfunc;
+var deviceIDmain;
 var yearmainindex;
 
 document.addEventListener("deviceready", onDeviceReadymainindex, false);
 
 function onDeviceReadymainindex() {
-    deviceIDfunc = device.uuid;
+    deviceIDmain = device.uuid;
 
 
 
@@ -79,7 +79,7 @@ function hadclubfunction(){
         console.log("Update MobileApp_LastUpdatesec");
     });
     clearcurrentfavteam(344);
-  //  passscoretoserver("Favclub=0&deviceid=" + deviceIDfunc + "&token=" + apptoken)
+  //  passscoretoserver("Favclub=0&deviceid=" + deviceIDmain + "&token=" + apptoken)
 
 
     $('#mainfore').removeClass('mainforeground2');
