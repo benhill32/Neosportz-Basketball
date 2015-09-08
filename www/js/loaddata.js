@@ -127,8 +127,8 @@ function checkdatabaseloaddata(){
         // alert(json);
         if(document.getElementById("indexdiv")!=null) {
             $('#indexloadingdata').modal('hide');
-            $('#mainfore').removeClass('mainforeground');
-            $('#mainfore').addClass('mainforeground2');
+          //  $('#mainfore').removeClass('mainforeground');
+         //   $('#mainfore').addClass('mainforeground2');
             if (document.getElementById("indexdiv") != null) {
                 showdivindex();
             }
@@ -190,8 +190,8 @@ function populateDB1(tx,results) {
   //  alert(row.Count);
     if(row.Count ==0){
       if(document.getElementById("indexdiv")!=null) {
-            $('#mainfore').removeClass('mainforeground');
-            $('#mainfore').addClass('mainforeground2');
+          //  $('#mainfore').removeClass('mainforeground');
+         //   $('#mainfore').addClass('mainforeground2');
             // alert($('#mainfore').attr('class'));
             $('#indexloadingdata').modal('show');
         }
@@ -279,8 +279,8 @@ function getchecksync(tx, results) {
                 if ($("#mainfore").hasClass("mainforeground2")) {
 
                 } else {
-                    $('#mainfore').removeClass('mainforeground');
-                    $('#mainfore').addClass('mainforeground2');
+                  //  $('#mainfore').removeClass('mainforeground');
+                 //   $('#mainfore').addClass('mainforeground2');
                     $('#indexloadingdata').modal('show');
                 }
 

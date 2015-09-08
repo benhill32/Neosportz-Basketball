@@ -81,8 +81,8 @@ function gethasclub_success(tx, results) {
     if(hasclub == 0) {
         //   if(hasclub == 0 && dif > "600000"){
         //  alert($('#mainfore').attr('class'));
-        $('#mainfore').removeClass('mainforeground');
-        $('#mainfore').addClass('mainforeground2');
+     //   $('#mainfore').removeClass('mainforeground');
+     //   $('#mainfore').addClass('mainforeground2');
         // alert($('#mainfore').attr('class'));
         $('#basicModalnofav').modal('show');
        // runadmob();
@@ -145,8 +145,8 @@ function showregion(){
 
     db.transaction(getshowregion, errorCBfunc, successCBfunc);
     $('#basicModalregions').modal('show');
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
+ //   $('#mainfore').removeClass('mainforeground');
+ //   $('#mainfore').addClass('mainforeground2');
 
 }
 
@@ -154,13 +154,13 @@ function showregion(){
 
 function loadarchiveyear2() {
     $('#basicarchivemodel').modal('show');
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
+  //  $('#mainfore').removeClass('mainforeground');
+   // $('#mainfore').addClass('mainforeground2');
     db.transaction(archiveyearben, errorCBfunc, successCBfunc);
 }
 function loadarchiveBen() {
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
+ //   $('#mainfore').removeClass('mainforeground');
+ //   $('#mainfore').addClass('mainforeground2');
     // alert($('#mainfore').attr('class'));
     $('#basicModalnofav').modal('show');
 
@@ -171,7 +171,7 @@ function benclick() {
    // $('#mainfore').removeClass('mainforeground');
   //  $('#mainfore').addClass('mainforeground2');
     // alert($('#mainfore').attr('class'));
-    $('#indexloadingdata').modal('show');
+    $('#basicModalregions').modal('show');
 
 }
 
@@ -180,8 +180,8 @@ function benclick() {
 function loadarchiveyear(){
 
     $('#basicstandingresultmodel').modal('show');
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
+    //$('#mainfore').removeClass('mainforeground');
+ //   $('#mainfore').addClass('mainforeground2');
 
 
 
@@ -382,9 +382,9 @@ function getshowregion_success(tx, results) {
 function chooseregion(ID){
 
     $('#indexloadingdata').modal('show')
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
-    $('#mainbackground').hide();
+  //  $('#mainfore').removeClass('mainforeground');
+  //  $('#mainfore').addClass('mainforeground2');
+ //   $('#mainbackground').hide();
 
     db.transaction(function(tx) {
         tx.executeSql('Update MobileApp_LastUpdatesec set  Region = "' + ID + '"');
@@ -405,8 +405,8 @@ function showclubsfun(){
     $('#basicModalteams').modal('show');
 
 
-    $('#mainfore').removeClass('mainforeground');
-    $('#mainfore').addClass('mainforeground2');
+  //  $('#mainfore').removeClass('mainforeground');
+  //  $('#mainfore').addClass('mainforeground2');
 
 }
 
