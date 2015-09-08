@@ -79,19 +79,22 @@ function getMenustandings_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
-        standstring +='<li><a href="#" onclick="redirectstandings(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
+        standstring +='<li><a href="#" onclick="redirectstandings(' + menu._id + ')">'+ menu.TournamentName + '</a></li>';
 
     }
 
 
-    $(function () {
+
+    alert(resultsstring);
+    alert(standstring);
+
         $('#menu').show();
         $("#schedulemenudiv").append(schstring);
         $("#resultmenudiv").append(resultsstring);
         $("#standingsmenudiv").append(standstring);
         $('nav#menu').mmenu();
 
-    });
+
 
 
 }
