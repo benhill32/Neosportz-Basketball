@@ -40,11 +40,12 @@
 
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"  charset="utf-8"></script>
+    <script type="text/javascript" src="js/loadnewmenu.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/CreateOpenDB.js"></script>
     <script type="text/javascript" src="js/mainindex.js"></script>
     <script type="text/javascript" src="js/loaddata.js"></script>
-    <script type="text/javascript" src="js/loadnewmenu.js"></script>
+
 
 
     <script type="text/javascript"  charset="utf-8">
@@ -72,6 +73,15 @@
 
 
         });
+
+
+
+        $('.dynamic').on('tap',function(){
+
+            $(this).addClass('Selected');
+
+        });
+
     </script>
 
 
@@ -97,10 +107,13 @@
 <body  onload="onLoad()">
 <nav id="menu" >
     <ul>
+
         <li><a href="#" onclick="weblink('index.html')">Home</a></li>
         <li><a href="#">Schedules</a>
             <ul id="schedulemenudiv">
-
+                <script>
+                    $("#schedulemenudiv").append(schstring);
+                </script>
                 <!--<li><a href="#about/history">History</a></li>
                 <li><a href="#about/team">The team</a></li>
                 <li><a href="#about/address">Our address</a></li>-->

@@ -1,5 +1,5 @@
 document.addEventListener("deviceready", onDeviceReadymainmenu, false);
-
+var schstring = "";
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
@@ -25,8 +25,9 @@ function getMenusch_success(tx, results) {
     // alert(len);
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
-        $('#schedulemenudiv').append('<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>');
-        alert('<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>');
+        schstring +='<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
+
+
     }
 }
 
