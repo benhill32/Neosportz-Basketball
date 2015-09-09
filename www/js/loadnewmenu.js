@@ -95,7 +95,9 @@ function getMenustandings_success(tx, results) {
         $("#schedulemenudiv").append(schstring);
         $("#resultmenudiv").append(resultsstring);
         $("#standingsmenudiv").append(standstring);
+    $(function() {
         $('nav#menu').mmenu();
+    });
 
 
 
