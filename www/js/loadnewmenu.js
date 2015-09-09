@@ -148,6 +148,11 @@ function getdataclubs_success(tx, results) {
 
     $("#menu").show();
 
+    $("#schedulemenudiv").empty();
+    $("#resultmenudiv").empty();
+    $("#standingsmenudiv").empty();
+    $("#clubsmenudiv").empty();
+
     $("#schedulemenudiv").append(schstring);
     $("#resultmenudiv").append(resultsstring);
     $("#standingsmenudiv").append(standstring);
@@ -177,7 +182,7 @@ function updatefollowall(ID){
 
         addfavclub();
 
-    db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
 
 
 }
