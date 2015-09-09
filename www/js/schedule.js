@@ -35,7 +35,7 @@ function onDeviceReadysch() {
   db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
    db.transaction(getflitersch, errorCBfunc, successCBfunc);
 
- //   $(".tooltip").draggable("enable");
+    $(".tooltip").draggable("enable");
 
 }
 
