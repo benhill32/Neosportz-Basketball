@@ -151,10 +151,6 @@ function getdataclubs_success(tx, results) {
 
     $("#menu").show();
 
-    $('nav#menu').data('mmenu').bind('closed', function () {
-        console.log('closed');
-    });
-
 
     $("#schedulemenudiv").empty();
     $("#resultmenudiv").empty();
@@ -190,8 +186,8 @@ function updatefollowall(ID){
 
         addfavclub();
 
-
-    db.transaction(getMenusch, errorCBfunc, successCBfunc);
+    location.reload();
+  //  db.transaction(getMenusch, errorCBfunc, successCBfunc);
 
 }
 
