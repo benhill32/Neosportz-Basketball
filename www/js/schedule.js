@@ -340,7 +340,7 @@ function loadstats(ID){
 
 function loadinfo_stats(tx) {
 
-    var sql = "select StatsLink from MobileApp_Results where ID =" + statid;
+    var sql = "select StatsLink from MobileApp_Schedule where ID =" + statid;
 
    // alert(sql);
     tx.executeSql(sql, [], loadinfo_stats_success2,alert("error stat link"));
