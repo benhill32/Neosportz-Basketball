@@ -243,7 +243,7 @@ function loadhistoryall_next_success(tx, results) {
 
     var menu = results.rows.item(0);
     $('#clubhistorydiv').empty();
-    $('#clubhistorydiv').append( '<img src="../img/info.png" height="20"> Club History : ' + menu.name + '');
+    $('#clubhistorydiv').append( '<img src="img/info.png" height="20"> Club History : ' + menu.name + '');
 
     $('#modelhistoryall').empty();
     $('#modelhistoryall').append( '<div>1</div>');
@@ -268,12 +268,12 @@ function loadcontactsall_next(tx) {
 function loadcontactsall_next_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
-//alert(len);
+alert(len);
 
     var menu = results.rows.item(0);
 
     $('#clubcontactdiv').empty();
-    $('#clubcontactdiv').append( '<img src="../img/info.png" height="20"> Club Contact :  ' + menu.Name);
+    $('#clubcontactdiv').append( '<img src="img/info.png" height="20"> Club Contact :  ' + menu.Name);
 
 
     $('#modelcontactall').empty();
