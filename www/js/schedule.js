@@ -63,7 +63,7 @@ function getdatanewssch(tx) {
 }
 
 function getdatanewssch_success(tx, results) {
-    $('#busy').hide();
+
     var len = results.rows.length;
 
 
@@ -145,7 +145,7 @@ function getflitersch(tx) {
 
 
 function getflitersch_success(tx, results) {
-    $('#busy').hide();
+
     var len = results.rows.length;
 
 
@@ -196,7 +196,7 @@ function getdata2(tx) {
 }
 
 function getdata2_success(tx, results) {
-    $('#busy').hide();
+
     var len = results.rows.length;
     listfollow = 0;
 
@@ -308,7 +308,7 @@ function getMenu_success(tx, results) {
 
 
     }
-
+alert("end");
     $('#divcircle').show();
     $('#divcircle').click(function() {
         sendinfotoserver("schedules",id,"0")
