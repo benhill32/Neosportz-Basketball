@@ -308,7 +308,7 @@ function getMenu_success(tx, results) {
 
 
     }
-alert("end");
+
     $('#divcircle').show();
     $('#divcircle').click(function() {
         sendinfotoserver("schedules",id,"0")
