@@ -130,8 +130,8 @@ function getdataclubs_success(tx, results) {
 
         Clubstring+='<li ' + styleall + '><a href="#">'+ imgg + "  " + menu.name + '</a>' +
             '<ul>' +
-            '<li><a href="#" data-toggle="modal" data-target="#basicModalclubhistory" onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
-            '<li><a href="#"  data-toggle="modal" data-target="#basicModalclubContact" onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
+            '<li data-toggle="modal" data-target="#basicModalclubhistory"><a href="#"  onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
+            '<li data-toggle="modal" data-target="#basicModalclubContact"><a href="#"   onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
             '<li><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
             '</ul>' +
             '</li>';
@@ -226,7 +226,7 @@ function loadhistoryall(ID){
 function loadhistoryall_next(tx) {
 
     var sql = "select replace(History, '###$$###', '<br>') as History,name from MobileApp_clubs where ID=" + IDhistall;
-    //  alert(sql);
+      alert(sql);
     tx.executeSql(sql, [], loadhistoryall_next_success);
 }
 
