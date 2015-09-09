@@ -31,9 +31,9 @@ function onDeviceReadysch() {
   //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
   //  console.log("LOCALDB - Database ready");
    //  navigator.geolocation.getCurrentPosition(getgeolocation, onError);
-  // db.transaction(gettokensc, errorCBfunc, successCBfunc);
- //  db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
-  // db.transaction(getflitersch, errorCBfunc, successCBfunc);
+   db.transaction(gettokensc, errorCBfunc, successCBfunc);
+  db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
+   db.transaction(getflitersch, errorCBfunc, successCBfunc);
 
  //   $(".tooltip").draggable("enable");
 
