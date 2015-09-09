@@ -1,4 +1,4 @@
-document.addEventListener("deviceready", onDeviceReadymainmenu, false);
+
 var schstring = "";
 var resultsstring = "";
 var standstring = "";
@@ -7,10 +7,14 @@ var IDhistall = 0;
 var IDconall =0;
 var styleall= "";
 var favidall= 0;
+
+document.addEventListener("deviceready", onDeviceReadymainmenu, false);
+
+
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
-
+alert("start menu");
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
 
 

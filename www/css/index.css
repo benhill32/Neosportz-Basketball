@@ -682,17 +682,17 @@ position: fixed;
 
 
 .mainforeground{
-    width: 100%;
-    height: 100%;
-    /* z-index: 10; */
-    background: rgba(255,255,255,0.75);
-    /* top: 65px; */
-    /* bottom: 60px; */
-    overflow-y: scroll;
-    padding-top: 60px;
-    background-image: url("../img/basketball.jpg");
-    position: absolute;
-
+   //  position: fixed;
+     width:100%;
+  //   height:100%;
+     z-index: 10;
+   // background:#7f7f7f;
+    background:rgba(255,255,255,0.75);
+ //   top: 65px;
+  //  bottom: 60px;
+    overflow-y: hidden;
+   // margin-top: 60px;
+    padding-top:60px;
 
  }
 

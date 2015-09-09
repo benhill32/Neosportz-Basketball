@@ -314,6 +314,7 @@ function getMenu_success(tx, results) {
         sendinfotoserver("schedules",id,"0")
     });
 
+    alert("loaded sch");
 
 
 }

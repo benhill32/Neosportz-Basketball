@@ -34,7 +34,7 @@ function onDeviceReadyloaddata() {
     deviceIDfunc = device.uuid;
     devicePlatformfunc = device.platform;
      getnetworkdetails();
-    $('#busy').hide();
+
 
     document.addEventListener("offline", onOffline, false);
     db.transaction(getresultids, errorCBfunc, successCBfunc);
