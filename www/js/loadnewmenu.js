@@ -170,7 +170,7 @@ function getdataclubs_success(tx, results) {
         $('nav#menu').mmenu().stop();
     });
 
-    alert("create menu");
+   
 }
 
 
