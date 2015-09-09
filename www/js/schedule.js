@@ -26,8 +26,8 @@ document.addEventListener("deviceready", onDeviceReadysch, false);
 var tokensch = 0
 
 function onDeviceReadysch() {
- //   checkonlinesch();
- //   devicePlatformsch = device.platform;
+    checkonlinesch();
+    devicePlatformsch = device.platform;
   //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
   //  console.log("LOCALDB - Database ready");
    //  navigator.geolocation.getCurrentPosition(getgeolocation, onError);
@@ -35,7 +35,7 @@ function onDeviceReadysch() {
   db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
    db.transaction(getflitersch, errorCBfunc, successCBfunc);
 
-    $(".tooltip").draggable("enable");
+ //   $(".tooltip").draggable("enable");
 
 }
 
