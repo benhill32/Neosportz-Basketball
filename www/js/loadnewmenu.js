@@ -6,6 +6,7 @@ var Clubstring = "";
 var IDhistall = 0;
 var IDconall =0;
 var styleall= "";
+var favidall= 0;
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
@@ -122,13 +123,13 @@ function getdataclubs_success(tx, results) {
 
         if(menu.Fav == 1){
             styleall = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
-
+            favidall = menu.ID;
         }else{
             styleall = "";
 
         }
 
-        Clubstring+='<li><a href="#">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
+        Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
             '<ul>' +
             '<li data-toggle="modal" data-target="#basicModalclubhistory"><a href="#"  onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
             '<li data-toggle="modal" data-target="#basicModalclubContact"><a href="#"   onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
@@ -162,7 +163,7 @@ function getdataclubs_success(tx, results) {
     $("#standingsmenudiv").append(standstring);
     $("#clubsmenudiv").append(Clubstring);
     $(function() {
-        $('nav#menu').mmenu();
+        $('nav#menu').mmenu().stop();
     });
 
 
@@ -187,6 +188,10 @@ function updatefollowall(ID){
         addfavclub();
 
  //   location.reload();
+
+$("#clubid" + favidall).text();
+
+
 
 
 }
