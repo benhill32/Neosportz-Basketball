@@ -772,6 +772,17 @@ position: fixed;
     clear: both;
 
 }
+#modelcontactall{
+    padding: 10px !important;
+    -webkit-overflow-scrolling:touch
+overflow-y: scroll !important;
+}
+
+#modelhistoryall{
+    padding: 10px !important;
+    -webkit-overflow-scrolling:touch
+overflow-y: scroll !important;
+}
 #modelhistory{
     padding: 10px !important;
     -webkit-overflow-scrolling:touch
