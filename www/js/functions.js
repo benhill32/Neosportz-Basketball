@@ -102,7 +102,7 @@ function clearfavteamnow(){
 function clearfavteam(){
 
     db.transaction(function(tx) {
-        tx.executeSql('Update MobileApp_clubs set Fav = 0');
+        tx.executeSql('Update MobileApp_clubs set Fav = 0,Follow = 0');
         console.log("Update INTO MobileApp_clubs");
     });
 

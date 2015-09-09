@@ -177,7 +177,7 @@ function getdataclubs_success(tx, results) {
 function updatefollowall(ID){
 
 
-        clearcurrentfavteam(ID)
+    clearfavteam()
 
         db.transaction(function(tx) {
             tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 0');
@@ -187,7 +187,7 @@ function updatefollowall(ID){
 
         addfavteam(ID);
 
-        clearotherfavteam(ID)
+
 
         addfavclub();
 
