@@ -66,10 +66,11 @@ function getdatanewssch_success(tx, results) {
 
     var len = results.rows.length;
 alert(len);
-    alert("teamfollow : " +  menu.ID)
-    if(len != 0) {
+
+    if(len == 1) {
         var menu = results.rows.item(0);
         teamfollow = menu.ID;
+        alert("teamfollow : " +  menu.ID)
     }
 }
 
@@ -318,22 +319,7 @@ function getMenu_success(tx, results) {
 
 
 }
-function loadreftosystem(Gameid1){
-    db.transaction(gettokensc, errorCBfunc, successCBfunc);
 
-    db.transaction(function (tx) {
-        tx.executeSql('Update MobileApp_Schedule set RefName = "' + $('#txtrefname').val() + '" where ID = ' + Gameid1);
-        console.log("Update INTO MobileApp_Results");
-    });
-
-    passscoretoserver("gameidref=" + Gameid1 + "&refname=" + $('#txtrefname').val() + "&deviceid=" + device.uuid + "&token=" + tokensch)
-    window.setTimeout(function(){
-        window.location = "../pages/schedules.html?id=" + id;
-    }, 1000);
-
-
-
-}
 
 function loadstatssystem(Gameid1){
     db.transaction(gettokensc, errorCBfunc, successCBfunc);
@@ -357,7 +343,7 @@ function loadinfo_stats(tx) {
     var sql = "select StatsLink from MobileApp_Results where ID =" + statid;
 
    // alert(sql);
-    tx.executeSql(sql, [], loadinfo_stats_success2);
+    tx.executeSql(sql, [], loadinfo_stats_success2,alert("error stat link"));
 }
 
 function loadinfo_stats_success2(tx, results) {
@@ -370,27 +356,7 @@ function loadinfo_stats_success2(tx, results) {
 }
 
 
-function loadref(ID){
 
-    refgameid = ID;
-    db.transaction(loadinfo_ref, errorCBfunc, successCBfunc);
-}
-
-function loadinfo_ref(tx) {
-
-    var sql = "select RefName from MobileApp_Schedule where ID =" + refgameid;
-
-     //alert(sql);
-    tx.executeSql(sql, [], loadinfo_ref_success2);
-}
-
-function loadinfo_ref_success2(tx, results) {
-    var len = results.rows.length;
-    var menu = results.rows.item(0);
-    if(menu.RefName != 'null') {
-        $('#txtrefname').val(menu.RefName);
-    }
-}
 
 
 function loadinfo(ID) {
@@ -466,13 +432,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
             });
             $('#cancell').show();
             $('#divmainheadercancel').empty().append('Do you want to cancel this game </br> ' + text2)
-            $('#referee').show();
-            $("#referee").click(function () {
-                loadref(menu.ID);
-            });
-            $("#modelfooterupdate").click(function () {
-                loadreftosystem(menu.ID);
-            });
+
 
             $("#modelstatsupdate").click(function () {
                 loadstatssystem(menu.ID);
@@ -492,13 +452,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                     $("#score").click(function () {
                         window.open("scorecard.html?ID=" + IDhist + "&divID=" + id);
                     });
-                    $('#referee').show();
-                    $("#referee").click(function () {
-                        loadref(menu.ID);
-                    });
-                    $("#modelfooterupdate").click(function () {
-                        loadreftosystem(menu.ID);
-                    });
+
                     $("#modelstatsupdate").click(function () {
                         loadstatssystem(menu.ID);
                     });
@@ -522,13 +476,7 @@ var socialIOS = menu.DatetimeStart +  "||" + menu.HomeName + ' vs ' + menu.AwayN
                     });
                     $('#cancell').show();
                     $('#divmainheadercancel').empty().append('Do you want to cancel this game </br> ' + text2)
-                    $('#referee').show();
-                    $("#referee").click(function () {
-                        loadref(menu.ID);
-                    });
-                    $("#modelfooterupdate").click(function () {
-                        loadreftosystem(menu.ID);
-                    });
+
                     $('#divdefault').show();
                     $("#divdefault").click(function () {
                         loaddefaultgames(menu.ID);
