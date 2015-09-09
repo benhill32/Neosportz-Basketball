@@ -41,7 +41,7 @@ function onDeviceReadysch() {
 
 function gettokensc(tx) {
     var sql = "select token from MobileApp_LastUpdatesec";
-    //  alert(sql);
+      alert(sql);
     tx.executeSql(sql, [], gettokensc_success);
 }
 
@@ -51,14 +51,14 @@ function gettokensc_success(tx, results) {
     var menu = results.rows.item(0);
 
     tokensch = menu.token;
-
+alert("token : " +  tokensch)
 }
 
 
 
 function getdatanewssch(tx) {
     var sql = "select ID from MobileApp_clubs where Fav = 1";
-    //alert(sql);
+    alert(sql);
     tx.executeSql(sql, [], getdatanewssch_success);
 }
 
@@ -66,7 +66,7 @@ function getdatanewssch_success(tx, results) {
 
     var len = results.rows.length;
 
-
+    alert("teamfollow : " +  menu.ID)
     if(len != 0) {
         var menu = results.rows.item(0);
         teamfollow = menu.ID;

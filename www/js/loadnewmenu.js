@@ -14,7 +14,7 @@ document.addEventListener("deviceready", onDeviceReadymainmenu, false);
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
-alert("start menu");
+//alert("start menu");
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
 
 
