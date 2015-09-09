@@ -256,8 +256,12 @@ function loadhistoryall_next_success(tx, results) {
 
     var menu = results.rows.item(0);
     $('#clubhistorydiv').empty();
-    $('#clubhistorydiv').append( '<img src="img/info.png" height="20"> Club History : ' + menu.name + '');
+    if(document.getElementById("indexdiv")==null) {
+        $('#clubhistorydiv').append('<img src="../img/info.png" height="20"> Club History : ' + menu.name + '');
+    }else{
 
+        $('#clubhistorydiv').append('<img src="img/info.png" height="20"> Club History : ' + menu.name + '');
+    }
     $('#modelhistoryall').empty();
     $('#modelhistoryall').append( '<div>1</div>');
     $('#modelhistoryall').empty();
@@ -286,8 +290,11 @@ function loadcontactsall_next_success(tx, results) {
     var menu = results.rows.item(0);
 
     $('#clubcontactdiv').empty();
-    $('#clubcontactdiv').append( '<img src="img/info.png" height="20"> Club Contact :  ' + menu.name);
-
+    if(document.getElementById("indexdiv")==null) {
+        $('#clubcontactdiv').append('<img src="../img/info.png" height="20"> Club Contact :  ' + menu.name);
+    }else{
+        $('#clubcontactdiv').append('<img src="img/info.png" height="20"> Club Contact :  ' + menu.name);
+    }
 
     $('#modelcontactall').empty();
     $('#modelcontactall').append( '<div>' + menu.Contacts + '</div>');
