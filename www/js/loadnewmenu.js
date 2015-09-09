@@ -186,7 +186,7 @@ function updatefollowall(ID){
 
         addfavclub();
 
-    location.reload();
+ //   location.reload();
 
 
 }
