@@ -79,7 +79,7 @@ function hadclubfunction(){
         console.log("Update MobileApp_LastUpdatesec");
     });
     clearcurrentfavteam(344);
-  //  passscoretoserver("Favclub=0&deviceid=" + deviceIDmain + "&token=" + apptoken)
+  //  passscoretoserver("Favclub=0&deviceid=" + deviceIDmainFb + "&token=" + apptoken)
 
 
     $('#mainfore').removeClass('mainforeground2');
@@ -151,7 +151,7 @@ function benclick() {
    // $('#mainfore').removeClass('mainforeground');
   //  $('#mainfore').addClass('mainforeground2');
     // alert($('#mainfore').attr('class'));
-    $('#basicModalregions').modal('show');
+    $('#basicModalclubContact').modal('show');
 
 }
 

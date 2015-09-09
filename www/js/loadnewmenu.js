@@ -146,7 +146,15 @@ function getdataclubs_success(tx, results) {
         //$("#menu").show();
     }
 
+
+
+
     $("#menu").show();
+
+    $('nav#menu').data('mmenu').bind('closed', function () {
+        console.log('closed');
+    });
+
 
     $("#schedulemenudiv").empty();
     $("#resultmenudiv").empty();
