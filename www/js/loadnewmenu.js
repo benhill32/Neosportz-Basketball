@@ -187,7 +187,7 @@ function updatefollowall(ID){
         addfavclub();
 
     location.reload();
-  //  db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
 
 }
 
@@ -257,7 +257,7 @@ function loadhistoryall_next_success(tx, results) {
 
 function loadcontactsall(ID){
     IDconall = ID;
-    // db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
+
     db.transaction(loadcontactsall_next, errorCBfunc, successCBfunc);
 
 }
@@ -265,19 +265,19 @@ function loadcontactsall(ID){
 function loadcontactsall_next(tx) {
 
     var sql = "select replace(Contacts, '###$$###', '<br>') as Contacts,name from MobileApp_clubs where ID=" + IDconall;
-      alert(sql);
+    //  alert(sql);
     tx.executeSql(sql, [], loadcontactsall_next_success);
 }
 
 function loadcontactsall_next_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
-alert(len);
+//alert(len);
 
     var menu = results.rows.item(0);
 
     $('#clubcontactdiv').empty();
-    $('#clubcontactdiv').append( '<img src="img/info.png" height="20"> Club Contact :  ' + menu.Name);
+    $('#clubcontactdiv').append( '<img src="img/info.png" height="20"> Club Contact :  ' + menu.name);
 
 
     $('#modelcontactall').empty();
