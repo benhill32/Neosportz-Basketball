@@ -40,7 +40,9 @@
          });
      });
 
-
+     $(function() {
+         $('nav#menu').mmenu().stop();
+     });
 
  </script>
 
@@ -181,7 +183,7 @@
     <div class="modal" id="basicModal" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-footer" id="remind" data-dismiss="modal" align="center">
+                <div class="modal-body" id="remind" data-dismiss="modal" align="center">
 
                 </div>
                 <div class="modal-footer" id="socialshare" data-dismiss="modal" align="center">

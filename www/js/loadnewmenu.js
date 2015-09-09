@@ -147,7 +147,7 @@ function getdataclubs_success(tx, results) {
         //$("#menu").show();
     }
 
-
+alert("create menu");
 
 
     $("#menu").show();
