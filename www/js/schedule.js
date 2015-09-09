@@ -26,16 +26,16 @@ document.addEventListener("deviceready", onDeviceReadysch, false);
 var tokensch = 0
 
 function onDeviceReadysch() {
-    checkonlinesch();
-    devicePlatformsch = device.platform;
+ //   checkonlinesch();
+ //   devicePlatformsch = device.platform;
   //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
   //  console.log("LOCALDB - Database ready");
    //  navigator.geolocation.getCurrentPosition(getgeolocation, onError);
-   // db.transaction(gettokensc, errorCBfunc, successCBfunc);
-  //  db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
-  //  db.transaction(getflitersch, errorCBfunc, successCBfunc);
+  // db.transaction(gettokensc, errorCBfunc, successCBfunc);
+ //  db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
+  // db.transaction(getflitersch, errorCBfunc, successCBfunc);
 
-    $(".tooltip").draggable("enable");
+ //   $(".tooltip").draggable("enable");
 
 }
 
@@ -54,8 +54,6 @@ function gettokensc_success(tx, results) {
 //alert("token : " +  tokensch)
 }
 
-
-
 function getdatanewssch(tx) {
     var sql = "select ID from MobileApp_clubs where Fav = 1";
   //  alert(sql);
@@ -73,8 +71,6 @@ function getdatanewssch_success(tx, results) {
      //   alert("teamfollow : " +  menu.ID)
     }
 }
-
-
 
 function checkonlinesch(){
 
