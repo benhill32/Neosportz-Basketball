@@ -87,10 +87,10 @@ function getMenustandings_success(tx, results) {
 
     if(document.getElementById("indexdiv")!=null) {
 
-        $("#menu").show();
+        //$("#menu").show();
     }
 
-
+    $("#menu").show();
 
         $("#schedulemenudiv").append(schstring);
         $("#resultmenudiv").append(resultsstring);
