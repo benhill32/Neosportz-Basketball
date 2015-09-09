@@ -189,7 +189,7 @@ function updatefollowall(ID){
 
  //   location.reload();
 
-$("#clubid" + favidall).text();
+$("#clubmenu" + favidall).text();
 
 
 
