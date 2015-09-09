@@ -177,6 +177,8 @@ function updatefollowall(ID){
 
         addfavclub();
 
+    db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
 
 }
 
