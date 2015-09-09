@@ -12,6 +12,12 @@ function onDeviceReadymainmenu() {
 
 }
 
+function closemenu(){
+
+    $("#menu").hide();
+}
+
+
 function getMenusch(tx) {
 
 
