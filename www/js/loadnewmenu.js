@@ -121,15 +121,18 @@ function getdataclubs_success(tx, results) {
         }
 
         if(menu.Fav == 1){
-        var styleall = "style='background-color:#FFFFCC;'";
+            styleall = "style='background-color:#FFFFCC;'";
+
+        }else{
+            styleall = "";
 
         }
 
-        Clubstring+='<li><a href="#">'+ imgg + "  " + menu.name + '</a>' +
+        Clubstring+='<li ' + styleall + '><a href="#">'+ imgg + "  " + menu.name + '</a>' +
             '<ul>' +
-            '<li ' + styleall + '><a href="#" data-toggle="modal" data-target="#basicModalclubhistory" onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
-            '<li ' + styleall + '><a href="#"  data-toggle="modal" data-target="#basicModalclubContact" onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
-            '<li ' + styleall + '><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
+            '<li><a href="#" data-toggle="modal" data-target="#basicModalclubhistory" onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
+            '<li><a href="#"  data-toggle="modal" data-target="#basicModalclubContact" onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
+            '<li><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
             '</ul>' +
             '</li>';
 
