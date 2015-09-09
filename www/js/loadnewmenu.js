@@ -187,9 +187,13 @@ function updatefollowall(ID){
 
         addfavclub();
 
- //   location.reload();
 
-$("#clubmenu" + favidall).text();
+    window.setTimeout(function(){
+        window.location.reload();
+    }, 1500);
+
+
+
 
 
 
