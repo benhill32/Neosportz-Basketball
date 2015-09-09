@@ -226,7 +226,7 @@ function loadhistoryall(ID){
 function loadhistoryall_next(tx) {
 
     var sql = "select replace(History, '###$$###', '<br>') as History,name from MobileApp_clubs where ID=" + IDhistall;
-      alert(sql);
+    //  alert(sql);
     tx.executeSql(sql, [], loadhistoryall_next_success);
 }
 
@@ -235,8 +235,8 @@ function loadhistoryall_next_success(tx, results) {
     var len = results.rows.length;
 
     var menu = results.rows.item(0);
-    $('#modelhistoryall').empty();
-    $('#modelhistoryall').append( '<img src="../img/info.png" height="20"> Club History : ' + menu.name + '');
+    $('#clubhistorydiv').empty();
+    $('#clubhistorydiv').append( '<img src="../img/info.png" height="20"> Club History : ' + menu.name + '');
 
     $('#modelhistoryall').empty();
     $('#modelhistoryall').append( '<div>1</div>');
@@ -254,7 +254,7 @@ function loadcontactsall(ID){
 function loadcontactsall_next(tx) {
 
     var sql = "select replace(Contacts, '###$$###', '<br>') as Contacts,name from MobileApp_clubs where ID=" + IDconall;
-    //  alert(sql);
+      alert(sql);
     tx.executeSql(sql, [], loadcontactsall_next_success);
 }
 
