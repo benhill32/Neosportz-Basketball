@@ -5,6 +5,7 @@ var standstring = "";
 var Clubstring = "";
 var IDhistall = 0;
 var IDconall =0;
+var styleall= "";
 function onDeviceReadymainmenu() {
     deviceIDfunc = device.uuid;
 
@@ -103,7 +104,7 @@ function getMenustandings_success(tx, results) {
 
 function getdataclubs(tx) {
 
-    var sql = "select ID,_id ,name,UpdateDateUTC ,Base64,replace(History, '###$$###', '<br>') as History,replace(Contacts, '###$$###', '<br>') as Contacts,UpdateSecondsUTC,Color from MobileApp_clubs order by name";
+    var sql = "select ID,_id ,name,UpdateDateUTC ,Base64,replace(History, '###$$###', '<br>') as History,replace(Contacts, '###$$###', '<br>') as Contacts,UpdateSecondsUTC,Color,Fav from MobileApp_clubs order by name";
     //alert(sql);
     tx.executeSql(sql, [], getdataclubs_success);
 }
@@ -119,12 +120,16 @@ function getdataclubs_success(tx, results) {
             imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
         }
 
+        if(menu.Fav == 1){
+        var styleall = "style='background-color:#FFFFCC;'";
+
+        }
 
         Clubstring+='<li><a href="#">'+ imgg + "  " + menu.name + '</a>' +
             '<ul>' +
-            '<li><a href="#" data-toggle="modal" data-target="#basicModalclubhistory" onclick="loadhistory(' + menu.ID + ')">Club History</a></li>' +
-            '<li><a href="#"  data-toggle="modal" data-target="#basicModalclubContact" onclick="loadcontacts(' + menu.ID + ')">Club Contacts</a></li>' +
-            '<li><a href="#">Set as Favourite</a></li>' +
+            '<li ' + styleall + '><a href="#" data-toggle="modal" data-target="#basicModalclubhistory" onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
+            '<li ' + styleall + '><a href="#"  data-toggle="modal" data-target="#basicModalclubContact" onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
+            '<li ' + styleall + '><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
             '</ul>' +
             '</li>';
 
@@ -151,6 +156,26 @@ function getdataclubs_success(tx, results) {
 
 }
 
+
+function updatefollowall(ID){
+
+
+        clearcurrentfavteam(ID)
+
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 0');
+            console.log("Update MobileApp_LastUpdatesec");
+        });
+
+
+        addfavteam(ID);
+
+        clearotherfavteam(ID)
+
+        addfavclub();
+
+
+}
 
 
 
