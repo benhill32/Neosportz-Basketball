@@ -320,7 +320,7 @@ function errorclosemodel(){
 }
 
 function closemodel(){
-    alert("close");
+   // alert("close");
 
     $('#indexloadingdata').modal('hide');
 
