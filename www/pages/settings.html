@@ -31,6 +31,11 @@
 
     }
 
+    #indexloadingdata .modal-content{
+        width:20%;
+
+    }
+
 </style>
     <script type="text/javascript">
 
@@ -85,10 +90,10 @@
 </div>
 <div class="container-fluid">
     <div class="modal" id="indexloadingdata" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" align="center">
+            <div class="modal-content" align="center">
                 <div class="modal-body" align="center">
-                    <img src="../img/ajax-loader.gif">
+                    <img src="../img/ajax-loader.gif" class="img-responsive">
                 </div>
 
             </div>
@@ -97,6 +102,7 @@
 
         </div>
     </div>
+
     <div class="modal" id="basicModalregions2" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -182,9 +188,9 @@
 
 
 </div>
-<div class="footer">
+<div class="footer"  data-toggle="modal" data-target="">
     <img src="../img/neocom.jpg" Height="50px" onclick="URLredirect('http://www.neocom.co.nz')">
-    <img src="../img/Loading.gif" id="busy" align="right"  height="40px" >
+
 </div>
 
 </body>
