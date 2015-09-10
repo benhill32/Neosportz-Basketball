@@ -214,8 +214,8 @@ function populateDB1(tx,results) {
              tx.executeSql(sql, [], getchecksync,errorCBfunc);
         }else{
             $('#indexloadingdata').modal('hide')
-            $('#mainfore').removeClass('mainforeground2');
-            $('#mainfore').addClass('mainforeground');
+          //  $('#mainfore').removeClass('mainforeground2');
+          //  $('#mainfore').addClass('mainforeground');
           //  window.plugins.toast.showShortCenter('Sorry couldnt update Server No Internet', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
         }
@@ -316,8 +316,8 @@ function getchecksync(tx, results) {
 }
 
 function errorclosemodel(){
-    $('#mainfore').removeClass('mainforeground2');
-    $('#mainfore').addClass('mainforeground');
+   // $('#mainfore').removeClass('mainforeground2');
+   // $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
@@ -327,8 +327,8 @@ function errorclosemodel(){
 }
 
 function closemodel(){
-    $('#mainfore').removeClass('mainforeground2');
-    $('#mainfore').addClass('mainforeground');
+  //  $('#mainfore').removeClass('mainforeground2');
+  //  $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
@@ -350,8 +350,8 @@ function closemodelarchive(){
 }
 
 function closemodelRegion(){
-    $('#mainfore').removeClass('mainforeground2');
-    $('#mainfore').addClass('mainforeground');
+  //  $('#mainfore').removeClass('mainforeground2');
+ //   $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
