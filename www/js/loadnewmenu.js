@@ -9,6 +9,7 @@ var styleall= "";
 var favidall= 0;
 var networkconall = "";
 var wifiallset = 0;
+var regionID = 0;
 document.addEventListener("deviceready", onDeviceReadymainmenu, false);
 
 
@@ -172,7 +173,100 @@ function getdataclubs_success(tx, results) {
         //$("#menu").show();
     }
 
+    db.transaction(getsyncdateall, errorCBfunc, successCBfunc);
 
+
+
+
+
+}
+
+function getsyncdateall(tx) {
+    var sql = "select Datesecs, syncwifi,Region from MobileApp_LastUpdatesec";
+    //  alert(sql);
+    tx.executeSql(sql, [], getsyncdateall_success2);
+}
+
+function getsyncdateall_success2(tx, results) {
+    onOfflineall();
+
+    var len = results.rows.length;
+
+    var menu = results.rows.item(0);
+    //   alert(menu.Datesecs);
+    var dateme = new Date((menu.Datesecs)*1000);
+    var wifi = menu.syncwifi;
+    wifiallset = wifi;
+    var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+    regionID =menu.Region;
+
+
+
+    $('#lastsyncdate').empty();
+    if(dateme.getFullYear() != 1970) {
+        $('#lastsyncdate').append("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
+    }
+    console.log("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2) );
+
+
+    if((wifi ==1 &&  networkconall==2) || ((wifi ==0 &&  networkconall!=0))){
+        $("#settingdeleteall").css('color', '#333');
+        $("#settingsync").css('color', '#333');
+    }else{
+        $("#settingdeleteall").css('color', 'grey');
+        $("#settingsync").css('color', 'grey');
+    }
+
+    if(wifi==1) {
+        $('#btn2').removeClass("btn btn-xs btn-primary active");
+        $('#btn1').removeClass("btn btn-xs btn-default")
+        $('#btn2').addClass("btn btn-xs btn-default");
+        $('#btn1').addClass("btn btn-xs btn-primary active");
+
+    }else if(wifi==0) {
+        $('#btn1').removeClass("btn btn-xs btn-primary active");
+        $('#btn2').removeClass("btn btn-xs btn-default")
+        $('#btn1').addClass("btn btn-xs btn-default");
+        $('#btn2').addClass("btn btn-xs btn-primary active");
+
+    }
+
+    db.transaction(getregionName2all, errorCBfunc, successCBfunc);
+
+    $('#busy').hide();
+
+
+}
+
+
+
+function getregionName2all(tx) {
+
+    var sql = "select Name from MobileRegion where ID=" + regionID;
+    //   alert(sql);
+    tx.executeSql(sql, [], getregionName2all_success);
+}
+
+function getregionName2all_success(tx, results) {
+
+    var len = results.rows.length;
+
+    var menu = results.rows.item(0);
+    $('#regionlbl').empty();
+
+    $('#regionlbl').append(menu.Name);
 
 
     $("#menu").show();
@@ -195,12 +289,13 @@ function getdataclubs_success(tx, results) {
     });
 
 
+
 }
 
 
 function chkmobiledataall(id){
     onOfflineall();
-alert(id);
+
     if(id=="btn1")
     {
 
