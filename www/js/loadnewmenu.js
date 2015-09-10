@@ -476,6 +476,8 @@ function loadcontactsall_next_success(tx, results) {
 }
 
 
+
+
 function cleardata4Changeregaionall(){
 
     onOfflineall();
