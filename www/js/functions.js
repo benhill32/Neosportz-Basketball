@@ -341,7 +341,7 @@ function getregionsdata(tx, results) {
 
 
 function sendinfotoserver(type,division,club){
-
+    checkupdatesnews = 1;
 
     typesend = type;
     divisionsend = division;

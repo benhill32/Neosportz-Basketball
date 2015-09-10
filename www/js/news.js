@@ -10,6 +10,7 @@ var sponsorexist = 0;
 var ii = 0;
 var nospor = 0;
 var socialurl = "";
+var checkupdatesnews = 0;
 document.addEventListener("deviceready", onDeviceReadynews, false);
 
 function onDeviceReadynews() {
@@ -256,7 +257,7 @@ function getnewfeed_success(tx, results) {
         $('#divcircle').click(function() {
             sendinfotoserver("newsfeed","0",clubidtop)
         });
-
+        checkupdatesnews = 0;
         db.transaction(getsponsors, errorCBfunc, successCBfunc);
 
     }else{
