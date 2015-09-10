@@ -320,6 +320,7 @@ function errorclosemodel(){
 }
 
 function closemodel(){
+    alert("close");
   //  $('#mainfore').removeClass('mainforeground2');
   //  $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
