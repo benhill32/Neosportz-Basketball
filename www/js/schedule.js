@@ -292,17 +292,17 @@ function getMenu_success(tx, results) {
 
                     '<div class="panel-heading">' +
                     '<div class="row">' +
-                    '<div class="col-xs-8 col-md-8">' + menu.HomeName + ' vs ' + menu.AwayName  + '</div>' +
+                    '<div class="col-xs-8 col-md-8"  align="left">' + menu.HomeName + ' vs ' + menu.AwayName  + '</div>' +
                     '<div class="col-xs-4 col-md-4" onclick="loadinfo(' + menu.ID + ')" data-toggle="modal" data-target="#basicModal"><img height="30px" class="imagesch"  align="right" ></div>' +
                     '</div>' +
                     '<div class="row">' +
-                    '<div class="col-xs-12 col-md-12 size11">' + ampm + '  ' + day + '/' +  month + '/' + year + '</div>' +
+                    '<div class="col-xs-12 col-md-12 size11"   align="left">' + ampm + '  ' + day + '/' +  month + '/' + year + '</div>' +
                     '</div>' +
                     '<div class="row">' +
-                    '<div class="col-xs-12 col-md-12 size11">' + menu.TournamentName + '</div>' +
+                    '<div class="col-xs-12 col-md-12 size11"   align="left">' + menu.TournamentName + '</div>' +
                     '</div>' +
                     '<div class="row">' +
-                    '<div class="col-xs-12 col-md-12 size11">' + menu.Field + '</div>' +
+                    '<div class="col-xs-12 col-md-12 size11"   align="left">' + menu.Field + '</div>' +
                     '</div>' +
                     '</div>' +
                     '</div>' +
@@ -318,17 +318,17 @@ function getMenu_success(tx, results) {
 
                 '<div class="panel-heading">' +
                 '<div class="row">' +
-                '<div class="col-xs-8 col-md-8">' + menu.HomeName + ' vs ' + menu.AwayName  + '</div>' +
+                '<div class="col-xs-8 col-md-8"   align="left">' + menu.HomeName + ' vs ' + menu.AwayName  + '</div>' +
                 '<div class="col-xs-4 col-md-4"></div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-xs-12 col-md-12 size11">' + ampm + '  ' + day + '/' +  month + '/' + year + '</div>' +
+                '<div class="col-xs-12 col-md-12 size11"   align="left">' + ampm + '  ' + day + '/' +  month + '/' + year + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-xs-12 col-md-12 size11">' + menu.TournamentName + ' ' + ' Cancelled ' + '</div>' +
+                '<div class="col-xs-12 col-md-12 size11"   align="left">' + menu.TournamentName + ' ' + ' Cancelled ' + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-xs-12 col-md-12 size11">' + menu.Field + '</div>' +
+                '<div class="col-xs-12 col-md-12 size11"   align="left">' + menu.Field + '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
