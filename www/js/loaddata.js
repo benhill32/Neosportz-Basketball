@@ -337,7 +337,7 @@ function closemodel(){
 
 function getsyncdateload(tx) {
     var sql = "select Datesecs, syncwifi,Region from MobileApp_LastUpdatesec";
-      alert(sql);
+    //  alert(sql);
     tx.executeSql(sql, [], getsyncdateload_success2);
 }
 
@@ -366,7 +366,7 @@ function getsyncdateload_success2(tx, results) {
     month[11] = "Dec";
 
 
-    alert("lastsyncdate");
+ //   alert("lastsyncdate");
 
     $('#lastsyncdate').empty();
     if(dateme.getFullYear() != 1970) {
