@@ -321,24 +321,23 @@ function errorclosemodel(){
 
 function closemodel(){
     alert("close");
-  //  $('#mainfore').removeClass('mainforeground2');
-  //  $('#mainfore').addClass('mainforeground');
+
     $('#indexloadingdata').modal('hide');
-    if (document.getElementById("indexdiv") != null) {
-        showdivindex();
-    }
+
 
 
     window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
-    randomfunctions();
     db.transaction(getsyncdateload, errorCBfunc, successCBfunc);
+
+
+
 
 }
 
 
 function getsyncdateload(tx) {
     var sql = "select Datesecs, syncwifi,Region from MobileApp_LastUpdatesec";
-    //  alert(sql);
+      alert(sql);
     tx.executeSql(sql, [], getsyncdateload_success2);
 }
 
@@ -373,7 +372,7 @@ function getsyncdateload_success2(tx, results) {
     if(dateme.getFullYear() != 1970) {
         $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
     }
-
+    randomfunctions();
 }
 
 
@@ -384,9 +383,7 @@ function getsyncdateload_success2(tx, results) {
 function closemodelarchive(){
 
     $('#indexloadingdata').modal('hide');
-    if (document.getElementById("indexdiv") != null) {
-        showdivindex();
-    }
+
     window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
 
@@ -398,9 +395,7 @@ function closemodelRegion(){
   //  $('#mainfore').removeClass('mainforeground2');
  //   $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
-    if (document.getElementById("indexdiv") != null) {
-        showdivindex();
-    }
+
   //  window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     showregion();
 
@@ -410,9 +405,7 @@ function reloadindividual(){
 
     $('#indexloadingdata').modal('hide');
 
-    if (document.getElementById("indexdiv") != null) {
-        showdivindex();
-    }
+
     if (document.getElementById("newsmain") != null) {
         $.mobile.loading().hide();
     }
