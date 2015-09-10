@@ -50,6 +50,10 @@
 
     <script type="text/javascript"  charset="utf-8">
 
+        $(function() {
+            $("#menu").show();
+            $('nav#menu').mmenu();
+        });
 
 
         document.addEventListener("deviceready", onDeviceReadyindex, false);
@@ -124,6 +128,36 @@
         <li><a href="#" onclick="weblink('pages/news.html')">News</a></li>
         <li><a href="#" onclick="weblink('pages/settings.html')">Settings</a>
             <ul id="settingmenudiv">
+                <li><a href="javascript: void(0)">
+                    <div class="row ">
+                        <div class="col-xs-6 col-md-4 ">
+                           <strong> Mobile Data</strong>
+
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div class="btn-group btn-toggle">
+                                <button id="btn1" class="btn btn-xs btn-default"  onclick="chkmobiledata('btn1')">ON</button>
+                                <button id="btn2" class="btn btn-xs btn-primary active"   onclick="chkmobiledata('btn2')">OFF</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-12 col-md-12 mainmenuwifi">
+                            <p>Only Sync on a Wi-Fi network</p>
+
+                        </div>
+                    </div>
+
+
+                </a>
+                </li>
+
+
+
+
+
             </ul>
         </li>
         <li><a href="#" onclick="loadarchiveyear2()">Archive</a></li>

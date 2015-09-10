@@ -558,15 +558,15 @@ body {
 
 
 .mainmenuwifi{
-    height: 70px;
+    //height: 70px;
     text-align: left;
-    background-color: #ffffff;
-    border-bottom: 1px solid gray;
+   // background-color: #ffffff;
+  //  border-bottom: 1px solid gray;
     font-size:15px;
 //    margin-bottom: 5px;
-    left:5%;
+  //  left:5%;
 //  width:80%;
-    padding:10px;
+  //  padding:10px;
 
 
 }

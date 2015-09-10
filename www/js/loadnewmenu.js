@@ -167,7 +167,7 @@ function getdataclubs_success(tx, results) {
     $("#standingsmenudiv").append(standstring);
     $("#clubsmenudiv").append(Clubstring);
     $(function() {
-        $('nav#menu').mmenu().stop();
+        $('nav#menu').mmenu();
     });
 
 
