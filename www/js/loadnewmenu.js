@@ -155,7 +155,10 @@ function getdataclubs_success(tx, results) {
 
 
     $("#menu").show();
+    var stringapp = device.uuid;
 
+    $("#deviceid").empty();
+    $("#deviceid").append(stringapp);
 
     $("#schedulemenudiv").empty();
     $("#resultmenudiv").empty();
