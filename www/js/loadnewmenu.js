@@ -7,7 +7,8 @@ var IDhistall = 0;
 var IDconall =0;
 var styleall= "";
 var favidall= 0;
-
+var networkconall = "";
+var wifiallset = 0;
 document.addEventListener("deviceready", onDeviceReadymainmenu, false);
 
 
@@ -19,6 +20,26 @@ function onDeviceReadymainmenu() {
 
 
 }
+
+function onOfflineall(){
+
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = '0';
+    states[Connection.ETHERNET] = '2';
+    states[Connection.WIFI]     = '2';
+    states[Connection.CELL_2G]  = '1';
+    states[Connection.CELL_3G]  = '1';
+    states[Connection.CELL_4G]  = '1';
+    states[Connection.NONE]     = '0';
+
+    networkconall = states[networkState];
+//alert(states[networkState]);
+
+}
+
+
 
 function closemenu(){
 
@@ -178,8 +199,8 @@ function getdataclubs_success(tx, results) {
 
 
 function chkmobiledataall(id){
-    onOfflinesetting();
-
+    onOfflineall();
+alert(id);
     if(id=="btn1")
     {
 
@@ -210,7 +231,7 @@ function chkmobiledataall(id){
 
 
 
-    if((id=="btn1" &&  networkconnectionset==2) || ((id== "btn2" &&  networkconnectionset!=0))){
+    if((id=="btn1" &&  networkconall==2) || ((id== "btn2" &&  networkconall!=0))){
 
         $("#settingdeleteall").css('color', '#333');
         $("#settingsync").css('color', '#333');
