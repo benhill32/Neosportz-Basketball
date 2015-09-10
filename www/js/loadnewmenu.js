@@ -177,6 +177,53 @@ function getdataclubs_success(tx, results) {
 }
 
 
+function chkmobiledataall(id){
+    onOfflinesetting();
+
+    if(id=="btn1")
+    {
+
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set syncwifi = 1');
+            console.log("syncwifi on");
+        });
+
+        $('#btn2').removeClass("btn btn-xs btn-primary active");
+        $('#btn2').addClass("btn btn-xs btn-default");
+        $('#btn1').removeClass("btn btn-xs btn-default");
+        $('#btn1').addClass("btn btn-xs btn-primary active");
+        wifiallset = 1;
+    }
+    else if(id== "btn2")
+    {
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set syncwifi = 0');
+            console.log("syncwifi off");
+        });
+        wifiallset =0;
+        $('#btn1').removeClass("btn btn-xs btn-primary active");
+        $('#btn1').addClass("btn btn-xs btn-default");
+        $('#btn2').removeClass("btn btn-xs btn-default");
+        $('#btn2').addClass("btn btn-xs btn-primary active");
+    }
+
+
+
+
+    if((id=="btn1" &&  networkconnectionset==2) || ((id== "btn2" &&  networkconnectionset!=0))){
+
+        $("#settingdeleteall").css('color', '#333');
+        $("#settingsync").css('color', '#333');
+    }else{
+
+        $("#settingdeleteall").css('color', 'grey');
+        $("#settingsync").css('color', 'grey');
+    }
+
+
+}
+
+
 function updatefollowall(ID){
 
 
