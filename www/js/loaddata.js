@@ -274,19 +274,12 @@ function getchecksync(tx, results) {
         }
 
         if (dif >= "600") {
-            if (document.getElementById("indexdiv") != null) {
 
-                if ($("#mainfore").hasClass("mainforeground2")) {
 
-                } else {
-                  //  $('#mainfore').removeClass('mainforeground');
-                 //   $('#mainfore').addClass('mainforeground2');
                     $('#indexloadingdata').modal('show');
-                }
 
-            } else {
-                $('#indexloadingdata').modal('show');
-            }
+
+
             var xmlHttp = null;
             xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow, false);
