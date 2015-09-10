@@ -470,3 +470,35 @@ function loadcontactsall_next_success(tx, results) {
     $('#modelcontactall').append( '<div>' + menu.Contacts + '</div>');
 
 }
+
+
+function cleardata4Changeregaionall(){
+
+    onOfflineall();
+
+
+    if((wifiallset ==1 &&  networkconall==2) || ((wifiallset ==0 &&  networkconall!=0))) {
+        $('#indexloadingdata').modal('show');
+        db.transaction(droptables, errorCBfunc,successCBfunc);
+
+        window.setTimeout(function(){
+            createtables4Changeregaionall();
+        }, 2500);
+    }
+
+
+}
+
+function createtables4Changeregaionall(){
+
+    $('#indexloadingdata').modal('hide');
+    if (document.getElementById("indexdiv") != null)
+    {
+        weblink('index.html')
+    }
+    else
+    {
+        weblink('../index.html')
+    }
+
+}
