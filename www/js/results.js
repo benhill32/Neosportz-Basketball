@@ -255,7 +255,7 @@ function getMenu_success(tx, results) {
           //  '</Div>');
 
 
-            $('#divresults').append('<div class="panel panel-default" data-toggle="modal" data-target="#basicModalresults" onclick="resultshowmore(' + menu.ID + ',\'' + menu.HomeName + '\',\'' + menu.AwayName + '\',' + menu.HomeScore + ',' + menu.AwayScore + ',' + menu.HomeTeamID + ',' + menu.AwayTeamID + ')"   >' +
+            $('#divresults').append('<div class="panel panel-warning" data-toggle="modal" data-target="#basicModalresults" onclick="resultshowmore(' + menu.ID + ',\'' + menu.HomeName + '\',\'' + menu.AwayName + '\',' + menu.HomeScore + ',' + menu.AwayScore + ',' + menu.HomeTeamID + ',' + menu.AwayTeamID + ')"   >' +
 
                 '<div class="panel-heading">' +
                 '<div class="row">' +
@@ -295,7 +295,7 @@ function getMenu_success(tx, results) {
          //       '</div>' +
          //   '</Div>');
 
-            $('#divresults').append('<div class="panel panel-default" data-toggle="modal" data-target="#basicModalresults" onclick="resultshowmore(' + menu.ID + ',\'' + menu.HomeName + '\',\'' + menu.AwayName + '\',' + menu.HomeScore + ',' + menu.AwayScore + ',' + menu.HomeTeamID + ',' + menu.AwayTeamID + ')"   >' +
+            $('#divresults').append('<div class="panel panel-warning" data-toggle="modal" data-target="#basicModalresults" onclick="resultshowmore(' + menu.ID + ',\'' + menu.HomeName + '\',\'' + menu.AwayName + '\',' + menu.HomeScore + ',' + menu.AwayScore + ',' + menu.HomeTeamID + ',' + menu.AwayTeamID + ')"   >' +
 
                 '<div class="panel-heading">' +
                 '<div class="row">' +
