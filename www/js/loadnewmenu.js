@@ -275,6 +275,10 @@ function getregionName2all_success(tx, results) {
     $("#deviceid").empty();
     $("#deviceid").append(stringapp);
 
+    $("#appversion").empty();
+    $("#appversion").append(appversionlocalf);
+
+
     $("#schedulemenudiv").empty();
     $("#resultmenudiv").empty();
     $("#standingsmenudiv").empty();
