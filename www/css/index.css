@@ -324,6 +324,11 @@ body {
     padding-bottom: 3px;
 }
 
+#indexloadingdata .modal-content{
+    width:20%;
+
+}
+
 #divresults {
     margin-top: 20px;
     padding-bottom: 10px;
