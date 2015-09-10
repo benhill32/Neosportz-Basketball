@@ -326,9 +326,59 @@ function closemodel(){
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
     }
+
+
     window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     randomfunctions();
+    db.transaction(getsyncdateload, errorCBfunc, successCBfunc);
+
 }
+
+
+function getsyncdateload(tx) {
+    var sql = "select Datesecs, syncwifi,Region from MobileApp_LastUpdatesec";
+    //  alert(sql);
+    tx.executeSql(sql, [], getsyncdateload_success2);
+}
+
+function getsyncdateload_success2(tx, results) {
+
+
+    var len = results.rows.length;
+
+    var menu = results.rows.item(0);
+    //   alert(menu.Datesecs);
+    var dateme = new Date((menu.Datesecs)*1000);
+    var wifi = menu.syncwifi;
+
+    var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "Apr";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
+
+
+
+
+    $('#lastsyncdate').empty();
+    if(dateme.getFullYear() != 1970) {
+        $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
+    }
+}
+
+
+
+
+
+
 function closemodelarchive(){
 
     $('#indexloadingdata').modal('hide');
