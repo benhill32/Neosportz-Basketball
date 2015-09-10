@@ -366,12 +366,13 @@ function getsyncdateload_success2(tx, results) {
     month[11] = "Dec";
 
 
-
+    alert("lastsyncdate");
 
     $('#lastsyncdate').empty();
     if(dateme.getFullYear() != 1970) {
         $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
     }
+
 }
 
 
