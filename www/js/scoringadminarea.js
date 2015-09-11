@@ -94,6 +94,29 @@ function getadmindata_success(tx, results) {
 }
 
 function sendscorertoserveradmin(ID) {
+    onOfflinescoreadmin();
 
-alert(ID);
+    if(networkconscoreadmin != 0) {
+
+
+        var response =   passscoretoserverscorecard("scoreapprove=" + ID + "&deviceid=" + deviceIDscoreadmin + "&token=" + scoretokenadmin)
+
+
+
+        if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+
+            window.plugins.toast.showShortCenter('Approved', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
+
+        }else{
+
+            window.plugins.toast.showLongCenter('Something when wrong sorry.', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
+        }
+    }
+    else{
+
+        alert("You don't have access to internet!");
+    }
+
 }
