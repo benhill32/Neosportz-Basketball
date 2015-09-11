@@ -83,10 +83,10 @@ function sendscorertoserver(){
         var club = $('#idclub').val();
 
 
-        var response =   passscoretoserverscorecard("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&club=" + deviceIDscore + "&token=" + scoretoken)
+        var response =   passscoretoserverscorecard("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken)
 
 
-        alert("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&club=" + deviceIDscore + "&token=" + scoretoken);
+        alert("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken);
         // alert(response);
 
         if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
