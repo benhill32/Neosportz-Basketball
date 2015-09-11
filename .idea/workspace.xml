@@ -24,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.163636">
-              <caret line="285" column="77" selection-start-line="285" selection-start-column="61" selection-end-line="285" selection-end-column="77" />
+            <state vertical-scroll-proportion="-3.2692308">
+              <caret line="276" column="45" selection-start-line="276" selection-start-column="32" selection-end-line="276" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scoringadminarea.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scoringadminarea.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/scoringadminarea.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51216686">
-              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+            <state vertical-scroll-proportion="-11.115385">
+              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -55,17 +55,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loadnewmenu.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loadnewmenu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="206" column="21" selection-start-line="206" selection-start-column="21" selection-end-line="207" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.45894262">
+              <caret line="242" column="32" selection-start-line="242" selection-start-column="32" selection-end-line="242" selection-end-column="32" />
               <folding>
-                <element signature="n#!!block;n#getdataclubs#0" expanded="false" />
+                <element signature="n#!!block;n#redirectstandings#0" expanded="false" />
                 <element signature="n#!!block;n#redirectresults#0" expanded="false" />
                 <element signature="n#!!block;n#redirectschedules2#0" expanded="false" />
-                <element signature="n#!!block;n#loadhistoryall#0" expanded="false" />
-                <element signature="n#!!block;n#loadhistoryall_next#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -98,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/scoringadminarea.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+              <caret line="49" column="54" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -107,8 +105,8 @@
       <file leaf-file-name="CreateOpenDB.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/CreateOpenDB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.103449">
-              <caret line="152" column="70" selection-start-line="152" selection-start-column="46" selection-end-line="152" selection-end-column="70" />
+            <state vertical-scroll-proportion="-9.862069">
+              <caret line="93" column="347" selection-start-line="93" selection-start-column="337" selection-end-line="93" selection-end-column="347" />
               <folding>
                 <element signature="n#!!block;n#CleanDB#0" expanded="false" />
               </folding>
@@ -211,12 +209,12 @@
         <option value="$PROJECT_DIR$/www/js/scorecard.js" />
         <option value="$PROJECT_DIR$/www/js/CreateOpenDB.js" />
         <option value="$PROJECT_DIR$/www/js/functions.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/js/loadnewmenu.js" />
         <option value="$PROJECT_DIR$/www/js/Scoringrequest.js" />
         <option value="$PROJECT_DIR$/www/js/scoringadminarea.js" />
         <option value="$PROJECT_DIR$/www/pages/Scoringrequest.html" />
         <option value="$PROJECT_DIR$/www/pages/scoringadminarea.html" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/loadnewmenu.js" />
       </list>
     </option>
   </component>
@@ -798,14 +796,14 @@
         <state vertical-scroll-proportion="-26.0">
           <caret line="215" column="0" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#li#1;n#ul#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#7;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -814,7 +812,7 @@
             <element signature="n#div#10;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#11;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#12;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -927,24 +925,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
+    <entry file="file://$PROJECT_DIR$/www/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.862069">
+          <caret line="1133" column="39" selection-start-line="1133" selection-start-column="25" selection-end-line="1133" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!block;n#syncmaintablesregions#0" expanded="false" />
+            <element signature="n#!!block;n#syncmaintableindividual#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/Scoringrequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8461537">
+          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/scoringadminarea.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="206" column="21" selection-start-line="206" selection-start-column="21" selection-end-line="207" selection-end-column="21" />
+          <caret line="49" column="54" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/Scoringrequest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/CreateOpenDB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.862069">
+          <caret line="93" column="347" selection-start-line="93" selection-start-column="337" selection-end-line="93" selection-end-column="347" />
           <folding>
-            <element signature="n#!!block;n#getdataclubs#0" expanded="false" />
-            <element signature="n#!!block;n#redirectresults#0" expanded="false" />
-            <element signature="n#!!block;n#redirectschedules2#0" expanded="false" />
-            <element signature="n#!!block;n#loadhistoryall#0" expanded="false" />
-            <element signature="n#!!block;n#loadhistoryall_next#0" expanded="false" />
+            <element signature="n#!!block;n#CleanDB#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/scoringadminarea.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.163636">
-          <caret line="285" column="77" selection-start-line="285" selection-start-column="61" selection-end-line="285" selection-end-column="77" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="276" column="45" selection-start-line="276" selection-start-column="32" selection-end-line="276" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -960,61 +1003,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/CreateOpenDB.js">
+    <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.103449">
-          <caret line="152" column="70" selection-start-line="152" selection-start-column="46" selection-end-line="152" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.45894262">
+          <caret line="242" column="32" selection-start-line="242" selection-start-column="32" selection-end-line="242" selection-end-column="32" />
           <folding>
-            <element signature="n#!!block;n#CleanDB#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.862069">
-          <caret line="1133" column="39" selection-start-line="1133" selection-start-column="25" selection-end-line="1133" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!block;n#syncmaintablesregions#0" expanded="false" />
-            <element signature="n#!!block;n#syncmaintableindividual#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/Scoringrequest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/scoringadminarea.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/Scoringrequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8461537">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/scoringadminarea.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51216686">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#redirectstandings#0" expanded="false" />
+            <element signature="n#!!block;n#redirectresults#0" expanded="false" />
+            <element signature="n#!!block;n#redirectschedules2#0" expanded="false" />
           </folding>
         </state>
       </provider>

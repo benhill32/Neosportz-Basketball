@@ -184,7 +184,7 @@ function getdataclubs_success(tx, results) {
 
 
 function getsyncdateall(tx) {
-    var sql = "select Datesecs, syncwifi,Region,isadmin from MobileApp_LastUpdatesec";
+    var sql = "select Datesecs, syncwifi,Region,isadmin,allowscore from MobileApp_LastUpdatesec";
     //  alert(sql);
     tx.executeSql(sql, [], getsyncdateall_success2);
 }
@@ -237,6 +237,19 @@ function getsyncdateall_success2(tx, results) {
         $('#divadminarea').show();
 
     }
+
+if(menu.allowscore == 0){
+    $('#scoringreqdiv').show();
+    $('#scoringreqdiv2').hide();
+}else{
+    $('#scoringreqdiv').hide();
+    $('#scoringreqdiv2').show();
+
+}
+
+
+
+
 
     if(wifi==1) {
         $('#btn2').removeClass("btn btn-xs btn-primary active");
