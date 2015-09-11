@@ -413,6 +413,21 @@ body {
     padding-bottom: 25px;
 
 }
+
+
+
+#divscoringreqadmin{
+    margin-top: 100px;
+    padding-bottom: 10px;
+    padding-left:15px;
+    padding-right: 15px;
+
+}
+#divscoringreqadmin .row{
+    padding-bottom: 25px;
+
+}
+
 #mainmenustandingmenu,#mainmenuresultsch,#mainmenuschmenu{
     //margin-top: 20px;
     padding-bottom: 100px;

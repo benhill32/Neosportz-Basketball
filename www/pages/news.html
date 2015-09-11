@@ -44,40 +44,213 @@
 
 
 <nav id="menu" style="display: none;" >
-
     <ul>
+
         <li><a href="#" onclick="weblink('../index.html')">Home</a></li>
-        <li><a href="#">Schedules</a>
+        <li><a href="javascript: void(0)">Schedules</a>
             <ul id="schedulemenudiv">
 
-                <!--<li><a href="#about/history">History</a></li>
-                <li><a href="#about/team">The team</a></li>
-                <li><a href="#about/address">Our address</a></li>-->
 
             </ul>
 
 
         </li>
 
-        <li><a href="#" >Results</a>
+        <li><a href="javascript: void(0)" >Results</a>
             <ul id="resultmenudiv">
             </ul>
         </li>
 
-        <li><a href="#">Standings</a>
+        <li><a href="javascript: void(0)">Standings</a>
             <ul id="standingsmenudiv">
             </ul>
         </li>
-        <li><a href="#">Clubs</a>
+        <li><a href="javascript: void(0)">Clubs</a>
             <ul id="clubsmenudiv">
             </ul>
         </li>
-        <li><a href="#" onclick="weblink('pages/news.html')">News</a></li>
-        <li><a href="#" onclick="weblink('pages/settings.html')">Settings</a>
+        <li><a href="#" onclick="weblink('../pages/news.html')">News</a></li>
+        <li><a href="javascript: void(0)" >Settings</a>
             <ul id="settingmenudiv">
+                <li><a href="javascript: void(0)">
+                    <div class="row ">
+                        <div class="col-xs-6 col-md-4 ">
+                            <strong> Mobile Data</strong>
+
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div class="btn-group btn-toggle">
+                                <button id="btn1" class="btn btn-xs btn-default"  onclick="chkmobiledataall('btn1')">ON</button>
+                                <button id="btn2" class="btn btn-xs btn-primary active"   onclick="chkmobiledataall('btn2')">OFF</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-12 col-md-12 mainmenuwifi">
+                            <p>Only Sync on a Wi-Fi network</p>
+
+                        </div>
+                    </div>
+                </a>
+                </li>
+
+                <li><a href="#" id="regioniddiv" onclick="onclickloadregion()" >
+                    <div class="row ">
+                        <div class="col-xs-6 col-md-4 ">
+                            <strong>Region</strong>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-6 col-md-4 ">
+                            <p id="regionlbl"></p>
+                        </div>
+                    </div>
+                </a></li>
+
+                <li><a href="#" id="settingsync" onclick="onclicksyncloaddata()" >
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 ">
+                            <strong>Sync</strong>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 mainmenuwifi">
+                            <p>Check for Updates</p>
+
+                        </div>
+                    </div>
+
+                </a></li>
+                <li><a href="javascript: void(0)"  >
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 mainmenuwifi">
+                            <p id="lastsyncdate"></p>
+
+                        </div>
+                    </div>
+                </a></li>
+                <li><a href="#"  id="settingdeleteall" onclick="cleardata4Changeregaionall()" >
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 ">
+                            <strong>Delete all data & Sync</strong>
+
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-xs-8  col-sm-3">
+                            <p>Sometimes things just don't go right!.</p>
+
+                        </div>
+                        <div class="col-xs-4  col-sm-3">
+
+                        </div>
+                    </div>
+
+
+
+                </a>
+                </li>
+
+                <li><a href="#" id="idhelp" onclick="weblink('../pages/Help.html')" >
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8">
+                            <strong>Application tutorial</strong>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 ">
+                            <p>Some handy hints</p>
+                        </div>
+                    </div>
+                </a></li>
+
+
+                <li><a href="javascript: void(0)"  >
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 ">
+                            <strong>Device & App Info</strong>
+                        </div>
+                    </div>
+
+                </a>
+                    <ul>
+                        <li><a href="javascript: void(0)"  >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    <strong>Device ID</strong>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    <p id="deviceid"></p>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="javascript: void(0)"  >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    <strong>App Version</strong>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    <p id="appversion"></p>
+                                </div>
+                            </div>
+                        </a>
+                        </li>
+                        <li><a href="mailto:helpdesk@neocom.co.nz?Subject=Neosportz Basketball App" >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    Send Feedback
+                                </div>
+                            </div>
+
+                        </a>
+                        </li>
+                        <li id="scoringreqdiv"><a href="../pages/Scoringrequest.html" >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    Scoring Request
+                                </div>
+                            </div>
+
+                        </a>
+                        </li>
+                        <li id="scoringreqdiv2"><a href="javascript: void(0)" >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 " id="scoringreqdiv22">
+                                    Scoring Request <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>
+                                </div>
+                            </div>
+
+                        </a>
+                        </li>
+
+                        <li id="divadminarea"><a href="../pages/scoringadminarea.html" >
+                            <div class="row ">
+                                <div class="col-xs-8 col-md-8 ">
+                                    Scoring Admin Area
+                                </div>
+                            </div>
+
+                        </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+
+
             </ul>
         </li>
-
+        <li><a href="#" onclick="loadarchiveyear2()">Archive</a></li>
 
     </ul>
 

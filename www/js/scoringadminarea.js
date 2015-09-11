@@ -55,8 +55,8 @@ function getadmindata(tx) {
 function getadmindata_success(tx, results) {
 
     var len = results.rows.length;
-    $("#divscoringreq").empty();
-    $("#divscoringreq").append("<div class='row'>" +
+    $("#divscoringreqadmin").empty();
+    $("#divscoringreqadmin").append("<div class='row'>" +
         "<div class='col-xs-4 col-md-4'> Name" +
 
         "</div>" +
@@ -73,7 +73,7 @@ function getadmindata_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
-        $("#divscoringreq").append("<div class='row'>" +
+        $("#divscoringreqadmin").append("<div class='row'>" +
             "<div class='col-xs-4 col-md-4'>" + menu.Pname +
 
             "</div>" +

@@ -435,6 +435,11 @@ function randomfunctions(){
         loadindexmessage();
     }
 
+    if(document.getElementById("divscoringreqadmin") != null){
+
+        onDeviceReadyscoringadmin();
+    }
+
 }
 
 
