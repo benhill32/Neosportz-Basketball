@@ -181,8 +181,10 @@ function getdataclubs_success(tx, results) {
 
 }
 
+
+
 function getsyncdateall(tx) {
-    var sql = "select Datesecs, syncwifi,Region from MobileApp_LastUpdatesec";
+    var sql = "select Datesecs, syncwifi,Region,isadmin from MobileApp_LastUpdatesec";
     //  alert(sql);
     tx.executeSql(sql, [], getsyncdateall_success2);
 }
@@ -227,6 +229,13 @@ function getsyncdateall_success2(tx, results) {
     }else{
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
+    }
+
+    if(menu.isadmin == 0){
+        $('#divadminarea').hide();
+    }else{
+        $('#divadminarea').show();
+
     }
 
     if(wifi==1) {

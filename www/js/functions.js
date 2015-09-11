@@ -999,6 +999,29 @@ function syncmaintables(obj,year){
     });
 
 
+    $.each(obj.Scoringapplied, function (idx, obj) {
+        if (obj.approved == 0) {
+
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT OR IGNORE INTO MobileApp_Scoringapplied(ID,CreatedateUTC,UpdateDateUTC,DeletedateUTC,Name,ClubID,DeviceID,approved) VALUES (' + obj.ID + ',"' + obj.CreatedateUTC + '","' + obj.UpdatedateUTC + '","' + obj.DeletedateUTC + '","' + obj.Name + '",' + obj.ClubID + ',"' + obj.DeviceID + '",' + obj.approved + ')');
+                //   console.log("INSERT INTO Mobilescoringbreakdown is created");
+            });
+            db.transaction(function (tx) {
+                var sql = 'UPDATE MobileApp_Scoringapplied SET CreatedateUTC = "' + obj.CreatedateUTC + '", UpdatedateUTC = "' + obj.UpdatedateUTC + '", DeletedateUTC = "' + obj.DeletedateUTC + '", Name = "' + obj.Name + '", ClubID = ' + obj.ClubID + ', DeviceID = "' + obj.DeviceID + '",approved = ' + obj.approved + ' where ID = ' + obj.ID;
+                tx.executeSql(sql);
+            });
+
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('Delete from MobileApp_Scoringapplied where ID =' + obj.ID);
+                //   console.log('Delete Mobilesscoringbreakdown');
+            });
+
+        }
+    });
+
+
+
     var datenow1 = new Date();
     var timenow = datenow1.getTime();
 

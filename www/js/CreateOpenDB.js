@@ -71,7 +71,8 @@ function droptables(tx){
     tx.executeSql('Drop TABLE Mobilescreenimage ');
     console.log("Mobilescreenimage table is Dropped");
 
-
+    tx.executeSql('Drop TABLE MobileApp_Scoringapplied ');
+    console.log("MobileApp_Scoringapplied table is Dropped");
 }
 
 
@@ -148,6 +149,9 @@ function createDB(tx) {
 
     tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_ResultsArchive (ID INTEGER NOT NULL primary key,_id INTEGER NOT NULL,DatetimeStart TEXT NOT NULL,HomeName TEXT NOT NULL,AwayName TEXT NOT NULL,Field TEXT NOT NULL,Latitude TEXT NOT NULL,Longitude TEXT NOT NULL,DivisionID INTEGER NOT NULL,DivisionName TEXT NOT NULL,HomeClubID INTEGER NOT NULL,AwayClubID INTEGER NOT NULL,HomeTeamID INTEGER NOT NULL,AwayTeamID INTEGER NOT NULL,HomeScore INTEGER NOT NULL,AwayScore INTEGER NOT NULL,UpdateDateUTC TEXT NOT NULL,TournamentName TEXT NOT NULL,TournamentID INTEGER NOT NULL,DatetimeStartSeconds TEXT NOT NULL,DivisionOrderID INTEGER NOT NULL,ShowToAll INTEGER NOT NULL,Semi INTEGER NOT NULL,Final INTEGER NOT NULL,DeletedateUTC TEXT NOT NULL,halftime TEXT NOT NULL,fulltime TEXT NOT NULL,Year INTEGER NOT NULL, RefName Text Null,DefaultHome INTEGER NOT NULL,DefaultAway INTEGER NOT NULL )');
     console.log("MobileApp_Results table is created");
+
+    tx.executeSql('CREATE TABLE IF NOT EXISTS MobileApp_Scoringapplied (ID INTEGER NOT NULL primary key,UpdateDateUTC TEXT NULL,CreatedateUTC TEXT NULL,DeletedateUTC TEXT NULL,Name TEXT NULL,ClubID INTEGER NULL,DeviceID TEXT NULL,approved INTEGER NULL )');
+    console.log("MobileApp_Scoringapplied table is created");
 
 }
 
