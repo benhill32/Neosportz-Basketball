@@ -1,16 +1,37 @@
 
 document.addEventListener("deviceready", onDeviceReadyscoring, false);
 var deviceIDscore = 0;
-
-
+var networkconscore= "";
+var scoretoken= "";
 
 
 function onDeviceReadyscoring() {
     deviceIDscore = device.uuid;
 
-
+    onOfflinescore();
     db.transaction(getdatascore, errorCBfunc, successCBfunc);
+    db.transaction(gettokenscore, errorCBfunc, successCBfunc);
 }
+
+
+function onOfflinescore(){
+
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = '0';
+    states[Connection.ETHERNET] = '2';
+    states[Connection.WIFI]     = '2';
+    states[Connection.CELL_2G]  = '1';
+    states[Connection.CELL_3G]  = '1';
+    states[Connection.CELL_4G]  = '1';
+    states[Connection.NONE]     = '0';
+
+    networkconscore = states[networkState];
+//alert(states[networkState]);
+
+}
+
 
 function getdatascore(tx) {
 
@@ -34,4 +55,46 @@ function getdatascore_success(tx, results) {
     $('#idclub').append(option);
     $("#lblappid").empty();
     $("#lblappid").append(deviceIDscore)
+}
+
+function gettokenscore(tx) {
+    var sql = "select token from MobileApp_LastUpdatesec";
+    //  alert(sql);
+    tx.executeSql(sql, [], gettokenscore_success);
+}
+
+function gettokenscore_success(tx, results) {
+    $('#busy').hide();
+    var len = results.rows.length;
+    var menu = results.rows.item(0);
+
+    scoretoken = menu.token;
+
+}
+
+
+
+function sendscorertoserver(){
+    onOfflinescore();
+
+    if(networkconscore != 0) {
+
+       var playername = $('#idname').val();
+        var club = $('#idclub').val();
+
+
+        var response =   passscoretoserverscorecard("applyscorer=1&namescore=" + playername + "&clubid=" + playername + "&club=" + deviceIDscore + "&token=" + scoretoken)
+
+
+        alert("applyscorer=1&namescore=" + playername + "&clubid=" + playername + "&club=" + deviceIDscore + "&token=" + scoretoken);
+        // alert(response);
+
+        if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
+            //  alert(response);
+           // onclicksyncloaddata();
+        }
+    }
+
+
+
 }
