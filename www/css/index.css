@@ -401,6 +401,18 @@ body {
   padding-right: 15px;
 
 }
+
+#divscoringreq {
+    margin-top: 100px;
+    padding-bottom: 10px;
+    padding-left:15px;
+    padding-right: 15px;
+
+}
+#divscoringreq .row{
+    padding-bottom: 25px;
+
+}
 #mainmenustandingmenu,#mainmenuresultsch,#mainmenuschmenu{
     //margin-top: 20px;
     padding-bottom: 100px;
