@@ -96,7 +96,7 @@ function sendscorertoserver(){
 
         }else{
 
-            window.plugins.toast.showShortCenter('Something when wrong sorry.', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+            window.plugins.toast.showLongCenter('Something when wrong sorry.', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
         }
     }

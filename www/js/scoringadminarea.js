@@ -48,7 +48,7 @@ function gettokenscoreadmin_success(tx, results) {
 }
 function getadmindata(tx) {
     var sql = "select ID from MobileApp_Scoringapplied";
-    //  alert(sql);
+      alert(sql);
     tx.executeSql(sql, [], getadmindata_success);
 }
 
