@@ -107,6 +107,8 @@ function sendscorertoserveradmin(ID) {
 
             window.plugins.toast.showShortCenter('Approved', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
+            onclicksyncloaddata();
+
 
         }else{
 
