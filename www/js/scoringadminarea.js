@@ -80,7 +80,7 @@ function getadmindata_success(tx, results) {
             "<div class='col-xs-4 col-md-4'>" + menu.Cname +
 
             "</div>" +
-            "<div class='col-xs-4 col-md-4'><button class='btn btn-success'>Approve</button>" +
+            "<div class='col-xs-4 col-md-4'><button class='btn btn-success' onclick='sendscorertoserveradmin(" + menu.ID + ")'>Approve</button>" +
 
 
             "</div>" +
@@ -93,3 +93,7 @@ function getadmindata_success(tx, results) {
 
 }
 
+function sendscorertoserveradmin(ID) {
+
+alert(ID);
+}
