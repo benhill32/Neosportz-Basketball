@@ -26,7 +26,7 @@ function getdatascore_success(tx, results) {
     var option = '';
     for (var i = 0; i < len; i++) {
         var menu = results.rows.item(i);
-        option += '<option value="' + numbers[i] + '">' + numbers[i] + '</option>';
+        option += '<option value="' + menu.ID + '">' + menu.name + '</option>';
 
     }
 
