@@ -48,14 +48,27 @@ function gettokenscoreadmin_success(tx, results) {
 }
 function getadmindata(tx) {
     var sql = "select ms.ID,ms.name as Pname,mc.name as Cname from MobileApp_Scoringapplied as ms inner join MobileApp_clubs as mc on ms.ClubID = mc.ID where ms.approved = 0";
-      alert(sql);
+     // alert(sql);
     tx.executeSql(sql, [], getadmindata_success);
 }
 
 function getadmindata_success(tx, results) {
 
     var len = results.rows.length;
-alert(len);
+
+    $("#divscoringreq").append("<div class='row'>" +
+        "<div class='col-xs-4 col-md-4'> Name" + 
+
+        "</div>" +
+        "<div class='col-xs-4 col-md-4'> Club" +
+
+        "</div>" +
+        "<div class='col-xs-4 col-md-4'>" +
+
+
+        "</div>" +
+        "</div>");
+
 
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
