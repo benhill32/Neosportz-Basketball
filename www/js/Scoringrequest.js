@@ -83,16 +83,26 @@ function sendscorertoserver(){
         var club = $('#idclub').val();
 
 
-        var response =   passscoretoserverscorecard("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken)
+        var response =   passscoretoserverscorecard("namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken)
 
 
-        alert("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken);
+      //  alert("applyscorer=1&namescore=" + playername + "&clubid=" + club + "&deviceid=" + deviceIDscore + "&token=" + scoretoken);
         // alert(response);
 
         if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
-            //  alert(response);
-           // onclicksyncloaddata();
+
+            window.plugins.toast.showShortCenter('Thanks you for applying! You will be notified within the next couple of days.', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
+
+        }else{
+
+            window.plugins.toast.showShortCenter('Something when wrong sorry.', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
         }
+    }
+    else{
+
+        alert("You don't have access to internet!");
     }
 
 
