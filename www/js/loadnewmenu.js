@@ -148,14 +148,19 @@ function getdataclubs_success(tx, results) {
             imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
         }
 
+        styleall = '<span class="glyphicon glyphicon-ok" id="clubtick' + menu.ID + '" aria-hidden="true"></span>';
+
         if(menu.Fav == 1){
-            styleall = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
+            $("#clubtick" + menu.ID).show();
             favidall = menu.ID;
             clubfavall = menu.ID;
         }else{
-            styleall = "";
 
+            $("#clubtick" + menu.ID).hide();
         }
+
+
+
 
         Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#clubmenuu' + menu.ID + '" data-target="clubmenuu' + menu.ID + '">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
             '<ul id="clubmenuu' + menu.ID + '">' +
@@ -371,7 +376,7 @@ function chkmobiledataall(id){
 function updatefollowall(ID){
 
 
-
+    $("#clubtick" + clubfavall).hide();
 
     clearfavteam()
 
@@ -393,63 +398,13 @@ function updatefollowall(ID){
   //  }, 1500);
 
 
+    $("#clubtick" + ID).show();
 
-
-    db.transaction(getdataclubsreload, errorCBfunc, successCBfunc);
-
-
-}
-
-
-
-function getdataclubsreload(tx) {
-
-    var sql = "select ID,_id ,name,UpdateDateUTC ,Base64,replace(History, '###$$###', '<br>') as History,replace(Contacts, '###$$###', '<br>') as Contacts,UpdateSecondsUTC,Color,Fav from MobileApp_clubs order by name";
-    //alert(sql);
-    tx.executeSql(sql, [], getdataclubsreload_success);
-}
-
-function getdataclubsreload_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-//alert(len);
-    Clubstring = "";
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-        var imgg = "";
-        if(menu.Base64 != "null"){
-            imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
-        }
-
-        if(menu.Fav == 1){
-            styleall = "<span class='glyphicon glyphicon-ok' aria-hidden='true'></span>";
-
-        }else{
-            styleall = "";
-
-        }
-
-        Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#clubmenuu' + menu.ID + '" data-target="clubmenuu' + menu.ID + '">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
-            '<ul id="clubmenuu' + menu.ID + '">' +
-            '<li data-toggle="modal" data-target="#basicModalclubhistory"><a href="#"  onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
-            '<li data-toggle="modal" data-target="#basicModalclubContact"><a href="#"   onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
-            '<li><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
-            '</ul>' +
-            '</li>';
-
-
-
-    }
-
-
-    $("#clubsmenudiv").empty();
-
-
-    $("#clubsmenudiv").append(Clubstring);
 
 
 
 }
+
 
 
 
