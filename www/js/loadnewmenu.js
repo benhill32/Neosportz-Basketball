@@ -155,8 +155,8 @@ function getdataclubs_success(tx, results) {
 
         }
 
-        Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
-            '<ul>' +
+        Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#clubmenuu' + menu.ID + '" data-target="clubmenuu' + menu.ID + '">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
+            '<ul id="clubmenuu' + menu.ID + '">' +
             '<li data-toggle="modal" data-target="#basicModalclubhistory"><a href="#"  onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
             '<li data-toggle="modal" data-target="#basicModalclubContact"><a href="#"   onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
             '<li><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
