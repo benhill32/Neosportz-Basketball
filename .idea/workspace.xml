@@ -60,8 +60,8 @@
       <file leaf-file-name="loadnewmenu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33255813">
-              <caret line="381" column="0" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.41162792">
+              <caret line="151" column="8" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="8" />
               <folding>
                 <element signature="n#!!block;n#redirectstandings#0" expanded="false" />
                 <element signature="n#!!block;n#redirectresults#0" expanded="false" />
@@ -1170,8 +1170,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33255813">
-          <caret line="381" column="0" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.41162792">
+          <caret line="151" column="8" selection-start-line="151" selection-start-column="8" selection-end-line="151" selection-end-column="8" />
           <folding>
             <element signature="n#!!block;n#redirectstandings#0" expanded="false" />
             <element signature="n#!!block;n#redirectresults#0" expanded="false" />

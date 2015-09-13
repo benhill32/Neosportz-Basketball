@@ -149,14 +149,12 @@ function getdataclubs_success(tx, results) {
         }
 
         styleall = '<span class="glyphicon glyphicon-ok" id="clubtick' + menu.ID + '" aria-hidden="true"></span>';
-
+        
+        $("#clubtick" + menu.ID).hide();
         if(menu.Fav == 1){
             $("#clubtick" + menu.ID).show();
             favidall = menu.ID;
             clubfavall = menu.ID;
-        }else{
-
-            $("#clubtick" + menu.ID).hide();
         }
 
 
