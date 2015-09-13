@@ -69,12 +69,12 @@
     </script>
     <script type="text/javascript">
 
-        $("#mm-blocker").click(closemenu());
+     //   $("#mm-blocker").click(closemenu());
 
-        //$("#menu").show();
-   //     $(function() {
-    //      $('nav#menu').mmenu();
-    //    });
+     //   $("#menu").show();
+     //  $(function() {
+     //     $('nav#menu').mmenu();
+    //   });
 
 
     </script>
@@ -141,8 +141,8 @@
                         </div>
                         <div class="col-xs-6 col-md-4">
                             <div class="btn-group btn-toggle">
-                                <button id="btn1" class="btn btn-xs btn-default"  onclick="chkmobiledataall('btn1')">ON</button>
-                                <button id="btn2" class="btn btn-xs btn-primary active"   onclick="chkmobiledataall('btn2')">OFF</button>
+                                <button id="btnmenu1" class="btn btn-xs btn-default"  onclick="chkmobiledataall('btn1')">ON</button>
+                                <button id="btnmenu2" class="btn btn-xs btn-primary active"   onclick="chkmobiledataall('btn2')">OFF</button>
                             </div>
 
                         </div>
@@ -368,7 +368,25 @@
                 </div>
             </div>
         </div>
+        <div class="modal" id="basicModalregions"  tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="divmainheader">
 
+                            Select a Region
+                        </div>
+                    </div>
+                    <div class="modal-body" >
+                        <div id="regiondivID">
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <div class="modal" id="basicModalnofav" tabindex="-1"  data-backdrop="static" data-keyboard="false"  role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -425,25 +443,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal" id="basicModalregions"  tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="divmainheader">
 
-                            Select a Region
-                        </div>
-                    </div>
-                    <div class="modal-body" >
-                        <div id="regiondivID">
-
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <div class="modal" id="indexloadingdata" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog" align="center">
                 <div class="modal-content" align="center">

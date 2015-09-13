@@ -252,16 +252,16 @@ if(menu.allowscore == 0){
 
 
     if(wifi==1) {
-        $('#btn2').removeClass("btn btn-xs btn-primary active");
-        $('#btn1').removeClass("btn btn-xs btn-default")
-        $('#btn2').addClass("btn btn-xs btn-default");
-        $('#btn1').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').removeClass("btn btn-xs btn-default")
+        $('#btnmenu2').addClass("btn btn-xs btn-default");
+        $('#btnmenu1').addClass("btn btn-xs btn-primary active");
 
     }else if(wifi==0) {
-        $('#btn1').removeClass("btn btn-xs btn-primary active");
-        $('#btn2').removeClass("btn btn-xs btn-default")
-        $('#btn1').addClass("btn btn-xs btn-default");
-        $('#btn2').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').removeClass("btn btn-xs btn-default")
+        $('#btnmenu1').addClass("btn btn-xs btn-default");
+        $('#btnmenu2').addClass("btn btn-xs btn-primary active");
 
     }
 
@@ -330,10 +330,10 @@ function chkmobiledataall(id){
             console.log("syncwifi on");
         });
 
-        $('#btn2').removeClass("btn btn-xs btn-primary active");
-        $('#btn2').addClass("btn btn-xs btn-default");
-        $('#btn1').removeClass("btn btn-xs btn-default");
-        $('#btn1').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').addClass("btn btn-xs btn-default");
+        $('#btnmenu1').removeClass("btn btn-xs btn-default");
+        $('#btnmenu').addClass("btn btn-xs btn-primary active");
         wifiallset = 1;
     }
     else if(id== "btn2")
@@ -343,10 +343,10 @@ function chkmobiledataall(id){
             console.log("syncwifi off");
         });
         wifiallset =0;
-        $('#btn1').removeClass("btn btn-xs btn-primary active");
-        $('#btn1').addClass("btn btn-xs btn-default");
-        $('#btn2').removeClass("btn btn-xs btn-default");
-        $('#btn2').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').addClass("btn btn-xs btn-default");
+        $('#btnmenu2').removeClass("btn btn-xs btn-default");
+        $('#btnmenu2').addClass("btn btn-xs btn-primary active");
     }
 
 
