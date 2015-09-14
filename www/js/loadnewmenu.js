@@ -400,10 +400,10 @@ function updatefollowall(ID){
   //  }, 1500);
 
 
-    $("#clubtick" + ID).show();
+        $("#clubtick" + ID).show();
 
 
-
+    clubfavall = ID;
 
 }
 
