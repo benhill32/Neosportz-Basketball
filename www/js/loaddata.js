@@ -373,6 +373,7 @@ function getsyncdateload_success2(tx, results) {
         $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
     }
     randomfunctions();
+    db.transaction(getMenusch, errorCBfunc, successCBfunc);
 }
 
 
@@ -440,7 +441,7 @@ function randomfunctions(){
         onDeviceReadyscoringadmin();
     }
 
-    db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
 
 }
 
