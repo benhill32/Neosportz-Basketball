@@ -144,15 +144,18 @@ function getdataclubs_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
         var imgg = "";
+        var imgstring = "#clubtick" + menu.ID;
+        var imgstring2 = "clubtick" + menu.ID;
         if(menu.Base64 != "null"){
             imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
         }
 
-        styleall = '<span class="glyphicon glyphicon-ok" id="clubtick' + menu.ID + '" aria-hidden="true"></span>';
+        styleall = '<span class="glyphicon glyphicon-ok" id="' + imgstring2 + '" aria-hidden="true"></span>';
 
-        $("#clubtick" + menu.ID).hide();
+        $(imgstring).hide();
+        alert(imgstring);
         if(menu.Fav == 1){
-            $("#clubtick" + menu.ID).show();
+            $(imgstring).show();
             favidall = menu.ID;
             clubfavall = menu.ID;
         }
