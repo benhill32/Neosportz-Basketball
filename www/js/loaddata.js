@@ -302,7 +302,7 @@ function getchecksync(tx, results) {
         }else{
 
 
-
+            db.transaction(getMenusch, errorCBfunc, successCBfunc);
 
         }
 
@@ -439,6 +439,8 @@ function randomfunctions(){
 
         onDeviceReadyscoringadmin();
     }
+
+    db.transaction(getMenusch, errorCBfunc, successCBfunc);
 
 }
 
