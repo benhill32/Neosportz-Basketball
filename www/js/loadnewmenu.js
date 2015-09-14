@@ -150,12 +150,11 @@ function getdataclubs_success(tx, results) {
             imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
         }
 
-        styleall = '<span class="glyphicon glyphicon-ok" id="' + imgstring2 + '" aria-hidden="true"></span>';
+        styleall = '<span class="glyphicon glyphicon-ok" style="display:none;" id="' + imgstring2 + '" aria-hidden="true"></span>';
 
-        $(imgstring).hide();
-        alert(imgstring);
+
         if(menu.Fav == 1){
-            $(imgstring).show();
+
             favidall = menu.ID;
             clubfavall = menu.ID;
         }
@@ -318,6 +317,8 @@ function getregionName2all_success(tx, results) {
     $("#resultmenudiv").append(resultsstring);
     $("#standingsmenudiv").append(standstring);
     $("#clubsmenudiv").append(Clubstring);
+
+    $("#clubtick" + clubfavall).show();
     $(function() {
         $('nav#menu').mmenu();
     });
