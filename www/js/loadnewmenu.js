@@ -298,7 +298,7 @@ function getregionName2all_success(tx, results) {
     $('#regionlbl').append(menu.Name);
 
     if ( $("#menu").css('display') == 'none' ){
-        $("#menu").show();
+        //$("#menu").show();
     }else{
 
 
