@@ -299,6 +299,9 @@ function getregionName2all_success(tx, results) {
 
     if ( $("#menu").css('display') == 'none' ){
         $("#menu").show();
+    }else{
+
+
     }
 
 

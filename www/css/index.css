@@ -101,7 +101,7 @@ body {
     vertical-align: middle;
     min-height: 60px;
     z-index: 30;
-    background-color: white;
+  //  background-color: white;
 }
 
 
@@ -1300,7 +1300,7 @@ width:75%;
    padding-left:15px;
    float: left;
     padding-top:25px;
-    width:250px;
+    width:200px;
   z-index: 20;
     color:black;
 }
