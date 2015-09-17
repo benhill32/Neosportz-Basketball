@@ -51,7 +51,7 @@ function closemenu(){
 
 function getMenusch(tx) {
 
-alert("load menu");
+//alert("load menu");
     var sql = "select Distinct DivisionName,DivisionID,_id from MobileApp_Schedule_Menu where Hide = 0 Group by DivisionName,DivisionID  order by DivisionOrderID";
     // alert(sql);
 
@@ -297,8 +297,12 @@ function getregionName2all_success(tx, results) {
 
     $('#regionlbl').append(menu.Name);
 
+    if ( $("#menu").css('display') == 'none' ){
+        $("#menu").show();
+    }
 
-    $("#menu").show();
+
+
     var stringapp = device.uuid;
 
     $("#deviceid").empty();
