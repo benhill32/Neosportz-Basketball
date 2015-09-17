@@ -358,7 +358,7 @@ function getsyncdateload_success2(tx, results) {
     month[11] = "Dec";
 
 
- //   alert("lastsyncdate");
+    alert("lastsyncdate");
 
     $('#lastsyncdate').empty();
     if(dateme.getFullYear() != 1970) {
@@ -367,7 +367,7 @@ function getsyncdateload_success2(tx, results) {
 
 
 
-    randomfunctions();
+    //randomfunctions();
 
     window.setTimeout(function(){
         db.transaction(getMenusch, errorCBfunc, successCBfunc);
