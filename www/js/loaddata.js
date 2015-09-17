@@ -186,10 +186,10 @@ function populateDB1(tx,results) {
  //   alert(row);
   //  alert(row.Count);
     if(row.Count ==0){
-      if(document.getElementById("indexdiv")!=null) {
+
 
             $('#indexloadingdata').modal('show');
-        }
+
 
         $.when(blankLastUpdatesec()).done(function() {
           // $.when( pushnotifiy()).done(function() {
@@ -312,7 +312,7 @@ function errorclosemodel(){
 }
 
 function closemodel(){
-   // alert("close");
+    alert("close");
 
     $('#indexloadingdata').modal('hide');
 
