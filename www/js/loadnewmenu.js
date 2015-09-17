@@ -55,7 +55,7 @@ alert("load menu");
     var sql = "select Distinct DivisionName,DivisionID,_id from MobileApp_Schedule_Menu where Hide = 0 Group by DivisionName,DivisionID  order by DivisionOrderID";
     // alert(sql);
 
-   // tx.executeSql(sql, [], getMenusch_success);
+    tx.executeSql(sql, [], getMenusch_success);
 }
 
 
