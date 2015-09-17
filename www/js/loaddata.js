@@ -20,6 +20,7 @@ var archiveyear=0;
 document.addEventListener("deviceready", onDeviceReadyloaddata, false);
 var tokenldata ="";
 var start = 0;
+var menufrommansync = 0;
 // Cordova is ready
 //
 
@@ -308,6 +309,8 @@ function errorclosemodel(){
         showdivindex();
     }
     window.plugins.toast.showLongCenter('Something went wrong! Please sync data again \n If problem persists contact helpdesk@neocom.co.nz', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
+    db.transaction(getMenusch, errorCBfunc, successCBfunc);
     randomfunctions();
 }
 
@@ -553,7 +556,7 @@ function onclicksyncloaddata2(tx){
 
 
 function onclickresync(tx, results) {
-
+    menufrommansync =1;
     var row = results.rows.item(0);
    // alert(row.syncwifi + " " + networkconnection);
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
