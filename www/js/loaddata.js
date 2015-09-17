@@ -421,18 +421,15 @@ function randomfunctions(){
     }
 
     if (document.getElementById("divschedules") != null) {
-       // var idsch = getUrlVars()["id"];
-      //
-      //  onDeviceReadysch();
+
         db.transaction(getflitersch, errorCBfunc, successCBfunc);
-      //  db.transaction(gettokensc, errorCBfunc, successCBfunc);
-      //  db.transaction(getdatanewssch, errorCBfunc, successCBfunc);
+
     }
     if (document.getElementById("divresults") != null) {
         db.transaction(getfliterresult, errorCBfunc, successCBfunc);
     }
     if (document.getElementById("indexdiv") != null) {
-        loadindexmessage();
+        //loadindexmessage();
     }
 
     if(document.getElementById("divscoringreqadmin") != null){
