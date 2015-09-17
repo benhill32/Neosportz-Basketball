@@ -127,11 +127,8 @@ function checkdatabaseloaddata(){
         // alert(json);
         if(document.getElementById("indexdiv")!=null) {
             $('#indexloadingdata').modal('hide');
-          //  $('#mainfore').removeClass('mainforeground');
-         //   $('#mainfore').addClass('mainforeground2');
-            if (document.getElementById("indexdiv") != null) {
-                showdivindex();
-            }
+
+
             if (devicePlatformfunc == "Android") {
                 $('#modelnewdatabase').modal('show');
             }
@@ -190,9 +187,7 @@ function populateDB1(tx,results) {
   //  alert(row.Count);
     if(row.Count ==0){
       if(document.getElementById("indexdiv")!=null) {
-          //  $('#mainfore').removeClass('mainforeground');
-         //   $('#mainfore').addClass('mainforeground2');
-            // alert($('#mainfore').attr('class'));
+
             $('#indexloadingdata').modal('show');
         }
 
@@ -214,9 +209,6 @@ function populateDB1(tx,results) {
              tx.executeSql(sql, [], getchecksync,errorCBfunc);
         }else{
             $('#indexloadingdata').modal('hide')
-          //  $('#mainfore').removeClass('mainforeground2');
-          //  $('#mainfore').addClass('mainforeground');
-          //  window.plugins.toast.showShortCenter('Sorry couldnt update Server No Internet', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
         }
     }
@@ -372,8 +364,9 @@ function getsyncdateload_success2(tx, results) {
     if(dateme.getFullYear() != 1970) {
         $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
     }
-    randomfunctions();
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
+    randomfunctions();
+
 }
 
 
