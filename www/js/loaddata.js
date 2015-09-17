@@ -312,7 +312,7 @@ function errorclosemodel(){
 }
 
 function closemodel(){
-    alert("close");
+   // alert("close");
 
     $('#indexloadingdata').modal('hide');
 
@@ -358,7 +358,7 @@ function getsyncdateload_success2(tx, results) {
     month[11] = "Dec";
 
 
-    alert("lastsyncdate");
+   // alert("lastsyncdate");
 
     $('#lastsyncdate').empty();
     if(dateme.getFullYear() != 1970) {
@@ -419,7 +419,7 @@ function reloadindividual(){
 
 function randomfunctions(){
 
-alert("randomfunctions");
+//alert("randomfunctions");
     if (document.getElementById("divschedules") != null) {
 
         db.transaction(getflitersch, errorCBfunc, successCBfunc);
