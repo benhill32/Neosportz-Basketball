@@ -297,9 +297,9 @@ function getregionName2all_success(tx, results) {
 
     $('#regionlbl').append(menu.Name);
 
-  //  if (menufrommansync == 0){
+    if (menufrommansync == 0){
         $("#menu").show();
-  //  }
+    }
 
 
 
@@ -323,11 +323,13 @@ function getregionName2all_success(tx, results) {
     $("#clubsmenudiv").append(Clubstring);
 
     $("#clubtick" + clubfavall).show();
-    $(function() {
-        $('nav#menu').mmenu();
-    });
 
+    if (menufrommansync == 0) {
+        $(function () {
+            $('nav#menu').mmenu();
+        });
 
+    }
 
 }
 
