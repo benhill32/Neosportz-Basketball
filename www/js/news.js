@@ -400,20 +400,29 @@ function loadnewfeed_success(tx, results) {
 
 function choosefacteam(ID){
 
+
     clearfavteam();
+
+    db.transaction(function(tx) {
+        tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 0');
+        console.log("Update MobileApp_LastUpdatesec");
+    });
 
     addfavteam(ID);
 
 
-    var daaa = new Date();
-    var naaa = daaa.getTime();
 
-    db.transaction(function(tx) {
-        tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 1, hasclubdate = "' + naaa + '"');
-        console.log("Update MobileApp_LastUpdatesec");
-    });
+    addfavclub();
 
-    db.transaction(getdatanews, errorCBfunc, successCBfunc);
+
+    $("#clubtick" + ID).show();
+
+
+    clubfavall = ID;
+
+
+
+    db.transaction(getdatanews1, errorCBfunc, successCBfunc);
 }
 
 function getclubsfav(tx) {
@@ -430,10 +439,14 @@ function getclubsfav_success(tx, results) {
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
         var imgg = "";
+        if(menu.Base64 != "null"){
+            imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="30">';
+        }
+
 
 
         $('#clubfav').append('<Div class="modal-body"  data-dismiss="modal" align="left" style="border-bottom: 1px solid #e5e5e5;" onclick="choosefacteam('+ menu.ID + ')"  >' +
-            '<div class="bold size13"   >' + menu.name  +
+            '<div class="bold size13"   >' + imgg + ' ' + menu.name  +
             '</div>' +
             '</Div>');
     }
