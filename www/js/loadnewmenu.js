@@ -331,8 +331,7 @@ function getregionName2all_success(tx, results) {
 
         $(function () {
             $('nav#menu').mmenu({
-                extensions: ["border-full"],
-                extensions: ["effect-slide-menu", "effect-slide-listitems"]
+                extensions: ["effect-slide-menu", "effect-slide-listitems","border-full"]
             });
 
         });
