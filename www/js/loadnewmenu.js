@@ -297,12 +297,9 @@ function getregionName2all_success(tx, results) {
 
     $('#regionlbl').append(menu.Name);
 
-    if (menufrommansync == 0){
+  //  if (menufrommansync == 0){
         $("#menu").show();
-    }else{
-
-
-    }
+  //  }
 
 
 
