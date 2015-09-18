@@ -305,7 +305,7 @@ function getregionName2all_success(tx, results) {
         $("#menu").show();
 
 
-alert("last Stage of menu");
+//alert("last Stage of menu");
 
     var stringapp = device.uuid;
 
