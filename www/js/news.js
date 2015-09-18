@@ -421,8 +421,12 @@ function choosefacteam(ID){
     clubfavall = ID;
 
 
+    window.setTimeout(function(){
 
-    db.transaction(getdatanews1, errorCBfunc, successCBfunc);
+        db.transaction(getdatanews1, errorCBfunc, successCBfunc);
+
+    }, 1000);
+
 }
 
 function getclubsfav(tx) {
