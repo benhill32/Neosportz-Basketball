@@ -371,10 +371,14 @@ function getsyncdateload_success2(tx, results) {
 
 
 
-
+    if (menufrommansync == 0) {
 
         db.transaction(getMenusch, errorCBfunc, successCBfunc);
+    }else{
 
+        location.reload(true);
+
+    }
 
 
     randomfunctions();

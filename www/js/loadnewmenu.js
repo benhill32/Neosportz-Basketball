@@ -301,9 +301,9 @@ function getregionName2all_success(tx, results) {
 
     $('#regionlbl').append(menu.Name);
 
-    if (menufrommansync == 0){
+
         $("#menu").show();
-    }
+
 
 alert("last Stage of menu");
 
@@ -328,12 +328,12 @@ alert("last Stage of menu");
 
     $("#clubtick" + clubfavall).show();
 
-    if (menufrommansync == 0) {
+
         $(function () {
             $('nav#menu').mmenu();
         });
 
-    }
+
 
 }
 
