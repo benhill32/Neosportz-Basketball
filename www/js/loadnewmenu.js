@@ -63,6 +63,7 @@ function getMenusch_success(tx, results) {
 
     var len = results.rows.length;
     // alert(len);
+    schstring = "";
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
         schstring += '<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
@@ -90,6 +91,7 @@ function getMenuresult_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
     //  alert(len);
+    resultsstring = "";
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
@@ -113,6 +115,7 @@ function getMenustandings_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
     // alert(len);
+    standstring="";
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
 
@@ -141,6 +144,7 @@ function getdataclubs_success(tx, results) {
     $('#busy').hide();
     var len = results.rows.length;
 //alert(len);
+    Clubstring= "";
     for (var i=0; i<len; i++) {
         var menu = results.rows.item(i);
         var imgg = "";
@@ -301,7 +305,7 @@ function getregionName2all_success(tx, results) {
         $("#menu").show();
     }
 
-
+alert("last Stage of menu");
 
     var stringapp = device.uuid;
 
