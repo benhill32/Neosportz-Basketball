@@ -331,11 +331,13 @@ function getregionName2all_success(tx, results) {
 
         $(function () {
             $('nav#menu').mmenu({
-                extensions: ["effect-slide-menu", "effect-slide-listitems","border-full"]
+                extensions: ["border-full", "pageshadow"],
+                "navbar": {
+                    "title": "Neosportz Basketball"
+                }
             });
 
         });
-
 
 
 }
@@ -555,4 +557,16 @@ function createtables4Changeregaionall(){
         weblink('../index.html')
     }
 
+}
+
+
+function benclick() {
+    // $('#mainfore').removeClass('mainforeground');
+    //  $('#mainfore').addClass('mainforeground2');
+    alert("das");
+    //$('#basicModalclubContact').modal('show');
+
+    $('body').loading({
+        stoppable: true
+    });
 }

@@ -150,9 +150,12 @@ function loadarchiveBen() {
 function benclick() {
    // $('#mainfore').removeClass('mainforeground');
   //  $('#mainfore').addClass('mainforeground2');
-    // alert($('#mainfore').attr('class'));
-    $('#basicModalclubContact').modal('show');
+     alert("das");
+    //$('#basicModalclubContact').modal('show');
 
+    $('body').loading({
+        stoppable: true
+    });
 }
 
 
