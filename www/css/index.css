@@ -1288,7 +1288,7 @@ width:75%;
 
 }
 #settingdeleteall,#settingsync{
-    color: white;
+    color: white !important;
 
 }
 
