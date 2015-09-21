@@ -354,10 +354,10 @@ function chkmobiledataall(id){
             console.log("syncwifi on");
         });
 
-        $('#btnmenu2').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').removeClass("btn btn-xs btn-success active");
         $('#btnmenu2').addClass("btn btn-xs btn-default");
         $('#btnmenu1').removeClass("btn btn-xs btn-default");
-        $('#btnmenu').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu').addClass("btn btn-xs btn-success active");
         wifiallset = 1;
     }
     else if(id== "btn2")
@@ -367,10 +367,10 @@ function chkmobiledataall(id){
             console.log("syncwifi off");
         });
         wifiallset =0;
-        $('#btnmenu1').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').removeClass("btn btn-xs btn-success active");
         $('#btnmenu1').addClass("btn btn-xs btn-default");
         $('#btnmenu2').removeClass("btn btn-xs btn-default");
-        $('#btnmenu2').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').addClass("btn btn-xs btn-success active");
     }
 
 
