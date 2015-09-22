@@ -258,10 +258,6 @@ if(menu.allowscore == 0){
 
 }
 
-
-alert($('#btnmenu2').attr('class'));
-
-
     if(wifi==1) {
         $('#btnmenu2').removeClass("btn btn-xs btn-success");
         $('#btnmenu1').removeClass("btn btn-xs btn-default")
