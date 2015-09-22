@@ -263,16 +263,16 @@ if(menu.allowscore == 0){
 
 
     if(wifi==1) {
-        $('#btnmenu2').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').removeClass("btn btn-success btn-xs");
         $('#btnmenu1').removeClass("btn btn-xs btn-default")
         $('#btnmenu2').addClass("btn btn-xs btn-default");
-        $('#btnmenu1').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').addClass("btn btn-success btn-xs");
 
     }else if(wifi==0) {
-        $('#btnmenu1').removeClass("btn btn-xs btn-primary active");
+        $('#btnmenu1').removeClass("btn btn-success btn-xs");
         $('#btnmenu2').removeClass("btn btn-xs btn-default")
         $('#btnmenu1').addClass("btn btn-xs btn-default");
-        $('#btnmenu2').addClass("btn btn-xs btn-primary active");
+        $('#btnmenu2').addClass("btn btn-success btn-xs");
 
     }
 
