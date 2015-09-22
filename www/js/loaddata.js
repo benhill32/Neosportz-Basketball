@@ -120,7 +120,7 @@ function checkdatabaseloaddata(){
         json = xmlHttp.responseText;
     }else{
 
-        db.transaction(getMenusch, errorCBfunc, successCBfunc);
+       // db.transaction(getMenusch, errorCBfunc, successCBfunc);
     }
 
     //alert(json);
