@@ -257,16 +257,9 @@ function getsyncdateall_success2(tx, results) {
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
-        $('#settingdeleteall').click(function() {
-            nointernet();
-        });
-        $('#settingsync').click(function() {
-            nointernet();
-        });
-        $('#regioniddiv').click(function() {
-            nointernet();
-        });
-
+        $('#settingdeleteall').unbind('click');
+        $('#settingsync').unbind('click');
+        $('#regioniddiv').unbind('click');
     }
 
     if(menu.isadmin == 0){
@@ -426,15 +419,12 @@ function chkmobiledataall(id){
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
-        $('#settingdeleteall').click(function() {
-            nointernet();
-        });
-        $('#settingsync').click(function() {
-            nointernet();
-        });
-        $('#regioniddiv').click(function() {
-            nointernet();
-        });
+
+            $('#settingdeleteall').unbind('click');
+
+        $('#settingsync').unbind('click');
+
+        $('#regioniddiv').unbind('click');
 
     }
 
