@@ -72,13 +72,13 @@ function getadmin_success(tx, results) {
         var menu = results.rows.item(0);
         if(menu.allownewfeed ==1 && menu.Clubedit == clubidtop){
             $('#loadnews').empty();
-            $('#loadnews').append('<img src="../img/plus2.png"  style="height:30px;" title="Add New Feed">' +'</Div>');
+            $('#loadnews').append(' <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>' +'</Div>');
             $('#loadnews').click(function(){
                 weblink('../pages/addnewfeed.html')
             });
         }else if (menu.isadmin ==1){
             $('#loadnews').empty();
-            $('#loadnews').append('<img src="../img/plus2.png"  style="height:30px;" title="Add New Feed">' +'</Div>');
+            $('#loadnews').append('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>' +'</Div>');
             $('#loadnews').click(function(){
                 weblink('../pages/addnewfeed.html')
             });
