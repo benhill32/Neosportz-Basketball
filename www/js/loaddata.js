@@ -120,7 +120,7 @@ function checkdatabaseloaddata(){
         json = xmlHttp.responseText;
     }else{
 
-        alert("No Internet");
+        db.transaction(getMenusch, errorCBfunc, successCBfunc);
     }
 
     //alert(json);
@@ -213,7 +213,7 @@ function populateDB1(tx,results) {
              tx.executeSql(sql, [], getchecksync,errorCBfunc);
         }else{
             $('#indexloadingdata').modal('hide')
-
+            db.transaction(getMenusch, errorCBfunc, successCBfunc);
         }
     }
 }
