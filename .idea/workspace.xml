@@ -43,21 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80697674">
-              <caret line="1279" column="1" selection-start-line="1279" selection-start-column="1" selection-end-line="1279" selection-end-column="1" />
+            <state vertical-scroll-proportion="-9.862069">
+              <caret line="1255" column="30" selection-start-line="1255" selection-start-column="30" selection-end-line="1255" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loadnewmenu.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loadnewmenu.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3448277">
-              <caret line="235" column="0" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3523256">
+              <caret line="378" column="45" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
               <folding>
                 <element signature="n#!!block;n#redirectresults#0" expanded="false" />
                 <element signature="n#!!block;n#redirectschedules2#0" expanded="false" />
@@ -213,8 +213,8 @@
         <option value="$PROJECT_DIR$/www/pages/Scoringrequest.html" />
         <option value="$PROJECT_DIR$/www/js/loaddata.js" />
         <option value="$PROJECT_DIR$/www/js/functions.js" />
-        <option value="$PROJECT_DIR$/www/js/loadnewmenu.js" />
         <option value="$PROJECT_DIR$/www/css/index.css" />
+        <option value="$PROJECT_DIR$/www/js/loadnewmenu.js" />
       </list>
     </option>
   </component>
@@ -1012,23 +1012,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.862069">
+          <caret line="1255" column="30" selection-start-line="1255" selection-start-column="30" selection-end-line="1255" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/loadnewmenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3448277">
-          <caret line="235" column="0" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3523256">
+          <caret line="378" column="45" selection-start-line="378" selection-start-column="45" selection-end-line="378" selection-end-column="45" />
           <folding>
             <element signature="n#!!block;n#redirectresults#0" expanded="false" />
             <element signature="n#!!block;n#redirectschedules2#0" expanded="false" />
             <element signature="n#!!block;n#loadhistoryall#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80697674">
-          <caret line="1279" column="1" selection-start-line="1279" selection-start-column="1" selection-end-line="1279" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>

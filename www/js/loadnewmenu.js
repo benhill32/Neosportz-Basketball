@@ -236,8 +236,8 @@ function getsyncdateall_success2(tx, results) {
 
     alert(wifi + " - " + networkconall);
     if((wifi ==1 &&  networkconall==2) || ((wifi ==0 &&  networkconall!=0))){
-        $("#settingdeleteall").css('color', '#333');
-        $("#settingsync").css('color', '#333');
+        $("#settingdeleteall").css('color', 'white');
+        $("#settingsync").css('color', 'white');
     }else{
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
@@ -375,8 +375,8 @@ function chkmobiledataall(id){
 
     if((id=="btn1" &&  networkconall==2) || ((id== "btn2" &&  networkconall!=0))){
 
-        $("#settingdeleteall").css('color', '#333');
-        $("#settingsync").css('color', '#333');
+        $("#settingdeleteall").css('color', 'white');
+        $("#settingsync").css('color', 'white');
     }else{
 
         $("#settingdeleteall").css('color', 'grey');
