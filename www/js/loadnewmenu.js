@@ -259,20 +259,20 @@ if(menu.allowscore == 0){
 }
 
 
-
+alert($('#btnmenu2').attr('class'));
 
 
     if(wifi==1) {
-        $('#btnmenu2').removeClass("btn btn-success btn-xs");
+        $('#btnmenu2').removeClass("btn btn-xs btn-success");
         $('#btnmenu1').removeClass("btn btn-xs btn-default")
         $('#btnmenu2').addClass("btn btn-xs btn-default");
-        $('#btnmenu1').addClass("btn btn-success btn-xs");
+        $('#btnmenu1').addClass("btn btn-xs btn-success");
 
     }else if(wifi==0) {
-        $('#btnmenu1').removeClass("btn btn-success btn-xs");
+        $('#btnmenu1').removeClass("btn btn-xs btn-success");
         $('#btnmenu2').removeClass("btn btn-xs btn-default")
         $('#btnmenu1').addClass("btn btn-xs btn-default");
-        $('#btnmenu2').addClass("btn btn-success btn-xs");
+        $('#btnmenu2').addClass("btn btn-xs btn-success");
 
     }
 
@@ -354,10 +354,10 @@ function chkmobiledataall(id){
             console.log("syncwifi on");
         });
 
-        $('#btnmenu2').removeClass("btn btn-success btn-xs");
-        $('#btnmenu2').addClass("btn btn-default btn-xs");
-        $('#btnmenu1').removeClass("btn btn-default btn-xs");
-        $('#btnmenu1').addClass("btn btn-success btn-xs active");
+        $('#btnmenu2').removeClass("btn btn-xs btn-success");
+        $('#btnmenu2').addClass("btn btn-xs btn-default");
+        $('#btnmenu1').removeClass("btn btn-xs btn-default");
+        $('#btnmenu1').addClass("btn btn-xs btn-success");
         wifiallset = 1;
     }
     else if(id== "btn2")
@@ -367,10 +367,10 @@ function chkmobiledataall(id){
             console.log("syncwifi off");
         });
         wifiallset =0;
-        $('#btnmenu1').removeClass("btn btn-success btn-xs");
-        $('#btnmenu1').addClass("btn btn-default btn-xs");
-        $('#btnmenu2').removeClass("btn btn-default btn-xs");
-        $('#btnmenu2').addClass("btn btn-success btn-xs active");
+        $('#btnmenu1').removeClass("btn btn-xs btn-success");
+        $('#btnmenu1').addClass("btn btn-xs btn-default");
+        $('#btnmenu2').removeClass("btn btn-xs btn-default");
+        $('#btnmenu2').addClass("btn btn-xs btn-success");
     }
 
 
