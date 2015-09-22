@@ -27,7 +27,7 @@ function onDeviceReadyFunc() {
     deviceVersionfunc = device.version;
     databaseversion = db.database_version;
     db.transaction(gettoken1, errorCBfunc, successCBfunc);
-    document.addEventListener("backbutton", onBackKeyDown, false);
+
 
 
     if (devicePlatformfunc == "Android") {
