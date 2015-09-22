@@ -258,13 +258,13 @@ function getsyncdateall_success2(tx, results) {
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
         $('#settingdeleteall').click(function() {
-
+            nointernet();
         });
         $('#settingsync').click(function() {
-
+            nointernet();
         });
         $('#regioniddiv').click(function() {
-
+            nointernet();
         });
 
     }
@@ -305,7 +305,11 @@ if(menu.allowscore == 0){
 
 
 }
+function nointernet(){
 
+    window.plugins.toast.showShortCenter('Sorry couldnt update Server No Internet', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+
+}
 
 
 function getregionName2all(tx) {
@@ -423,13 +427,13 @@ function chkmobiledataall(id){
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
         $('#settingdeleteall').click(function() {
-
+            nointernet();
         });
         $('#settingsync').click(function() {
-
+            nointernet();
         });
         $('#regioniddiv').click(function() {
-
+            nointernet();
         });
 
     }
