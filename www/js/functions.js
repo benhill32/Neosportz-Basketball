@@ -359,7 +359,7 @@ function sendinfotoserver(type,division,club){
 
         db.transaction(gettokenindividual, errorCBfunc, successCBfunc);
     }else{
-
+        $('#indexloadingdata').modal('hide');
         alert("You don't have access to internet!");
     }
 
