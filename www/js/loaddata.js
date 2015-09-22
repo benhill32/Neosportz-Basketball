@@ -523,7 +523,8 @@ function countProperties(obj) {
 
 function onclickloadregion(){
 
-    $('#basicModalregions2').modal('show');
+        $('#basicModalregions2').modal('show');
+
     //db.transaction(onclickloadregiondata, errorCBfunc, successCBfunc)
 }
 
