@@ -234,6 +234,7 @@ function getsyncdateall_success2(tx, results) {
     console.log("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2) );
 
 
+    alert(wifi + " - " + networkconall);
     if((wifi ==1 &&  networkconall==2) || ((wifi ==0 &&  networkconall!=0))){
         $("#settingdeleteall").css('color', '#333');
         $("#settingsync").css('color', '#333');
