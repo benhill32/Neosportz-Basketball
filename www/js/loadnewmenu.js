@@ -234,19 +234,39 @@ function getsyncdateall_success2(tx, results) {
     console.log("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2) );
 
 
-    
+
     if((wifi ==1 &&  networkconall==2) || ((wifi ==0 &&  networkconall!=0))){
         $("#settingdeleteall").css('color', 'white');
         $("#settingsync").css('color', 'white');
         $("#regioniddiv").css('color', 'white');
 
+        $('#settingdeleteall').click(function() {
+            cleardata4Changeregaionall();
+        });
+        $('#settingsync').click(function() {
+            onclicksyncloaddata();
+        });
+        $('#regioniddiv').click(function() {
+            onclickloadregion();
+        });
+
+
+
     }else{
+
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
-        $('#settingdeleteall').off('click');
-        $('#settingsync').off('click');
-        $('#regioniddiv').off('click');
+        $('#settingdeleteall').click(function() {
+
+        });
+        $('#settingsync').click(function() {
+
+        });
+        $('#regioniddiv').click(function() {
+
+        });
+
     }
 
     if(menu.isadmin == 0){
@@ -384,14 +404,34 @@ function chkmobiledataall(id){
         $("#settingdeleteall").css('color', 'white');
         $("#settingsync").css('color', 'white');
         $("#regioniddiv").css('color', 'white');
+
+        $('#settingdeleteall').click(function() {
+            cleardata4Changeregaionall();
+        });
+        $('#settingsync').click(function() {
+            onclicksyncloaddata();
+        });
+        $('#regioniddiv').click(function() {
+            onclickloadregion();
+        });
+
+
+
     }else{
 
         $("#settingdeleteall").css('color', 'grey');
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
-        $('#settingdeleteall').off('click');
-        $('#settingsync').off('click');
-        $('#regioniddiv').off('click');
+        $('#settingdeleteall').click(function() {
+
+        });
+        $('#settingsync').click(function() {
+
+        });
+        $('#regioniddiv').click(function() {
+
+        });
+
     }
 
 
