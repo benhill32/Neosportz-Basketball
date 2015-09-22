@@ -26,12 +26,12 @@ function onDeviceReadyscore() {
    // db.transaction(gettoken, errorCBfunc, successCBfunc);
 
     if(networkconnectionscore !=0) {
-        //onclicksyncloaddata();
+        onclicksyncloaddata();
     }
 
-   // window.setTimeout(function(){
+    window.setTimeout(function(){
         db.transaction(getfliter1, errorCBfunc, successCBfunc);
- //   }, 1500);
+    }, 1500);
 }
 
 function getfliter1(tx) {
