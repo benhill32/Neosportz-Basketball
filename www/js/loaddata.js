@@ -118,6 +118,9 @@ function checkdatabaseloaddata(){
         xmlHttp.send();
     //     alert('http://admin.adme.kiwi/checkdatabase.aspx?deviceID=' + deviceIDfunc);
         json = xmlHttp.responseText;
+    }else{
+
+        alert("No Internet");
     }
 
     //alert(json);
