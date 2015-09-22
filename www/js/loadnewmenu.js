@@ -344,12 +344,12 @@ function getregionName2all_success(tx, results) {
 
 
 function chkmobiledataall(id){
-    onOfflineall();
+    //onOfflineall();
 
     if(id=="btn1")
     {
 
-        db.transaction(function(tx) {
+       db.transaction(function(tx) {
             tx.executeSql('Update MobileApp_LastUpdatesec set syncwifi = 1');
             console.log("syncwifi on");
         });
@@ -357,7 +357,7 @@ function chkmobiledataall(id){
         $('#btnmenu2').removeClass("btn btn-xs btn-success active");
         $('#btnmenu2').addClass("btn btn-xs btn-default");
         $('#btnmenu1').removeClass("btn btn-xs btn-default");
-        $('#btnmenu').addClass("btn btn-xs btn-success active");
+        $('#btnmenu1').addClass("btn btn-xs btn-success active");
         wifiallset = 1;
     }
     else if(id== "btn2")
