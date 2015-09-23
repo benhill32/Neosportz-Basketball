@@ -311,7 +311,7 @@ function errorclosemodel(){
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
     }
-    window.plugins.toast.showLongCenter('Something went wrong! Please sync data again \n If problem persists contact helpdesk@neocom.co.nz', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+    window.plugins.toast.showLongBottom('Something went wrong! Please sync data again \n If problem persists contact helpdesk@neocom.co.nz', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
     randomfunctions();
@@ -324,7 +324,7 @@ function closemodel(){
 
 
 
-    window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+    window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     db.transaction(getsyncdateload, errorCBfunc, successCBfunc);
 
 
@@ -410,7 +410,7 @@ function closemodelarchive(){
 
     $('#indexloadingdata').modal('hide');
 
-    window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+    window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
 
   //  randomfunctions();
@@ -422,7 +422,7 @@ function closemodelRegion(){
  //   $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
 
-  //  window.plugins.toast.showLongCenter('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+  //  window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     showregion();
 
 }
@@ -593,7 +593,7 @@ function onclickresync(tx, results) {
         var yearnow = datenow.getFullYear()
         var dif = timenow - (datenowsecsync);
 
-        //   window.plugins.toast.showLongCenter('Please Wait While Data is Downloaded', function (a) {console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b)});
+        //   window.plugins.toast.showLongBottom('Please Wait While Data is Downloaded', function (a) {console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b)});
         var xmlHttp = null;
         xmlHttp = new XMLHttpRequest();
 
@@ -649,7 +649,7 @@ function loadarchiveyeardata2_sync(tx, results) {
         var yearnow = archiveyear;
         var dif = timenow - (datenowsecsync);
 
-        //   window.plugins.toast.showLongCenter('Please Wait While Data is Downloaded', function (a) {console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b)});
+        //   window.plugins.toast.showLongBottom('Please Wait While Data is Downloaded', function (a) {console.log('toast success: ' + a) }, function (b) { alert('toast error: ' + b)});
         var xmlHttp = null;
         xmlHttp = new XMLHttpRequest();
 

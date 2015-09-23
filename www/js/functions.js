@@ -1137,7 +1137,7 @@ function gettoken1_success(tx, results) {
 function sendtoast(ID){
 
 
-    window.plugins.toast.showLongCenter(ID, function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+    window.plugins.toast.showLongBottom(ID, function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
 
 }
 
