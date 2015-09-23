@@ -34,6 +34,15 @@
      //   });
 
     </script>
+
+    <script type="text/javascript"  charset="utf-8">
+
+        document.addEventListener("deviceready", onDeviceReadyaddnew, false);
+        function onDeviceReadyaddnew() {
+            db.transaction(getMenusch, errorCBfunc, successCBfunc);
+        }
+
+    </script>
 </head>
 <body>
 <nav id="menu"  style="display: none;" >
