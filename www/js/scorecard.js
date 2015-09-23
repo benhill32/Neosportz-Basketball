@@ -289,7 +289,7 @@ var Gameid =menu.ID;
         db.transaction(getqtrs, errorCBfunc, successCBfunc);
 
 
-        db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
 
     }else{
         $('#scorecard').empty().append("Game has been approved! Thanks");
