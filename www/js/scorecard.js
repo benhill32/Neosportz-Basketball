@@ -301,7 +301,7 @@ var Gameid =menu.ID;
 
 function syncscore(){
 
-    onDeviceReadyscore();
+    location.reload(true);
 }
 
 function savegame(id){
