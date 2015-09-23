@@ -349,7 +349,9 @@ function savegame(id){
     if(response = "{'Success' : [{'Message': 'Everything is Good'}]"){
         // alert(response);
         //onclicksyncloaddata();
-        onDeviceReadyscore()
+       // onDeviceReadyscore()
+
+        location.reload(true);
       //  db.transaction(getdata, errorCBfunc, successCBfunc);
       //  db.transaction(getqtrs, errorCBfunc, successCBfunc);
     }
