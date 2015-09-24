@@ -47,7 +47,10 @@ body {
 
 }
 
+.mm-listview > li > a, .mm-listview > li > span{
 
+    padding: 15px 10px 15px 10px!important;
+}
 .paddingscore{
 
     padding: 12px 6px;
@@ -1414,7 +1417,8 @@ h1 {
 
 
 .mm-menu {
-    background: #3367cc !important;
+    background: #4776D1 !important;
+    //background: #3367cc !important;
     color: white !important;
 }
 
