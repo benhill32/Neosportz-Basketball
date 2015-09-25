@@ -265,15 +265,7 @@ function getsyncdateall_success2(tx, results) {
         $('#settingsync').unbind('click');
         $('#regioniddiv').unbind('click');
 
-        $('#settingdeleteall').click(function() {
-            javascript:void(0);
-        });
-        $('#settingsync').click(function() {
-            javascript:void(0);
-        });
-        $('#regioniddiv').click(function() {
-            javascript:void(0);
-        });
+
     }
 
     if(menu.isadmin == 0){
