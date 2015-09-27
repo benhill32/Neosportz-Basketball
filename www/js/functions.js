@@ -36,10 +36,10 @@ function onDeviceReadyFunc() {
 
         };
     }else if (devicePlatformfunc == "iOS") {
-        admobid = { // for iOS
-            banner: 'ca-app-pub-8464767609803803/8188786777'
+       // admobid = { // for iOS
+          //  banner: 'ca-app-pub-8464767609803803/8188786777'
 
-        };
+       // };
     }
 
 
