@@ -82,6 +82,9 @@ function getbackground2_error(err) {
 
 }
 
+
+
+
 function getbackground_error(err) {
     //Alert("Error processing SQL: " + err.code);
    alert("error");
