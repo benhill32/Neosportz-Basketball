@@ -34,12 +34,12 @@ function onDeviceReadyFunc() {
 
     if (devicePlatformfunc == "Android") {
       //  admobid = { // for Android
-        //    banner: 'ca-app-pub-8464767609803803/9844071579'
+        banner: ' ca-app-pub-8464767609803803/6593750375'
 
       //  };
     }else if (devicePlatformfunc == "iOS") {
        // admobid = { // for iOS
-          //  banner: 'ca-app-pub-8464767609803803/8188786777'
+            banner: 'ca-app-pub-8464767609803803/5117017175'
 
        // };
     }
