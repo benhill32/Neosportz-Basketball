@@ -125,8 +125,9 @@ function createDB(tx) {
     console.log("Mobilesponsorsclub table is created");
 
 
-    tx.executeSql('CREATE TABLE IF NOT EXISTS Mobilescreenimage (_id INTEGER NOT NULL primary key,Base64 TEXT NULL,BackgroundColor TEXT NULL,SoftwareFade TEXT NULL,UpdateDateUTC TEXT NULL,TopText TEXT NULL,BottomText TEXT NULL,URLLINK TEXT NULL)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS Mobilescreenimage (_id INTEGER NOT NULL primary key,Base64 TEXT NULL,BackgroundColor TEXT NULL,SoftwareFade TEXT NULL,UpdateDateUTC TEXT NULL,TopText TEXT NULL,BottomText TEXT NULL,URLLINK TEXT NULL,DeletedateUTC TEXT NULL)');
     console.log("Mobilescreenimage table is created");
+
 
     tx.executeSql('CREATE TABLE IF NOT EXISTS Mobilescoringbreakdown (ID INTEGER NOT NULL primary key,CreatedateUTC TEXT NULL,UpdatedateUTC TEXT NULL,DeletedateUTC TEXT NULL,HTeamID INTEGER NOT NULL,ATeamID INTEGER NOT NULL,GameID INTEGER NOT NULL,H1st INTEGER NULL,A1st INTEGER NULL,H2nd INTEGER NULL,A2nd INTEGER NULL,H3rd INTEGER NULL,A3rd INTEGER NULL,H4th INTEGER NULL,A4th INTEGER NULL,Hot1 INTEGER NULL,Aot1 INTEGER NULL,Hot2 INTEGER NULL,Aot2 INTEGER NULL,Hot3 INTEGER NULL,Aot3 INTEGER NULL,Hot4 INTEGER NULL,Aot4 INTEGER NULL)');
     console.log("Mobilescoringbreakdown table is created");
