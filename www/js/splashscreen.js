@@ -22,7 +22,7 @@ function getbackground(tx) {
    // alert($('#mainbackground').css('opacity'));
 
     var sql = "select _id,Base64 from Mobilescreenimage order by UpdateDateUTC desc LIMIT 1";
-     alert(sql);
+    // alert(sql);
     tx.executeSql(sql, [], getbackground_success,getbackground_error);
 }
 
@@ -84,8 +84,9 @@ function getbackground2_error(err) {
 
 function getbackground_error(err) {
     //Alert("Error processing SQL: " + err.code);
-   // alert("error");
+   alert("error");
     runadmob();
+    alert("after");
     window.setTimeout(function(){
         window.location.href='../index.html';
     }, 5000);
