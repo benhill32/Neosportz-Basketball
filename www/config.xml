@@ -79,4 +79,6 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <content src="/pages/splashscreen.html"/>
     <access origin="*" />
+  <dependency id="cordova-plugin-googleplayservices"/>
+  <framework src="com.google.android.gms:play-services-ads:+" />
 </widget>
