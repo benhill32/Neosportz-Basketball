@@ -28,7 +28,7 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="android-installLocation" value="auto" />
     <gap:plugin name="org.apache.cordova.camera" source="npm" />
-    <gap:plugin name="com.darktalker.cordova.screenshot" version="0.1.0" source="npm"  />
+    <gap:plugin name="com.darktalker.cordova.screenshot" version="0.1.0"  />
     <gap:plugin name="org.apache.cordova.file" source="npm"/>
     <gap:plugin name="org.apache.cordova.console" source="npm" />
     <gap:plugin name="org.apache.cordova.device" source="npm" />
