@@ -40,7 +40,7 @@
     <gap:plugin name="org.apache.cordova.media" source="npm" />
     <gap:plugin name="org.apache.cordova.network-information" source="npm" />
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
-    <gap:plugin name="org.apache.cordova.core.file-transfer" source="npm" />
+    <gap:plugin name="org.apache.cordova.core.file-transfer" />
     <gap:plugin name="org.devgeeks.canvas2imageplugin" version="0.6.0" />
     <gap:plugin name="nl.x-services.plugins.calendar" version="4.2.4" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
