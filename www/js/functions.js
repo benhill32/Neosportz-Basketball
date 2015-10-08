@@ -14,7 +14,7 @@ var typesend = "";
 var divisionsend = "";
 var clubsend = "";
 var teamsend = "";
-var appversionlocal = '1.2.2';
+var appversionlocal = '1.2.15';
 var admobid = {};
 
 
@@ -620,6 +620,18 @@ function syncmaintables(obj,year){
 
     var datenow = new Date();
     functionyear = year;
+
+    db.transaction(function (tx) {
+        tx.executeSql('Delete from MobileApp_Schedule_Menu');
+        // console.log('Delete MobileApp_Results where ID =' + obj.ID);
+    });
+
+    db.transaction(function (tx) {
+        tx.executeSql('Delete from MobileApp_Results_Menu');
+        // console.log('Delete MobileApp_Results where ID =' + obj.ID);
+    });
+
+
     $.each(obj.App_Schedule_Menu, function (idx, obj) {
         if(obj.Hide ==0) {
             db.transaction(function (tx) {

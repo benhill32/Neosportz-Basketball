@@ -24,7 +24,7 @@ var menufrommansync = 0;
 // Cordova is ready
 //
 
-var appversionlocalf = '1.2.2';
+var appversionlocalf = '1.2.15';
 
 
 function onDeviceReadyloaddata() {
