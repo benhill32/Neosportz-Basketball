@@ -14,7 +14,7 @@ var typesend = "";
 var divisionsend = "";
 var clubsend = "";
 var teamsend = "";
-var appversionlocal = '1.2.15';
+var appversionlocal = '1.2.2';
 var admobid = {};
 
 
