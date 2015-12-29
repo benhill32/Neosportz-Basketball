@@ -29,8 +29,7 @@ var appversionlocalf = '1.2.2';
 
 function onDeviceReadyloaddata() {
     pushnotifiy();
-    db.transaction(gettokenloaddata, errorCBfunc, successCBfunc);
-  //  db = window.openDatabase("Neosportz_Football", "1.1", "Neosportz_Football", 200000);
+
     console.log("LOCALDB - Database ready");
     deviceIDfunc = device.uuid;
     devicePlatformfunc = device.platform;
@@ -56,20 +55,7 @@ function onOffline()
 }
 
 
-function gettokenloaddata(tx) {
-    var sql = "select token from MobileApp_LastUpdatesec";
-    //  alert(sql);
-    tx.executeSql(sql, [], gettokenloaddata_success);
-}
 
-function gettokenloaddata_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-    var menu = results.rows.item(0);
-
-    tokenldata = menu.token;
-    //alert(apptoken);
-}
 
 
 function getnetworkdetails(){
@@ -96,7 +82,7 @@ function checkonline(){
 }
 
 function refreshdata(){
-    db.transaction(gettokenloaddata, errorCBfunc, successCBfunc);
+
     checkonline();
 
   //  $('#indexloadingdata').modal('show');
@@ -130,8 +116,8 @@ function checkdatabaseloaddata(){
     }else  if(json == "1"){
         // alert(json);
         if(document.getElementById("indexdiv")!=null) {
-            $('#indexloadingdata').modal('hide');
-
+           // $('#indexloadingdata').modal('hide');
+            window.plugins.spinnerDialog.hide();
 
             if (devicePlatformfunc == "Android") {
                 $('#modelnewdatabase').modal('show');
@@ -192,7 +178,7 @@ function populateDB1(tx,results) {
     if(row.Count ==0){
 
 
-            $('#indexloadingdata').modal('show');
+            //$('#indexloadingdata').modal('show');
 
 
         $.when(blankLastUpdatesec()).done(function() {
@@ -212,7 +198,7 @@ function populateDB1(tx,results) {
 
              tx.executeSql(sql, [], getchecksync,errorCBfunc);
         }else{
-            $('#indexloadingdata').modal('hide')
+            window.plugins.spinnerDialog.hide();
             db.transaction(getMenusch, errorCBfunc, successCBfunc);
         }
     }
@@ -272,9 +258,9 @@ function getchecksync(tx, results) {
         if (dif >= "600") {
 
 
-                    $('#indexloadingdata').modal('show');
+                  //  $('#indexloadingdata').modal('show');
 
-
+            window.plugins.spinnerDialog.show(null, null, true);
 
             var xmlHttp = null;
             xmlHttp = new XMLHttpRequest();
@@ -307,12 +293,13 @@ function getchecksync(tx, results) {
 function errorclosemodel(){
    // $('#mainfore').removeClass('mainforeground2');
    // $('#mainfore').addClass('mainforeground');
-    $('#indexloadingdata').modal('hide');
+  // $('#indexloadingdata').modal('hide');
+    window.plugins.spinnerDialog.hide();
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
     }
     window.plugins.toast.showLongBottom('Something went wrong! Please sync data again \n If problem persists contact helpdesk@neocom.co.nz', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
-
+    db.transaction(getoneoff, errorCBfunc, successCBfunc);
     db.transaction(getMenusch, errorCBfunc, successCBfunc);
     randomfunctions();
 }
@@ -320,11 +307,11 @@ function errorclosemodel(){
 function closemodel(){
    // alert("close");
 
-    $('#indexloadingdata').modal('hide');
+   // $('#indexloadingdata').modal('hide');
+    window.plugins.spinnerDialog.hide();
 
 
-
-    window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
+   // window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     db.transaction(getsyncdateload, errorCBfunc, successCBfunc);
 
 
@@ -379,7 +366,7 @@ function getsyncdateload_success2(tx, results) {
         db.transaction(getMenusch, errorCBfunc, successCBfunc);
     }else{
         if (document.getElementById("scorecard") != null) {
-            db.transaction(getMenusch, errorCBfunc, successCBfunc);
+
         }
         else if (document.getElementById("addnewfeed") != null)
         {
@@ -421,7 +408,7 @@ function closemodelRegion(){
   //  $('#mainfore').removeClass('mainforeground2');
  //   $('#mainfore').addClass('mainforeground');
     $('#indexloadingdata').modal('hide');
-
+    window.plugins.spinnerDialog.hide();
   //  window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     showregion();
 
@@ -429,13 +416,16 @@ function closemodelRegion(){
 function reloadindividual(){
 
 
-    $('#indexloadingdata').modal('hide');
-
+    window.plugins.spinnerDialog.hide();
+    if (document.getElementById("divschedules") != null) {
+        $('#loadinggears').hide();
+        db.transaction(getdatasch, errorCBfunc, successCBfunc)
+    }
 
     if (document.getElementById("newsmain") != null) {
         $.mobile.loading().hide();
+        db.transaction(getfirstnew, errorCBfunc, successCBfunc);
     }
-    location.reload();
 
 }
 
@@ -536,7 +526,7 @@ function countProperties(obj) {
 
 
 function onclickloadregion(){
-
+    window.plugins.spinnerDialog.hide();
         $('#basicModalregions2').modal('show');
 
     //db.transaction(onclickloadregiondata, errorCBfunc, successCBfunc)
@@ -546,8 +536,8 @@ function onclickloadregion(){
 
 function chooseregionloaddata(ID){
 
-    $('#indexloadingdata').modal('show')
-
+   // $('#indexloadingdata').modal('show')
+    window.plugins.spinnerDialog.show(null, null, true);
 
 
 
@@ -564,7 +554,15 @@ function chooseregionloaddata(ID){
 }
 
 function onclicksyncloaddata(){
-    db.transaction(onclicksyncloaddata2, errorCBfunc, successCBfunc);
+    closemenu();
+
+    window.setTimeout(function(){
+
+
+        //$('#indexloadingdata').modal('show');
+        window.plugins.spinnerDialog.show(null, null, true);
+        db.transaction(onclicksyncloaddata2, errorCBfunc, successCBfunc);
+    }, 1000);
 }
 
 function onclicksyncloaddata2(tx){
@@ -582,7 +580,7 @@ function onclickresync(tx, results) {
     var row = results.rows.item(0);
    // alert(row.syncwifi + " " + networkconnection);
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
-        $('#indexloadingdata').modal('show');
+      //  $('#indexloadingdata').modal('show');
        // alert("here1")
         var datemenus = row.datemenus;
         var datenowsecsync = row.Datesecs;
@@ -614,7 +612,7 @@ function onclickresync(tx, results) {
 
     }else{
         window.plugins.toast.showShortCenter('Sorry couldnt update Server No Internet', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
-
+        window.plugins.spinnerDialog.hide();
     }
 }
 
