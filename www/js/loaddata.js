@@ -265,7 +265,7 @@ function getchecksync(tx, results) {
             var xmlHttp = null;
             xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledata2.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow, false);
-           alert('http://bball.neosportz.com/mobiledata2.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow);
+         //  alert('http://bball.neosportz.com/mobiledata2.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow);
             xmlHttp.send();
 
             var json = xmlHttp.responseText;
@@ -305,7 +305,7 @@ function errorclosemodel(){
 }
 
 function closemodel(){
-   // alert("close");
+    alert("close");
 
    // $('#indexloadingdata').modal('hide');
     window.plugins.spinnerDialog.hide();
