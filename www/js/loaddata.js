@@ -407,7 +407,7 @@ function closemodelarchive(){
 function closemodelRegion(){
   //  $('#mainfore').removeClass('mainforeground2');
  //   $('#mainfore').addClass('mainforeground');
-    $('#indexloadingdata').modal('hide');
+    //$('#indexloadingdata').modal('hide');
     window.plugins.spinnerDialog.hide();
   //  window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     showregion();
