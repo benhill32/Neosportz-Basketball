@@ -16,9 +16,9 @@ function getoneoff2(tx) {
 }
 
 function getoneoff2_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
 
+    var len = results.rows.length;
+alert(len);
 
     if(len != 0) {
         var menu = results.rows.item(0);
@@ -50,7 +50,7 @@ function getoneoff2_success(tx, results) {
             splashpage = "news.html";
         }
 
-    
+
 
         runadmob();
 
@@ -66,6 +66,7 @@ function getoneoff2_success(tx, results) {
 function getbackground2_error(err) {
     //  $('#splashscreen').empty();
     //  $('#splashscreen').append('<img id="screensplashimg"  src="data:image/png;base64,' + Base64 + '">');
+    alert("error");
     runadmob();
     window.setTimeout(function(){
         window.location.href="../index.html";
