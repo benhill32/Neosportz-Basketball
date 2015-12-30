@@ -364,7 +364,7 @@ function getshowregion_success(tx, results) {
 
 function chooseregion(ID){
 
-    $('#indexloadingdata').modal('show')
+
   //  $('#mainfore').removeClass('mainforeground');
   //  $('#mainfore').addClass('mainforeground2');
  //   $('#mainbackground').hide();

@@ -364,10 +364,10 @@ function sendinfotoserver(type,division,club,datesendback,IDs){
     divisionsend = division;
     clubsend = club;
     teamsend = club;
-  //  $('#indexloadingdata').modal('show');
+
 
     if (document.getElementById("divschedules") == null) {
-        //  $('#indexloadingdata').modal('show');
+
         window.plugins.spinnerDialog.show(null, null, true);
     }
 
@@ -418,7 +418,7 @@ function sendinfotoserver(type,division,club,datesendback,IDs){
 
 
     }else{
-        // $('#indexloadingdata').modal('hide');
+        
         window.plugins.spinnerDialog.hide();
         //  alert("You don't have access to internet!");
 
@@ -496,7 +496,7 @@ function sendinfotoserverPYOD(ID){
 
 
     }else{
-        // $('#indexloadingdata').modal('hide');
+
         //  alert("You don't have access to internet!");
         window.plugins.spinnerDialog.hide();
         window.plugins.toast.showShortBottom("You don't have access to internet!", function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
@@ -1111,7 +1111,7 @@ function checkversionofapp_success(tx, results) {
 
 
             if (menu.Database == 1) {
-                // $('#indexloadingdata').modal('hide');
+
                 window.plugins.spinnerDialog.hide();
                 if (devicePlatformfunc == "Android") {
                     $('#modelnewdatabase').modal('show');
@@ -1130,7 +1130,7 @@ function checkversionofapp_success(tx, results) {
     }
     else {
 
-        // $('#indexloadingdata').modal('hide');
+
         window.plugins.spinnerDialog.hide();
         if (devicePlatformfunc == "Android") {
             $('#modelnewversion').modal('show');

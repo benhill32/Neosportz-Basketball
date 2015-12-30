@@ -85,7 +85,7 @@ function refreshdata(){
 
     checkonline();
 
-  //  $('#indexloadingdata').modal('show');
+
     checkdatabaseloaddata();
 
 }
@@ -112,7 +112,7 @@ function checkdatabaseloaddata(){
     }else  if(json == "1"){
         // alert(json);
         if(document.getElementById("indexdiv")!=null) {
-           // $('#indexloadingdata').modal('hide');
+
             window.plugins.spinnerDialog.hide();
 
             if (devicePlatformfunc == "Android") {
@@ -174,7 +174,7 @@ function populateDB1(tx,results) {
     if(row.Count ==0){
 
 
-            //$('#indexloadingdata').modal('show');
+
 
 
         $.when(blankLastUpdatesec()).done(function() {
@@ -254,7 +254,6 @@ function getchecksync(tx, results) {
         if (dif >= "600") {
 
 
-                  //  $('#indexloadingdata').modal('show');
 
             window.plugins.spinnerDialog.show(null, null, true);
 
@@ -289,7 +288,7 @@ function getchecksync(tx, results) {
 function errorclosemodel(){
    // $('#mainfore').removeClass('mainforeground2');
    // $('#mainfore').addClass('mainforeground');
-  // $('#indexloadingdata').modal('hide');
+
     window.plugins.spinnerDialog.hide();
     if (document.getElementById("indexdiv") != null) {
         showdivindex();
@@ -303,7 +302,7 @@ function errorclosemodel(){
 function closemodel(){
     alert("close");
 
-   // $('#indexloadingdata').modal('hide');
+
     window.plugins.spinnerDialog.hide();
 
 
@@ -391,7 +390,7 @@ function getsyncdateload_success2(tx, results) {
 
 function closemodelarchive(){
 
-  //  $('#indexloadingdata').modal('hide');
+
 
     window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
@@ -403,7 +402,7 @@ function closemodelarchive(){
 function closemodelRegion(){
   //  $('#mainfore').removeClass('mainforeground2');
  //   $('#mainfore').addClass('mainforeground');
-    //$('#indexloadingdata').modal('hide');
+
     window.plugins.spinnerDialog.hide();
   //  window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
     showregion();
@@ -545,7 +544,7 @@ function onclicksyncloaddata(){
     window.setTimeout(function(){
 
 
-        //$('#indexloadingdata').modal('show');
+
         window.plugins.spinnerDialog.show(null, null, true);
         db.transaction(onclicksyncloaddata2, errorCBfunc, successCBfunc);
     }, 1000);
@@ -566,7 +565,7 @@ function onclickresync(tx, results) {
     var row = results.rows.item(0);
    // alert(row.syncwifi + " " + networkconnection);
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
-      //  $('#indexloadingdata').modal('show');
+
        // alert("here1")
         var datemenus = row.datemenus;
         var datenowsecsync = row.Datesecs;
@@ -623,7 +622,7 @@ function loadarchiveyeardata2_sync(tx, results) {
     var row = results.rows.item(0);
 
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
-      //  $('#indexloadingdata').modal('show');
+
 
         var datemenus = row.datemenus;
         var datenowsecsync = row.Datesecs;
