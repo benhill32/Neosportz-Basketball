@@ -109,7 +109,7 @@ function checkdatabaseloaddata(){
        // db.transaction(getMenusch, errorCBfunc, successCBfunc);
     }
 
-    alert(json);
+   // alert(json);
     if(json == "0"){
 
         db.transaction(populateDB, errorCBfunc, successCBfunc);
@@ -149,7 +149,7 @@ function loadnewtable(){
 function populateDB(tx){
     // $('#busy').show();
     var sql = "select Count(Datesecs) as Count,syncwifi,Datesecs from MobileApp_LastUpdatesec";
-    alert(sql);
+   // alert(sql);
     tx.executeSql(sql, [], populateDB1,errorCreatetable);
 
 }
@@ -174,7 +174,7 @@ function populateDB1(tx,results) {
     checkonline();
     var row = results.rows.item(0);
  //   alert(row);
-  //  alert(row.Count);
+    alert(row.Count);
     if(row.Count ==0){
 
 
@@ -265,7 +265,7 @@ function getchecksync(tx, results) {
             var xmlHttp = null;
             xmlHttp = new XMLHttpRequest();
             xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow, false);
-           // alert('http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow);
+           alert('http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync + '&resultids=' + stringresultID + '&start=0&region=' + region + '&year=' + yearnow);
             xmlHttp.send();
 
             var json = xmlHttp.responseText;

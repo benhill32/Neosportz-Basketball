@@ -334,7 +334,7 @@ function blankLastUpdatesec(){
 
 function gettokenregion(tx) {
     var sql =     "select Datesecs,datemenus,token from MobileApp_LastUpdatesec";
-//alert(sql);
+alert(sql);
     tx.executeSql(sql, [], getregionsdata,errorCBfunc);
 }
 
