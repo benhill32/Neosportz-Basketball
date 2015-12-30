@@ -23,7 +23,7 @@ function getoneoff2_success(tx, results) {
     if(len != 0) {
         var menu = results.rows.item(0);
 
-
+alert("start page : " + menu.startpage)
         window.localStorage.setItem("startpage", menu.startpage);
         window.localStorage.setItem("allownewfeed", menu.allownewfeed);
         window.localStorage.setItem("Region", menu.Region);
