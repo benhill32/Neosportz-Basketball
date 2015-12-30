@@ -11,7 +11,7 @@ function onDeviceReadysplashscreen() {
 }
 function getoneoff2(tx) {
     var sql = "select oneoffs,token,fliterON,isadmin,allowscore,allowcancel,Clubedit,Ref,Region,allownewfeed,startpage from MobileApp_LastUpdatesec";
-     alert(sql);
+     //alert(sql);
     tx.executeSql(sql, [], getoneoff2_success,getbackground_error);
 }
 
@@ -23,7 +23,7 @@ function getoneoff2_success(tx, results) {
     if(len != 0) {
         var menu = results.rows.item(0);
 
-alert("start page : " + menu.startpage)
+//alert("start page : " + menu.startpage)
         window.localStorage.setItem("startpage", menu.startpage);
         window.localStorage.setItem("allownewfeed", menu.allownewfeed);
         window.localStorage.setItem("Region", menu.Region);
@@ -50,7 +50,7 @@ alert("start page : " + menu.startpage)
             splashpage = "news.html";
         }
 
-        alert(splashpage);
+     //   alert(splashpage);
 
         runadmob();
 

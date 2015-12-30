@@ -220,7 +220,7 @@ function successCBfunc() {
 
 
 function runadmob(){
-alert("run admob");
+//alert("run admob");
     if(AdMob) AdMob.createBanner( {
         adId:admobid.banner,
         position:AdMob.AD_POSITION.BOTTOM_CENTER,
@@ -350,7 +350,7 @@ function getregionsdata(tx, results) {
     xmlHttp.send();
 
     var json = xmlHttp.responseText;
-
+alert(json);
     var obj = JSON.parse(json);
     syncmaintablesregions(obj);
 
