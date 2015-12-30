@@ -90,10 +90,6 @@ function refreshdata(){
 
 }
 
-
-
-
-
 function checkdatabaseloaddata(){
 
     var xmlHttp = null;
@@ -535,22 +531,12 @@ function onclickloadregion(){
 
 
 function chooseregionloaddata(ID){
-
-   // $('#indexloadingdata').modal('show')
     window.plugins.spinnerDialog.show(null, null, true);
-
-
-
-
     db.transaction(function(tx) {
         tx.executeSql('Update MobileApp_LastUpdatesec set Datesecs = ' + 0 + ',  Region = "' + ID + '"');
         console.log("Update MobileApp_LastUpdatesec");
     });
-
-
-
     refreshdata();
-
 }
 
 function onclicksyncloaddata(){
