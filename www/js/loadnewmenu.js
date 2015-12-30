@@ -8,9 +8,12 @@ var IDconall =0;
 var styleall= "";
 var favidall= 0;
 var networkconall = "";
-var wifiallset = 0;
+
 var regionID = 0;
 var clubfavall = 0;
+var menucol = "";
+var textcol = "";
+var favbase64= "";
 document.addEventListener("deviceready", onDeviceReadymainmenu, false);
 
 
@@ -51,165 +54,26 @@ function closemenu(){
 
 function getMenusch(tx) {
 
-//alert("load menu");
-    var sql = "select Distinct DivisionName,DivisionID,_id from MobileApp_Schedule_Menu where Hide = 0 Group by DivisionName,DivisionID  order by DivisionOrderID";
-    // alert(sql);
-
-    tx.executeSql(sql, [], getMenusch_success);
-}
-
-
-function getMenusch_success(tx, results) {
-
-    var len = results.rows.length;
-    // alert(len);
-    schstring = "";
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-        schstring += '<li><a href="#" onclick="redirectschedules2(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
-
-
-    }
-   // alert(schstring);
-
-    db.transaction(getMenuresult, errorCBfunc, successCBfunc);
-}
-
-
-
-function getMenuresult(tx) {
-    var sql = "select Distinct DivisionName,DivisionID,_id from MobileApp_Results_Menu  where Hide = 0  Group by DivisionName,DivisionID  order by DivisionOrderID";
-    // var sql = "select Distinct DivisionName,DivisionID from MobileApp_Schedule_Menu Group by DivisionName,DivisionID  order by DivisionOrderID";
-
-
-    // alert(sql);
-    tx.executeSql(sql, [], getMenuresult_success);
-}
-
-
-function getMenuresult_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-    //  alert(len);
-    resultsstring = "";
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-
-        resultsstring+='<li><a href="#" onclick="redirectresults(' + menu._id + ')">'+ menu.DivisionName + '</a></li>';
-
-
-    }
-
-    db.transaction(getMenustandings, errorCBfunc, successCBfunc);
-}
-
-
-function getMenustandings(tx) {
-    var sql = "select _id, TournamentName,UpdateDateUTC ,OrderID from MobileApp_Results_Table_Menu  where Hide = 0 order by OrderID,TournamentName";
-    //alert(sql);
-    tx.executeSql(sql, [], getMenustandings_success);
-}
-
-
-function getMenustandings_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-    // alert(len);
-    standstring="";
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-
-        standstring +='<li><a href="#" onclick="redirectstandings(' + menu._id + ')">'+ menu.TournamentName + '</a></li>';
-
-    }
-
-
-
-    db.transaction(getdataclubs, errorCBfunc, successCBfunc);
-
-
-
-
-}
-
-
-function getdataclubs(tx) {
-
-    var sql = "select ID,_id ,name,UpdateDateUTC ,Base64,replace(History, '###$$###', '<br>') as History,replace(Contacts, '###$$###', '<br>') as Contacts,UpdateSecondsUTC,Color,Fav from MobileApp_clubs order by name";
-    //alert(sql);
-    tx.executeSql(sql, [], getdataclubs_success);
-}
-
-function getdataclubs_success(tx, results) {
-    $('#busy').hide();
-    var len = results.rows.length;
-//alert(len);
-    Clubstring= "";
-    for (var i=0; i<len; i++) {
-        var menu = results.rows.item(i);
-        var imgg = "";
-        var imgstring = "#clubtick" + menu.ID;
-        var imgstring2 = "clubtick" + menu.ID;
-        if(menu.Base64 != "null"){
-            imgg = '<img src="data:image/png;base64,' + menu.Base64 + '"  align="left" height="40">';
-        }
-
-        styleall = '<span class="glyphicon glyphicon-ok" style="display:none;" id="' + imgstring2 + '" aria-hidden="true"></span>';
-
-
-        if(menu.Fav == 1){
-
-            favidall = menu.ID;
-            clubfavall = menu.ID;
-        }
-
-
-
-
-        Clubstring+='<li id="clubmenu' + menu.ID + '"><a href="#clubmenuu' + menu.ID + '" data-target="clubmenuu' + menu.ID + '">'+ imgg + "  " + menu.name + '  ' + styleall + '</a>' +
-            '<ul id="clubmenuu' + menu.ID + '">' +
-            '<li data-toggle="modal" data-target="#basicModalclubhistory"><a href="#"  onclick="loadhistoryall(' + menu.ID + ')">Club History</a></li>' +
-            '<li data-toggle="modal" data-target="#basicModalclubContact"><a href="#"   onclick="loadcontactsall(' + menu.ID + ')">Club Contacts</a></li>' +
-            '<li><a href="#" onclick="updatefollowall(' + menu.ID + ')">Set as Favourite</a></li>' +
-            '</ul>' +
-            '</li>';
-
-
-
-    }
-
-
-    if(document.getElementById("indexdiv")!=null) {
-
-        //$("#menu").show();
-    }
 
     db.transaction(getsyncdateall, errorCBfunc, successCBfunc);
-
-
-
-
-
 }
 
-
-
 function getsyncdateall(tx) {
-    var sql = "select Datesecs, syncwifi,Region,isadmin,allowscore from MobileApp_LastUpdatesec";
+    var sql = "select Datesecs, syncwifi,Region,isadmin,allowscore,fliterON,startpage from MobileApp_LastUpdatesec";
     //  alert(sql);
     tx.executeSql(sql, [], getsyncdateall_success2);
 }
 
 function getsyncdateall_success2(tx, results) {
     onOfflineall();
-
+    checksendnews();
     var len = results.rows.length;
 
     var menu = results.rows.item(0);
     //   alert(menu.Datesecs);
     var dateme = new Date((menu.Datesecs)*1000);
     var wifi = menu.syncwifi;
-    wifiallset = wifi;
+    window.localStorage.setItem("syncwifi", menu.syncwifi);
     var month = new Array();
     month[0] = "Jan";
     month[1] = "Feb";
@@ -231,7 +95,7 @@ function getsyncdateall_success2(tx, results) {
     if(dateme.getFullYear() != 1970) {
         $('#lastsyncdate').append("<strong>Last sync time</strong> <br>" + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2))
     }
-    console.log("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2) );
+    // console.log("Last sync time : " + dateme.getDate() + " " + month[dateme.getMonth()] + " " + dateme.getFullYear() + " " + (dateme.getHours()) + ":" + ("0" + dateme.getMinutes()).slice(-2) + ":" + ("0" + dateme.getSeconds()).slice(-2) );
 
 
 
@@ -258,10 +122,6 @@ function getsyncdateall_success2(tx, results) {
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
         $('#settingdeleteall').unbind('click');
-
-
-
-
         $('#settingsync').unbind('click');
         $('#regioniddiv').unbind('click');
 
@@ -275,32 +135,65 @@ function getsyncdateall_success2(tx, results) {
 
     }
 
-if(menu.allowscore == 0){
-    $('#scoringreqdiv').show();
-    $('#scoringreqdiv2').hide();
-}else{
-    $('#scoringreqdiv').hide();
-    $('#scoringreqdiv2').show();
-
-}
-
-    if(wifi==1) {
-        $('#btnmenu2').removeClass("btn btn-xs btn-success");
-        $('#btnmenu1').removeClass("btn btn-xs btn-default")
-        $('#btnmenu2').addClass("btn btn-xs btn-default");
-        $('#btnmenu1').addClass("btn btn-xs btn-success");
-
-    }else if(wifi==0) {
-        $('#btnmenu1').removeClass("btn btn-xs btn-success");
-        $('#btnmenu2').removeClass("btn btn-xs btn-default")
-        $('#btnmenu1').addClass("btn btn-xs btn-default");
-        $('#btnmenu2').addClass("btn btn-xs btn-success");
+    if(menu.allowscore == 0){
+        $('#scoringreqdiv').show();
+        $('#scoringreqdiv2').hide();
+    }else{
+        $('#scoringreqdiv').hide();
+        $('#scoringreqdiv2').show();
 
     }
 
+    if(menu.fliterON == 1){
+
+        $("#switch-filter").prop("checked", true );
+
+    }else if(menu.fliterON == 0){
+
+        $("#switch-filter").prop("checked", false );
+
+    }
+
+
+
+
+    if(wifi==1) {
+
+        $("#switch-onColor").prop("checked", true );
+        window.localStorage.setItem("syncwifi", "1");
+
+
+    }else if(wifi==0) {
+
+        $("#switch-onColor").prop("checked", false );
+        window.localStorage.setItem("syncwifi", "0");
+    }
+
+    var page2 = "";
+
+    if(menu.startpage == 1){
+        page2 = "Home";
+    }else if(menu.startpage == 2){
+        page2 = "Games";
+    }else if(menu.startpage == 3){
+        page2 = "Standings";
+    }else if(menu.startpage == 4){
+        page2 = "Clubs";
+    }else if(menu.startpage == 5){
+        page2 = "News";
+    }
+
+
+
+    $('#lblstartingpage').empty().append(page2);
+
+
+
+
+
     db.transaction(getregionName2all, errorCBfunc, successCBfunc);
 
-    $('#busy').hide();
+
 
 
 }
@@ -328,11 +221,6 @@ function getregionName2all_success(tx, results) {
     $('#regionlbl').append(menu.Name);
 
 
-        $("#menu").show();
-
-
-//alert("last Stage of menu");
-
     var stringapp = device.uuid;
 
     $("#deviceid").empty();
@@ -342,67 +230,146 @@ function getregionName2all_success(tx, results) {
     $("#appversion").append(appversionlocalf);
 
 
-    $("#schedulemenudiv").empty();
-    $("#resultmenudiv").empty();
-    $("#standingsmenudiv").empty();
-    $("#clubsmenudiv").empty();
-
-    $("#schedulemenudiv").append(schstring);
-    $("#resultmenudiv").append(resultsstring);
-    $("#standingsmenudiv").append(standstring);
-    $("#clubsmenudiv").append(Clubstring);
-
-    $("#clubtick" + clubfavall).show();
 
 
-        $(function () {
-            $('nav#menu').mmenu({
-                extensions: ["border-full", "pageshadow"],
-                "navbar": {
-                    "title": "Neosportz Basketball"
+
+
+
+    $("#mm-blocker").click(closemenu());
+
+    $("#menu").show();
+
+    $("#spanmenu").show();
+
+    $(function () {
+        $('nav#menu').mmenu({
+            "extensions": ["border-full", "pageshadow"],
+            "navbar": {
+                "title": "Neosportz BBall"
+            },
+            "navbars": [
+                {
+                    "position": "bottom",
+                    "content": [
+                        "<a style='padding-bottom: 0px;'><img src='img/neocomhome.png' align='center' Height='50px' onclick='URLredirect('http://www.neocom.co.nz')'></a>"
+                    ]
                 }
-            });
-
+            ]
         });
+
+    });
+
+    //   $('#indexloadingdata').modal('hide');
+    window.plugins.spinnerDialog.hide();
+
+    $("#switch-onColor").bootstrapSwitch();
+    $("#switch-onColor").on('switchChange.bootstrapSwitch', function(event, state) {
+
+        if(state == true){
+
+            chkmobiledataall(1);
+        }else{
+
+            chkmobiledataall(0);
+        }
+    });
+
+    $("#switch-filter").bootstrapSwitch();
+    $("#switch-filter").on('switchChange.bootstrapSwitch', function(event, state) {
+
+        if(state == true){
+
+            chkfilter(1);
+        }else{
+
+            chkfilter(0);
+        }
+    });
+
+
+
 
 
 }
 
+function checksendnews(){
+
+    if(window.localStorage.getItem("allownewfeed") ==1 && window.localStorage.getItem("teamfollow") == window.localStorage.getItem("Clubedit")){
+        $('#divloadnews').show();
+
+    }else if (window.localStorage.getItem("isadmin") ==1){
+        $('#divloadnews').show();
+
+    }else{
+        $('#divloadnews').hide();
+    }
+}
+
+
+function chkfilter(id){
+    if(id==1)
+    {
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set fliterON = 1');
+        });
+        window.localStorage.setItem("fliter", "1");
+
+        if (document.getElementById("clubpage") != null) {
+            db.transaction(getfirstclub, errorCBfunc, successCBfunc);
+        }
+        if (document.getElementById("divschedules") != null) {
+            datecheck(date,0);
+        }
+
+
+    }
+    else if(id== 0)
+    {
+        db.transaction(function(tx) {
+            tx.executeSql('Update MobileApp_LastUpdatesec set fliterON = 0');
+        });
+        window.localStorage.setItem("fliter", "0");
+
+        if (document.getElementById("clubpage") != null) {
+            db.transaction(getfirstclub, errorCBfunc, successCBfunc);
+        }
+        if (document.getElementById("divschedules") != null) {
+            datecheck(date,0);
+        }
+    }
+
+
+}
 
 function chkmobiledataall(id){
-    onOfflineall();
 
-    if(id=="btn1")
+
+
+    onOfflineall();
+    if(id==1)
     {
 
         db.transaction(function(tx) {
             tx.executeSql('Update MobileApp_LastUpdatesec set syncwifi = 1');
             console.log("syncwifi on");
         });
+        window.localStorage.setItem("syncwifi", 1);
 
-        $('#btnmenu2').removeClass("btn btn-xs btn-success");
-        $('#btnmenu2').addClass("btn btn-xs btn-default");
-        $('#btnmenu1').removeClass("btn btn-xs btn-default");
-        $('#btnmenu1').addClass("btn btn-xs btn-success");
-        wifiallset = 1;
     }
-    else if(id== "btn2")
+    else if(id== 0)
     {
         db.transaction(function(tx) {
             tx.executeSql('Update MobileApp_LastUpdatesec set syncwifi = 0');
             console.log("syncwifi off");
         });
-        wifiallset =0;
-        $('#btnmenu1').removeClass("btn btn-xs btn-success");
-        $('#btnmenu1').addClass("btn btn-xs btn-default");
-        $('#btnmenu2').removeClass("btn btn-xs btn-default");
-        $('#btnmenu2').addClass("btn btn-xs btn-success");
+
+        window.localStorage.setItem("syncwifi", 0);
     }
 
 
 
 
-    if((id=="btn1" &&  networkconall==2) || ((id== "btn2" &&  networkconall!=0))){
+    if((id==1 &&  networkconall==2) || ((id== 0 &&  networkconall!=0))){
 
         $("#settingdeleteall").css('color', 'white');
         $("#settingsync").css('color', 'white');
@@ -426,7 +393,7 @@ function chkmobiledataall(id){
         $("#settingsync").css('color', 'grey');
         $("#regioniddiv").css('color', 'grey');
 
-            $('#settingdeleteall').unbind('click');
+        $('#settingdeleteall').unbind('click');
 
         $('#settingsync').unbind('click');
 
@@ -438,38 +405,89 @@ function chkmobiledataall(id){
 }
 
 
-function updatefollowall(ID){
+function updatefollowall(ID,Color,Name,Base64,textcol) {
 
 
     $("#clubtick" + clubfavall).hide();
 
     clearfavteam()
 
-        db.transaction(function(tx) {
-            tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 0');
-            console.log("Update MobileApp_LastUpdatesec");
-        });
+    db.transaction(function (tx) {
+        tx.executeSql('Update MobileApp_LastUpdatesec set hasclub = 0');
+        console.log("Update MobileApp_LastUpdatesec");
+    });
 
 
-        addfavteam(ID);
+    addfavteam(ID);
 
 
-
-        addfavclub();
-
-
-   // window.setTimeout(function(){
-      //  window.location.reload();
-  //  }, 1500);
+    addfavclub();
 
 
-        $("#clubtick" + ID).show();
+    // window.setTimeout(function(){
+    //  window.location.reload();
+    //  }, 1500);
+
+
+    $("#clubtick" + ID).show();
+    //alert( $("#menu").css('color'));
+
+
+    if (Color == "") {
+
+        $("#backgroundimg").css('background-color', 'red');
+        $("#menu").css('background-color', '#4776D1');
+        $("#menu").css('color','white');
+    } else {
+
+        $("#backgroundimg").css('background-color', '#' + Color);
+        $("#menu").css('background-color', '#' + Color);
+        $("#menu").css('color','#' + textcol);
+
+    }
+//alert( $("#menu").css('color'));
+
+    if(Base64 != ""){
+
+        $("#backgroundimg1").attr("src","data:image/png;base64," + Base64);
+
+    }
 
 
     clubfavall = ID;
 
-}
 
+    window.plugins.toast.showShortCenter('Your Favourite Club is : ' + Name, function (a) {
+        console.log('toast success: ' + a)
+    }, function (b) {
+        alert('toast error: ' + b)
+    });
+
+
+    if (document.getElementById("newsmain") != null) {
+
+        //   window.setTimeout(function(){
+        //      location.reload();
+        //  }, 1500);
+
+    }
+
+
+    if (document.getElementById("divschedules") != null) {
+        window.setTimeout(function(){
+            location.reload();
+        }, 1500);
+
+    }
+
+    if (document.getElementById("divresults") != null) {
+
+        window.setTimeout(function(){
+            location.reload();
+        }, 1500);
+
+    }
+}
 
 
 
@@ -498,7 +516,7 @@ function redirectresults(ID){
 
 function redirectschedules2(ID){
     if(document.getElementById("indexdiv")==null) {
-    window.location = "../pages/schedules.html?id=" + ID;
+        window.location = "../pages/schedules.html?id=" + ID;
     }else{
 
         window.location = "pages/schedules.html?id=" + ID;
@@ -579,23 +597,29 @@ function loadcontactsall_next_success(tx, results) {
 function cleardata4Changeregaionall(){
 
     onOfflineall();
+    closemenu();
+    window.setTimeout(function(){
+        if((window.localStorage.getItem("syncwifi") ==1 &&  networkconall==2) || ((window.localStorage.getItem("syncwifi") ==0 &&  networkconall!=0))) {
+            // $('#indexloadingdata').modal('show');
+            window.plugins.spinnerDialog.show(null, null, true);
+            db.transaction(droptables, errorCBfunc,successCBfunc);
 
+            window.setTimeout(function(){
+                createtables4Changeregaionall();
+            }, 2500);
+        }else{
 
-    if((wifiallset ==1 &&  networkconall==2) || ((wifiallset ==0 &&  networkconall!=0))) {
-        $('#indexloadingdata').modal('show');
-        db.transaction(droptables, errorCBfunc,successCBfunc);
+            window.plugins.toast.showShortBottom("You don't have access to internet!", function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
-        window.setTimeout(function(){
-            createtables4Changeregaionall();
-        }, 2500);
-    }
-
+        }
+    }, 1000);
 
 }
 
 function createtables4Changeregaionall(){
 
-    $('#indexloadingdata').modal('hide');
+    //  $('#indexloadingdata').modal('hide');
+    window.plugins.spinnerDialog.hide();
     if (document.getElementById("indexdiv") != null)
     {
         weblink('index.html')
@@ -618,3 +642,5 @@ function benclick() {
         stoppable: true
     });
 }
+
+
