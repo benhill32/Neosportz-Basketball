@@ -109,7 +109,7 @@ function checkdatabaseloaddata(){
        // db.transaction(getMenusch, errorCBfunc, successCBfunc);
     }
 
-    //alert(json);
+    alert(json);
     if(json == "0"){
 
         db.transaction(populateDB, errorCBfunc, successCBfunc);
@@ -149,7 +149,7 @@ function loadnewtable(){
 function populateDB(tx){
     // $('#busy').show();
     var sql = "select Count(Datesecs) as Count,syncwifi,Datesecs from MobileApp_LastUpdatesec";
-   // alert(sql);
+    alert(sql);
     tx.executeSql(sql, [], populateDB1,errorCreatetable);
 
 }
