@@ -220,7 +220,7 @@ function successCBfunc() {
 
 
 function runadmob(){
-//alert("run admob");
+alert("run admob");
     if(AdMob) AdMob.createBanner( {
         adId:admobid.banner,
         position:AdMob.AD_POSITION.BOTTOM_CENTER,
@@ -418,7 +418,7 @@ function sendinfotoserver(type,division,club,datesendback,IDs){
 
 
     }else{
-        
+
         window.plugins.spinnerDialog.hide();
         //  alert("You don't have access to internet!");
 
@@ -769,15 +769,6 @@ function syncmaintables(obj,year){
     var datenow = new Date();
     functionyear = year;
 
-    db.transaction(function (tx) {
-        tx.executeSql('Delete from MobileApp_Schedule_Menu');
-        // console.log('Delete MobileApp_Results where ID =' + obj.ID);
-    });
-
-    db.transaction(function (tx) {
-        tx.executeSql('Delete from MobileApp_Results_Menu');
-        // console.log('Delete MobileApp_Results where ID =' + obj.ID);
-    });
 
 
     $.each(obj.App_Games, function (idx, obj) {
