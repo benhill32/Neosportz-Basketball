@@ -334,7 +334,7 @@ function blankLastUpdatesec(){
 
 function gettokenregion(tx) {
     var sql =     "select Datesecs,datemenus,token from MobileApp_LastUpdatesec";
-alert(sql);
+//alert(sql);
     tx.executeSql(sql, [], getregionsdata,errorCBfunc);
 }
 
@@ -346,11 +346,11 @@ function getregionsdata(tx, results) {
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", 'http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + window.localStorage.getItem("apptoken") + '&sec=' + datenowsecsync2 + '&start=1', false);
-   // alert('http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + row.token + '&sec=' + datenowsecsync2 + '&start=1');
+    alert('http://bball.neosportz.com/mobiledata.aspx?deviceID=' + deviceIDfunc + '&token=' + window.localStorage.getItem("apptoken") + '&sec=' + datenowsecsync2 + '&start=1');
     xmlHttp.send();
 
     var json = xmlHttp.responseText;
-alert(json);
+//alert(json);
     var obj = JSON.parse(json);
     syncmaintablesregions(obj);
 
