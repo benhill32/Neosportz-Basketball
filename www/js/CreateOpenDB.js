@@ -49,7 +49,7 @@ function droptables(tx){
     tx.executeSql('Drop TABLE MobileApp_Scoringapplied ');
     console.log("MobileApp_Scoringapplied table is Dropped");
 
-    tx.executeSql('Drop TABLE App_Games ');
+    tx.executeSql('Drop  TABLE  IF EXISTS App_Games ');
     console.log("MobileRegion table is Dropped");
 
     tx.executeSql('Drop TABLE IF EXISTS MobileApp_POTD ');
