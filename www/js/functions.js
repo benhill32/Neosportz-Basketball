@@ -220,7 +220,7 @@ function successCBfunc() {
 
 
 function runadmob(){
-
+alert("run admob");
     if(AdMob) AdMob.createBanner( {
         adId:admobid.banner,
         position:AdMob.AD_POSITION.BOTTOM_CENTER,

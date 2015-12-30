@@ -18,7 +18,7 @@ function getoneoff2(tx) {
 function getoneoff2_success(tx, results) {
 
     var len = results.rows.length;
-alert(len);
+
 
     if(len != 0) {
         var menu = results.rows.item(0);
@@ -50,7 +50,7 @@ alert(len);
             splashpage = "news.html";
         }
 
-
+        alert(splashpage);
 
         runadmob();
 
@@ -64,8 +64,7 @@ alert(len);
 
 
 function getbackground2_error(err) {
-    //  $('#splashscreen').empty();
-    //  $('#splashscreen').append('<img id="screensplashimg"  src="data:image/png;base64,' + Base64 + '">');
+
     alert("error");
     runadmob();
     window.setTimeout(function(){
