@@ -37,8 +37,8 @@
       <file leaf-file-name="CreateOpenDB.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/CreateOpenDB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.675676">
-              <caret line="73" column="261" selection-start-line="73" selection-start-column="255" selection-end-line="73" selection-end-column="261" />
+            <state vertical-scroll-proportion="-8.135135">
+              <caret line="74" column="3" selection-start-line="73" selection-start-column="2" selection-end-line="74" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -67,8 +67,8 @@
       <file leaf-file-name="splashscreen.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/splashscreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47806525">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.059302326">
+              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -466,7 +466,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1672" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="1672" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27083334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -907,14 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/standings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="28" column="52" selection-start-line="16" selection-start-column="23" selection-end-line="28" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.448276">
@@ -935,16 +927,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/CreateOpenDB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.675676">
-          <caret line="73" column="261" selection-start-line="73" selection-start-column="255" selection-end-line="73" selection-end-column="261" />
+        <state vertical-scroll-proportion="-8.135135">
+          <caret line="74" column="3" selection-start-line="73" selection-start-column="2" selection-end-line="74" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/standings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.692307">
+          <caret line="28" column="52" selection-start-line="16" selection-start-column="23" selection-end-line="28" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/splashscreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47806525">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.059302326">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
           <folding />
         </state>
       </provider>

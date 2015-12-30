@@ -1,7 +1,7 @@
 var db;
 var orientationstand = "";
 var Base64 = "";
-
+var splashpage="../index.html";
 document.addEventListener("deviceready", onDeviceReadysplashscreen, false);
 
 function onDeviceReadysplashscreen() {
