@@ -395,7 +395,7 @@ function getsyncdateload_success2(tx, results) {
 
 function closemodelarchive(){
 
-    $('#indexloadingdata').modal('hide');
+  //  $('#indexloadingdata').modal('hide');
 
     window.plugins.toast.showLongBottom('Your App is Updated!', function (a) {console.log('toast success: ' + a)}, function (b) {alert('toast error: ' + b)});
 
@@ -637,7 +637,7 @@ function loadarchiveyeardata2_sync(tx, results) {
     var row = results.rows.item(0);
 
     if((row.syncwifi ==1 && networkconnection==2) || ((row.syncwifi ==0 &&  networkconnection!=0))) {
-        $('#indexloadingdata').modal('show');
+      //  $('#indexloadingdata').modal('show');
 
         var datemenus = row.datemenus;
         var datenowsecsync = row.Datesecs;
